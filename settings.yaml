@@ -757,7 +757,7 @@ spec:
         - $formkit: select
           name: enable_navbar_icon
           label: 开启菜单图标
-          value: true
+          value: false
           help: "导航条菜单默认展示后台配置的图标, 若不需要可以在这里统一关闭"
           options:
             - value: true
