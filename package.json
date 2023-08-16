@@ -1,0 +1,10 @@
+{
+  "name": "halo-theme-joe3.0",
+  "version": "1.0.0",
+  "description": "Theme of Halo2",
+  "devDependencies": {
+    "less": "^4.2.0",
+    "uglify-js": "^3.17.4",
+    "uglifycss": "^0.0.29"
+  }
+}
