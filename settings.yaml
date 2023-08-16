@@ -129,7 +129,7 @@ spec:
         - $formkit: attachment
           name: lazyload_thumbnail
           label: 文章预载图
-          value: "/themes/theme-Joe3/assets/img/lazyload.gif"
+          value: "/themes/Theme-Joe3/assets/img/lazyload.gif"
           help: "文章配图加载出来之前展示的图片, 体积尽可能的小"
         - $formkit: attachment
           name: post_thumbnail
@@ -139,7 +139,7 @@ spec:
         - $formkit: attachment
           name: fallback_thumbnail
           label: 文章错误缺省图
-          value: "/themes/theme-Joe3/templates/assets/img/default_thumbnail.png"
+          value: "/themes/Theme-Joe3/templates/assets/img/default_thumbnail.png"
           help: "文章图片加载出错时生效, 可使用占位图服务(350*200)"
         - $formkit: select
           name: enable_index_list_effect
@@ -179,7 +179,7 @@ spec:
           if: "$get(hot_category_source).value === 'category'"
           id: category_data
           label: 选择展示分类
-          value: [ ]
+          value: []
           help: "选择要展示的分类"
           children:
             - $formkit: categorySelect
@@ -190,7 +190,7 @@ spec:
           if: "$get(hot_category_source).value === 'custom'"
           id: custom_data
           label: 自定义信息
-          value: [ ]
+          value: []
           help: "选择要展示的分类"
           children:
             - $formkit: text
@@ -555,7 +555,7 @@ spec:
           if: "$get(enable_banner).value"
           name: banner_source
           label: 轮播图文章
-          value: [ ]
+          value: []
           children:
             - $formkit: postSelect
               name: posts
@@ -652,7 +652,7 @@ spec:
           name: banner_lazyload_img
           id: banner_lazyload_img
           label: 图片预载图
-          value: "/themes/theme-Joe3/assets/img/lazyload_h.gif"
+          value: "/themes/Theme-Joe3/assets/img/lazyload_h.gif"
           help: "轮播图默认为懒加载, 这里可以为banner图设置加载完之前的加载图(体积尽可能的小)"
         - $formkit: select
           name: link_behavior
@@ -830,7 +830,7 @@ spec:
         - $formkit: attachment
           name: lazyload_avatar
           label: 头像预载图
-          value: "/themes/theme-Joe3/assets/svg/spinner-preloader.svg"
+          value: "/themes/Theme-Joe3/assets/svg/spinner-preloader.svg"
           help: "头像加载出来之前展示的图片"
         - $formkit: attachment
           name: avatar
@@ -840,7 +840,7 @@ spec:
         - $formkit: attachment
           name: default_avatar
           label: 默认头像
-          value: "/themes/theme-Joe3/templates/assets/img/jiewen_icon.png"
+          value: "/themes/Theme-Joe3/assets/img/default_avatar.jpg"
           help: "用于头像未设置或加载出错时显示的图片(注意：主题优先使用后台配置的头像, 当后台未配置头像或头像加载出错才会用这里设置的图片。此处是有默认值的)"
         - $formkit: attachment
           name: author_bg
@@ -894,7 +894,7 @@ spec:
           id: socials
           key: socials
           label: 社交信息
-          value: [ ]
+          value: []
           children:
             - $formkit: select
               name: socials_select
