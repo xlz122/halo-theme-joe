@@ -737,7 +737,7 @@ spec:
         - $formkit: select
           name: show_logo
           label: 展示博客LOGO
-          value: true
+          value: false
           help: "导航条是否展示博客LOGO"
           options:
             - value: true
