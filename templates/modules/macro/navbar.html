@@ -10,7 +10,7 @@
           class="joe_container joe_header_container"
           th:classappend="${theme.config.navbar.enable_full_header ? 'full':''}"
         >
-          <th th:if="${theme.config.navbar.show_logo} and ${not #lists.isEmpty(theme.config.navbar.logo_link)}">
+          <th>
             <i class="joe-font joe-icon-caidan joe_header__above-slideicon"></i>
             <a class="joe_header__above-logo" th:title="${site.title}" th:href="${site.url}">
               <img
