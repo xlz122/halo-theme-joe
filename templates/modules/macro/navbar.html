@@ -98,6 +98,7 @@
         </div>
       </div>
 
+      <!-- 移动端侧边栏 -->
       <div class="joe_header__slideout">
         <div class="joe_header__slideout-wrap">
           <img width="100%" height="150" class="joe_header__slideout-image"
@@ -148,46 +149,48 @@
               <ul class="slides panel-body panel-box panel-side-menu" style="display: block;">
                 <th:block th:if="${#lists.isEmpty(theme.config.navbar.menu)}">
                   <th:block th:with="menu = ${menuFinder.getPrimary()}">
-                    <th:block th:each="menuItem : ${menuItems}">
-                      <th:block th:if="${#lists.isEmpty(menuItem.children)}">
-                        <li>
-                          <a
-                            class="link"
-                            th:href="@{${menuItem.status.href}}"
-                            th:target="${menuItem.spec.target?.value}"
-                            th:title="${menuItem.status.displayName}"
-                          >
-                            [[${menuItem.status.displayName}]]
-                        </a>
-                        </li>
-                      </th:block>
-                      <th:block th:if="${not #lists.isEmpty(menuItem.children)}">
-                        <li>
-                          <div class="link panel">
+                    <th:block th:with="menuItems = ${menu.menuItems}">
+                      <th:block th:each="menuItem : ${menuItems}">
+                        <th:block th:if="${#lists.isEmpty(menuItem.children)}">
+                          <li>
                             <a
+                              class="link"
                               th:href="@{${menuItem.status.href}}"
                               th:target="${menuItem.spec.target?.value}"
                               th:title="${menuItem.status.displayName}"
                             >
                               [[${menuItem.status.displayName}]]
-                            </a>
-                            <i class="joe-font joe-icon-arrow-right"></i>
-                          </div>
-                          <ul class="slides panel-body">
-                            <th:block th:each="childMenu : ${menuItem.children}">
-                              <li>
-                                <a
-                                  class="link"
-                                  th:href="@{${childMenu.status.href}}"
-                                  th:target="${childMenu.spec.target?.value}"
-                                  th:title="${childMenu.status.displayName}"
-                                >
-                                  [[${childMenu.status.displayName}]]
-                                </a>
-                              </li>
-                            </th:block>
-                          </ul>
-                        </li>
+                          </a>
+                          </li>
+                        </th:block>
+                        <th:block th:if="${not #lists.isEmpty(menuItem.children)}">
+                          <li>
+                            <div class="link panel">
+                              <a
+                                th:href="@{${menuItem.status.href}}"
+                                th:target="${menuItem.spec.target?.value}"
+                                th:title="${menuItem.status.displayName}"
+                              >
+                                [[${menuItem.status.displayName}]]
+                              </a>
+                              <i class="joe-font joe-icon-arrow-right"></i>
+                            </div>
+                            <ul class="slides panel-body">
+                              <th:block th:each="childMenu : ${menuItem.children}">
+                                <li>
+                                  <a
+                                    class="link"
+                                    th:href="@{${childMenu.status.href}}"
+                                    th:target="${childMenu.spec.target?.value}"
+                                    th:title="${childMenu.status.displayName}"
+                                  >
+                                    [[${childMenu.status.displayName}]]
+                                  </a>
+                                </li>
+                              </th:block>
+                            </ul>
+                          </li>
+                        </th:block>
                       </th:block>
                     </th:block>
                   </th:block>
