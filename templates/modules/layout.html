@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="html (title,header,content,head,footer,leftSidebar,htmlType)" xmlns:th="http://www.thymeleaf.org">
-<head>
+<html
+  lang="en"
+  th:fragment="html (title,header,content,head,footer,leftSidebar,htmlType)"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head>
     <title th:text="${title}"></title>
-
     <meta charset="utf-8">
     <meta name="renderer" content="webkit">
     <meta name="format-detection" content="email=no">
@@ -10,7 +13,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+    <meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover"
+    >
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="admin">
@@ -21,18 +26,15 @@
     <meta property="og:description" content="">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="zh_CN">
-    <meta property="og:site_name" content="Halo1.6">
+    <meta property="og:site_name" content="Halo2.0">
     <meta property="og:url" th:content="${site.url}">
     <meta property="og:title" th:content="${titlie}">
     <meta property="twitter:partner" content="ogwp">
-    <!-- /OG -->
-
+    <!-- OG -->
     <th:block th:replace="~{modules/config :: config}" />
     <th:block th:replace="~{modules/link :: links}" />
     <script th:src="@{/assets/lib/jquery@3.5.1/jquery.min.js}"></script>
-
-
-</head>
-<!-- /OG -->
-<th:block th:replace="${content}"></th:block>
+  </head>
+  <!-- OG -->
+  <th:block th:replace="${content}"></th:block>
 </html>

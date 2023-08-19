@@ -1217,11 +1217,17 @@ body:after {
 
 .joe_header__slideout-author {
   display: flex;
+  flex-direction: column;
   margin-bottom: 15px;
   background: var(--background);
   border-radius: var(--radius-wrap);
   padding: 15px;
   box-shadow: var(--box-shadow);
+}
+
+.joe_header__slideout-author .user-profile {
+  display: flex;
+  flex-direction: row;
 }
 
 .joe_header__slideout-author .avatar {
@@ -1258,6 +1264,18 @@ body:after {
 .joe_header__slideout-author .info .motto {
   font-size: 12px;
   color: var(--routine);
+}
+
+.joe_header__slideout-author .social-account {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 5px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 14px;
+  border-top: 1px solid var(--classC);
 }
 
 .joe_header__slideout-count {
@@ -2276,6 +2294,41 @@ body:after {
 
 .joe_aside__item.author .social-account a:hover {
   transform: scale(1);
+}
+
+.joe_aside__item.author .icp {
+  position: relative;
+  max-width: 100%;
+  margin-top: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.joe_aside__item.author .icp .link {
+  position: relative;
+  color: var(--routine);
+  cursor: pointer;
+}
+
+.joe_aside__item.author .icp:hover .link {
+  color: var(--theme);
+}
+
+.joe_aside__item.author .icp .link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--theme);
+  transition: all 0.35s;
+}
+
+.joe_aside__item.author .icp:hover .link::after {
+  width: 100%;
 }
 
 .joe_aside__item.author .list {

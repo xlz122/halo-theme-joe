@@ -34,7 +34,7 @@
                   <ul class="joe_index__title-title passage-list-tabs default">
                     <li class="item active" data-type="1">最新文章</li>
                   </ul>
-                  <th:block th:if="${theme.config.social.qq_group != ''} and ${theme.config.social.qq_group != null}">
+                  <th:block th:if="${theme.config.blogger.qq_group != ''} and ${theme.config.blogger.qq_group != null}">
                     <div class="joe_index__title-notice">
                       <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
                         <path d="M656.261 347.208a188.652 188.652 0 1 0 0 324.05v-324.05z" fill="var(--theme)"></path>
@@ -43,11 +43,11 @@
                           fill="#595BB3"></path>
                       </svg>
                       <a
-                        th:href="${theme.config.social.qq_group}"
+                        th:href="${theme.config.blogger.qq_group}"
                         target="_blank"
                         rel="noopener noreferrer nofollow"
                       >
-                        [[${theme.config.social.qq_text}]]
+                        [[${theme.config.blogger.qq_text}]]
                       </a>
                     </div>
                   </th:block>
