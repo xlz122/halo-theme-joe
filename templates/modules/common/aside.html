@@ -58,15 +58,6 @@
       <th:block th:if="${theme.config.aside.enable_newest_post}">
         <th:block th:replace="~{modules/macro/latest :: latest}" />
       </th:block>
-      <th:block th:if="${theme.config.aside.enable_lifetime}">
-        <section class="joe_aside__item timelife">
-          <div class="joe_aside__item-title">
-            <i class="joe-font joe-icon-shalou"></i>
-            <span class="text">人生倒计时</span>
-          </div>
-          <div class="joe_aside__item-contain"></div>
-        </section>
-      </th:block>
       <th:block th:if="${theme.config.other.enable_clean_mode !=true and theme.config.aside.show_newreply == true}">
         <section class="joe_aside__item newreply">
           <div class="joe_aside__item-title">
@@ -98,6 +89,15 @@
               </li>
             </th:block>
           </ul>
+        </section>
+      </th:block>
+      <th:block th:if="${theme.config.aside.enable_lifetime}">
+        <section class="joe_aside__item timelife">
+          <div class="joe_aside__item-title">
+            <i class="joe-font joe-icon-shalou"></i>
+            <span class="text">人生倒计时</span>
+          </div>
+          <div class="joe_aside__item-contain"></div>
         </section>
       </th:block>
       <th:block th:if="${theme.config.aside.enable_tag_cloud}">
