@@ -271,48 +271,6 @@ spec:
           value: "(つェ⊂)咦, 又回来了!"
           help: "在返回到当前标签时, 通过title展示的文字(仅对首页生效)"
 
-    - group: beauty
-      label: 美化
-      formSchema:
-        - $formkit: select
-          name: enable_big_banner
-          id: enable_big_banner
-          label: 顶部大图
-          value: false
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: text
-          if: "$get(enable_big_banner).value"
-          name: big_banner_title
-          label: 大图标题
-          value: ""
-          help: "默认网站名"
-        - $formkit: text
-          if: "$get(enable_big_banner).value"
-          name: big_banner_Photos
-          label: 图片地址或者api地址
-          value: "http://imgapi.xl0408.top/index.php"
-          help: "填写图片地址或者随机图api地址"
-        - $formkit: select
-          if: "$get(enable_big_banner).value"
-          name: enable_big_banner_video
-          id: enable_big_banner_video
-          label: 是否启用视频背景
-          value: false
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: attachment
-          if: "$get(enable_big_banner_video).value"
-          name: big_banner_video
-          label: 视频地址
-          value: ""
-
     - group: navbar
       label: 导航
       formSchema:
@@ -332,7 +290,7 @@ spec:
               label: 关闭
         - $formkit: select
           name: enable_full_header
-          label: 100%宽度
+          label: 导航条100%宽度
           value: false
           help: "导航条宽度是否100%, 默认和内容区域宽度一致"
           options:
@@ -406,6 +364,48 @@ spec:
             - value: false
               label: 关闭
 
+    - group: beauty
+      label: 大图
+      formSchema:
+        - $formkit: select
+          name: enable_big_banner
+          id: enable_big_banner
+          label: 顶部大图
+          value: false
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: text
+          if: "$get(enable_big_banner).value"
+          name: big_banner_title
+          label: 大图标题
+          value: ""
+          help: "默认网站名"
+        - $formkit: text
+          if: "$get(enable_big_banner).value"
+          name: big_banner_Photos
+          label: 图片地址或者api地址
+          value: "http://imgapi.xl0408.top/index.php"
+          help: "填写图片地址或者随机图api地址"
+        - $formkit: select
+          if: "$get(enable_big_banner).value"
+          name: enable_big_banner_video
+          id: enable_big_banner_video
+          label: 是否启用视频背景
+          value: false
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: attachment
+          if: "$get(enable_big_banner_video).value"
+          name: big_banner_video
+          label: 视频地址
+          value: ""
+
     - group: carousel
       label: 轮播图
       formSchema:
@@ -429,7 +429,8 @@ spec:
               name: posts
               label: 选择要推荐的文章(至少两个)
               value: ""
-        - $formkit: radio
+        - $formkit: select
+          if: "$get(enable_banner).value"
           name: banner_direction
           id: banner_direction
           label: 轮播方向
@@ -440,16 +441,7 @@ spec:
             - value: vertical
               label: 垂直
         - $formkit: select
-          name: enable_banner_loop
-          id: enable_banner_loop
-          label: 循环播放
-          value: true
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: radio
+          if: "$get(enable_banner).value"
           name: banner_effect
           id: banner_effect
           label: 切换效果
@@ -464,6 +456,7 @@ spec:
             - value: coverflow
               label: 封面
         - $formkit: select
+          if: "$get(enable_banner).value"
           name: enable_banner_handle
           id: enable_banner_handle
           label: 允许手动控制
@@ -475,6 +468,7 @@ spec:
             - value: false
               label: 关闭
         - $formkit: select
+          if: "$get(enable_banner).value"
           name: enable_banner_switch_button
           id: enable_banner_switch_button
           label: 展示左右切换按钮
@@ -485,6 +479,7 @@ spec:
             - value: false
               label: 关闭
         - $formkit: select
+          if: "$get(enable_banner).value"
           name: enable_banner_pagination
           id: enable_banner_pagination
           label: 展示分页器
@@ -495,6 +490,7 @@ spec:
             - value: false
               label: 关闭
         - $formkit: select
+          if: "$get(enable_banner).value"
           name: enable_banner_autoplay
           id: enable_banner_autoplay
           label: 自动切换
@@ -504,25 +500,40 @@ spec:
               label: 开启
             - value: false
               label: 关闭
+        - $formkit: select
+          if: "$get(enable_banner).value"
+          name: enable_banner_loop
+          id: enable_banner_loop
+          label: 循环播放
+          value: true
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
         - $formkit: text
+          if: "$get(enable_banner).value"
           name: banner_delay
           id: banner_delay
           label: 切换间隔
           value: "3500"
           help: "设置轮播图切换的间隔时间, 默认3500(仅在自动切换开启时生效, 单位: 毫秒)"
         - $formkit: text
+          if: "$get(enable_banner).value"
           name: banner_speed
           id: banner_speed
           label: 切换速度
           value: "500"
           help: "设置轮播图的切换速度, 默认500(单位: 毫秒)"
         - $formkit: attachment
+          if: "$get(enable_banner).value"
           name: banner_lazyload_img
           id: banner_lazyload_img
           label: 图片预载图
           value: "/themes/Halo-Theme-Joe3/assets/img/lazyload_h.gif"
           help: "轮播图默认为懒加载, 这里可以为banner图设置加载完之前的加载图(体积尽可能的小)"
         - $formkit: select
+          if: "$get(enable_banner).value"
           name: link_behavior
           label: 链接跳转行为(全局-内容区域)
           value: "default"
