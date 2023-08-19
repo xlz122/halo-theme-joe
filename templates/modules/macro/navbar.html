@@ -1,10 +1,11 @@
+<!-- 导航栏 -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
   <th:block th:fragment="navbar">
     <header class="joe_header">
       <div
         class="joe_header__above"
-        th:classappend="|${theme.config.theme.enable_show_in_up ? 'topInDown':''} ${theme.config.navbar.enable_fixed_header ? 'fixed':''} ${theme.config.navbar.enable_fixed_header and theme.config.navbar.enable_glass_blur ? 'glass':''}|"
+        th:classappend="|${theme.config.theme.enable_show_in_up ? 'topInDown' : ''} ${theme.config.navbar.enable_fixed_header ? 'fixed' : ''} ${theme.config.navbar.enable_fixed_header and theme.config.navbar.enable_glass_blur ? 'glass' : ''}|"
       >
         <div
           class="joe_container joe_header_container"
@@ -12,13 +13,15 @@
         >
           <th>
             <i class="joe-font joe-icon-caidan joe_header__above-slideicon"></i>
-            <a class="joe_header__above-logo" th:title="${site.title}" th:href="${site.url}">
-              <img
-                th:src="${site.logo}"
-                th:alt="${site.title}"
-                th:style="'border-radius:'+${theme.config.navbar.logo_radius} ?:'4px'"
-              />
-            </a>
+            <th th:if="${theme.config.navbar.show_logo}">
+              <a class="joe_header__above-logo" th:title="${site.title}" th:href="${site.url}">
+                <img
+                  th:src="${site.logo}"
+                  th:alt="${site.title}"
+                  th:style="'border-radius:'+${theme.config.navbar.logo_radius} ?: '4px'"
+                />
+              </a>
+            </th>
           </th>
           <nav
             class="joe_header__above-nav"
