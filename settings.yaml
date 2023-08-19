@@ -319,15 +319,17 @@ spec:
           help: "浅色主题色色值, 默认#fb6c28"
         - $formkit: select
           name: enable_background_light
+          id: enable_background_light
           value: false
           label: 开启浅色模式背景图
-          help: "需要配置好浅色模式背景图后才有效"
+          help: "开启后, 需要配置好浅色模式背景图后才有效"
           options:
             - value: true
               label: 是
             - value: false
               label: 否
         - $formkit: attachment
+          if: "$get(enable_background_light).value"
           name: background_light_mode
           label: 背景图(浅色模式)
           help: "设置浅色模式下的背景图(建议webp格式), 为空则只显示默认背景色"
@@ -339,15 +341,17 @@ spec:
           help: "暗黑主题色色值, 默认#9999ff"
         - $formkit: select
           name: enable_background_dark
+          id: enable_background_dark
           value: false
           label: 开启暗黑模式背景图
-          help: "需要配置好暗黑模式背景图后才有效"
+          help: "开启后, 需要配置好暗黑模式背景图后才有效"
           options:
             - value: true
               label: 是
             - value: false
               label: 否
         - $formkit: attachment
+          if: "$get(enable_background_dark).value"
           name: background_dark_mode
           label: 背景图(暗黑模式)
           help: "设置暗黑模式下的背景图(建议webp格式), 为空则只显示默认背景色"
@@ -465,7 +469,7 @@ spec:
           label: 滚动条颜色
           value: "#c0c4cc"
           help: "设置全局滚动条的颜色, 默认为 #c0c4cc"
-        - $formkit: radio
+        - $formkit: select
           name: enable_show_in_up
           label: 开启模块缓入效果(全局)
           value: true
@@ -475,7 +479,7 @@ spec:
               label: 开启
             - value: false
               label: 关闭
-        - $formkit: radio
+        - $formkit: select
           name: enable_back2top
           id: enable_back2top
           label: 开启返回顶部
@@ -489,15 +493,15 @@ spec:
         - $formkit: select
           if: "$get(enable_back2top).value"
           name: enable_back2top_smooth
-          label: 平滑返回顶部
+          label: 是否平滑返回顶部
           value: true
           help: "点击返回顶部按钮后, 是否平滑的返回顶部, 关闭后则没有任何过渡效果"
           options:
             - value: true
-              label: 开启
+              label: 是
             - value: false
-              label: 关闭
-        - $formkit: radio
+              label: 否
+        - $formkit: select
           name: enable_offscreen_tip
           id: enable_offscreen_tip
           label: 开启离屏提示
