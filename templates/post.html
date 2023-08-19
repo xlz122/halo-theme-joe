@@ -192,7 +192,7 @@
           <div class="joe_progress_bar" th:style="'background:'+${theme.config.post.progress_bar_bgc ?: ''}"></div>
         </th:block>
         <th:block
-          th:if="${theme.config.post.enable_mobile_toc} or ${theme.config.theme.enable_back2top} or ${theme.config.basic.theme_mode == 'user'}">
+          th:if="${theme.config.post.enable_mobile_toc} or ${theme.config.theme.enable_back2top} or ${theme.config.theme.theme_mode == 'user'}">
           <th:block th:replace="~{modules/common/actions :: actions}" />
         </th:block>
         <th:block th:if="${theme.config.footer.enable_footer}">

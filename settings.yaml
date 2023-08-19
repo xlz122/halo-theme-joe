@@ -8,15 +8,15 @@ spec:
       label: 基本设置
       formSchema:
         - $formkit: number
+          name: navbar_max_width
+          label: 导航栏最大宽度
+          value: 1320
+          help: "限制导航栏区域的宽度, 主要用于网站logo隐藏后调整宽度, 默认1320, 单位px"
+        - $formkit: number
           name: content_max_width
           label: 内容区域最大宽度
           value: 1320
           help: "限制内容区域的宽度, 默认1320, 单位px"
-        - $formkit: number
-          name: navbar_max_width
-          label: 导航栏最大宽度
-          value: 1320
-          help: "限制导航栏区域的宽度, 默认1320, 单位px"
         - $formkit: select
           name: enable_random_img_api
           id: enable_random_img_api
@@ -33,94 +33,22 @@ spec:
           value: "https://imgapi.xl0408.top/index.php"
           label: 随机图api
           help: "输入适当的api地址"
-        - $formkit: textarea
-          name: site_notice
-          label: 网站公告
-          value: "这是你的公告"
-          help: "网站公告信息, 将展示在页面右侧, 尽量简洁明了, 不填不展示该模块(需要先在 “侧边栏” 中开启公告模块)"
-        - $formkit: text
-          name: icp
-          label: ICP 备案号
-          value: ""
-          help: "ICP 备案信息将展示在页脚中, 不填不展示(示例：鄂ICP备20001234号-1)"
-        - $formkit: text
-          name: police
-          label: 公网安备号
-          value: ""
-          help: "公网安备信息将展示在页脚中, 不填不展示, 也可在 “页脚” 一栏中单独关闭(示例：鄂公网安备42011102001234号)"
         - $formkit: select
-          name: theme_mode
-          label: 主题模式
-          value: "user"
-          help: "设置博客的主题模式(用户/自动/浅色/暗黑), 默认为用户模式, 仅在用户模式下页面才有主题切换按钮, 自动模式下根据时间自动切换"
+          name: web_font
+          label: 网站字体
+          value: "off"
+          help: "优先使用自定义字体"
           options:
-            - value: user
-              label: 用户模式
-            - value: auto
-              label: 自动模式
-            - value: light
-              label: 浅色模式
-            - value: dark
-              label: 暗黑模式
-        - $formkit: text
-          name: mode_color_light
-          label: 主题色(浅色)
-          value: "#fb6c28"
-          help: "浅色主题色色值, 默认#fb6c28"
-        - $formkit: select
-          name: enable_background_light
-          value: false
-          label: 开启浅色模式背景图
-          help: "需要配置好浅色模式背景图后才有效"
-          options:
-            - value: true
-              label: 是
-            - value: false
-              label: 否
-        - $formkit: attachment
-          name: background_light_mode
-          label: 背景图(浅色模式)
-          help: "设置浅色模式下的背景图(建议webp格式), 为空则只显示默认背景色"
-          value: ""
-        - $formkit: text
-          name: mode_color_dark
-          label: 主题色(暗黑)
-          value: "#9999ff"
-          help: "暗黑主题色色值, 默认#9999ff"
-        - $formkit: select
-          name: enable_background_dark
-          value: false
-          label: 开启暗黑模式背景图
-          help: "需要配置好暗黑模式背景图后才有效"
-          options:
-            - value: true
-              label: 是
-            - value: false
-              label: 否
-        - $formkit: attachment
-          name: background_dark_mode
-          label: 背景图(暗黑模式)
-          help: "设置暗黑模式下的背景图(建议webp格式), 为空则只显示默认背景色"
-          value: ""
-        - $formkit: text
-          name: light_time_scope
-          label: 浅色模式生效时间范围
-          value: "5:00~19:00"
-          help: "设置浅色模式自动生效的时间范围, 范围之外为暗黑模式(仅在主题模式为 “自动模式” 下生效), 请严格按照规定格式设置, 否则会导致报错"
+            - value: "off"
+              label: 默认
+            - value: "joe_slate.woff2"
+              label: "Joe Slate"
+            - value: "joe_future.woff2"
+              label: "Joe Future"
 
     - group: home
       label: 首页
       formSchema:
-        #        - $formkit: select
-        #          name: enable_index_list_ajax
-        #          label: 异步加载文章列表
-        #          value: true
-        #          help: ""
-        #          options:
-        #            - value: true
-        #              label: 是
-        #            - value: false
-        #              label: 否
         - $formkit: select
           name: enable_post_thumbnail
           label: 开启文章缩略图
@@ -134,7 +62,7 @@ spec:
         - $formkit: attachment
           name: lazyload_thumbnail
           label: 文章预载图
-          value: "/themes/Theme-Joe3/assets/img/lazyload.gif"
+          value: "/themes/Halo-Theme-Joe3/assets/img/lazyload.gif"
           help: "文章配图加载出来之前展示的图片, 体积尽可能的小"
         - $formkit: attachment
           name: post_thumbnail
@@ -144,7 +72,7 @@ spec:
         - $formkit: attachment
           name: fallback_thumbnail
           label: 文章错误缺省图
-          value: "/themes/Theme-Joe3/templates/assets/img/default_thumbnail.png"
+          value: "/themes/Halo-Theme-Joe3/templates/assets/img/default_thumbnail.png"
           help: "文章图片加载出错时生效, 可使用占位图服务(350*200)"
         - $formkit: select
           name: enable_index_list_effect
@@ -367,10 +295,68 @@ spec:
             - value: "slideOutUp"
               label: "slideOutUp"
 
-
     - group: theme
       label: 主题相关
       formSchema:
+        - $formkit: select
+          name: theme_mode
+          label: 主题模式
+          value: "user"
+          help: "设置博客的主题模式(用户/自动/浅色/暗黑), 默认为用户模式, 仅在用户模式下页面才有主题切换按钮, 自动模式下根据时间自动切换"
+          options:
+            - value: user
+              label: 用户模式
+            - value: auto
+              label: 自动模式
+            - value: light
+              label: 浅色模式
+            - value: dark
+              label: 暗黑模式
+        - $formkit: text
+          name: mode_color_light
+          label: 主题色(浅色)
+          value: "#fb6c28"
+          help: "浅色主题色色值, 默认#fb6c28"
+        - $formkit: select
+          name: enable_background_light
+          value: false
+          label: 开启浅色模式背景图
+          help: "需要配置好浅色模式背景图后才有效"
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否
+        - $formkit: attachment
+          name: background_light_mode
+          label: 背景图(浅色模式)
+          help: "设置浅色模式下的背景图(建议webp格式), 为空则只显示默认背景色"
+          value: ""
+        - $formkit: text
+          name: mode_color_dark
+          label: 主题色(暗黑)
+          value: "#9999ff"
+          help: "暗黑主题色色值, 默认#9999ff"
+        - $formkit: select
+          name: enable_background_dark
+          value: false
+          label: 开启暗黑模式背景图
+          help: "需要配置好暗黑模式背景图后才有效"
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否
+        - $formkit: attachment
+          name: background_dark_mode
+          label: 背景图(暗黑模式)
+          help: "设置暗黑模式下的背景图(建议webp格式), 为空则只显示默认背景色"
+          value: ""
+        - $formkit: text
+          name: light_time_scope
+          label: 浅色模式生效时间范围
+          value: "5:00~19:00"
+          help: "设置浅色模式自动生效的时间范围, 范围之外为暗黑模式(仅在主题模式为 “自动模式” 下生效), 请严格按照规定格式设置, 否则会导致报错"
         - $formkit: select
           name: cursor_skin
           label: 鼠标皮肤
@@ -449,18 +435,9 @@ spec:
               label: 固定的彩带
             - value: balloon
               label: 上升的气球
-        - $formkit: text
-          name: loading_bar_height
-          label: 加载条高度
-          value: "3px"
-          help: "设置全局加载条的高度, 默认为 3px, 填 0 相当于不显示"
-        - $formkit: text
-          name: loading_bar_color
-          label: 加载条颜色
-          value: ""
         - $formkit: select
           name: enable_loading_bar
-          label: 开启页面加载条
+          label: 页面顶部加载条
           value: true
           help: "是否开启页面顶部的加载条"
           options:
@@ -469,14 +446,57 @@ spec:
             - value: false
               label: 关闭
         - $formkit: text
-          name: scrollbar_color
-          label: 滚动条颜色
-          value: "#c0c4cc"
+          name: loading_bar_height
+          label: 加载条高度
+          value: "3px"
+          help: "设置全局加载条的高度, 默认为 3px, 填 0 相当于不显示"
+        - $formkit: text
+          name: loading_bar_color
+          label: 加载条颜色
+          value: "#fb6c28"
+          help: "设置全局加载条的颜色, 默认为 #fb6c28"
         - $formkit: text
           name: scrollbar_width
           label: 滚动条宽度
           value: "8px"
           help: "设置全局滚动条的宽度, 默认为 8px, 填 0 相当于不显示"
+        - $formkit: text
+          name: scrollbar_color
+          label: 滚动条颜色
+          value: "#c0c4cc"
+          help: "设置全局滚动条的颜色, 默认为 #c0c4cc"
+        - $formkit: radio
+          name: enable_show_in_up
+          label: 开启模块缓入效果(全局)
+          value: true
+          help: "开启后, 当页面载入时, 页面中的模块会有缓入动画"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: radio
+          name: enable_back2top
+          id: enable_back2top
+          label: 开启返回顶部
+          value: true
+          help: "是否开启返回顶部功能"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: select
+          if: "$get(enable_back2top).value"
+          name: enable_back2top_smooth
+          label: 平滑返回顶部
+          value: true
+          help: "点击返回顶部按钮后, 是否平滑的返回顶部, 关闭后则没有任何过渡效果"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
         - $formkit: radio
           name: enable_offscreen_tip
           id: enable_offscreen_tip
@@ -501,48 +521,6 @@ spec:
           value: "(つェ⊂)咦, 又回来了!"
           help: "在返回到当前标签时, 通过title展示的文字(仅对首页生效)"
 
-        - $formkit: radio
-          name: enable_show_in_up
-          label: 开启模块缓入效果(全局)
-          value: true
-          help: "开启后, 当页面载入时, 页面中的模块会有缓入动画"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: select
-          name: enable_back2top
-          label: 开启返回顶部
-          value: true
-          help: "是否开启返回顶部功能"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: select
-          name: enable_back2top_smooth
-          label: 平滑返回顶部
-          value: true
-          help: "点击返回顶部按钮后, 是否平滑的返回顶部, 关闭后则没有任何过渡效果"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: select
-          name: web_font
-          label: 网站字体
-          value: "off"
-          help: "优先使用自定义字体"
-          options:
-            - value: "off"
-              label: 默认
-            - value: "joe_slate.woff2"
-              label: "Joe Slate"
-            - value: "joe_future.woff2"
-              label: "Joe Future"
     - group: carousel
       label: 轮播图
       formSchema:
@@ -646,24 +624,24 @@ spec:
           id: banner_delay
           label: 切换间隔
           value: "3500"
-          help: "设置轮播图切换的间隔时间, 默认3500(仅在自动切换开启时生效, 单位：毫秒)"
+          help: "设置轮播图切换的间隔时间, 默认3500(仅在自动切换开启时生效, 单位: 毫秒)"
         - $formkit: text
           name: banner_speed
           id: banner_speed
           label: 切换速度
           value: "500"
-          help: "设置轮播图的切换速度, 默认500(单位：毫秒)"
+          help: "设置轮播图的切换速度, 默认500(单位: 毫秒)"
         - $formkit: attachment
           name: banner_lazyload_img
           id: banner_lazyload_img
           label: 图片预载图
-          value: "/themes/Theme-Joe3/assets/img/lazyload_h.gif"
+          value: "/themes/Halo-Theme-Joe3/assets/img/lazyload_h.gif"
           help: "轮播图默认为懒加载, 这里可以为banner图设置加载完之前的加载图(体积尽可能的小)"
         - $formkit: select
           name: link_behavior
           label: 链接跳转行为(全局-内容区域)
           value: "default"
-          help: "配置网站 “内容区域(不包含导航条和页脚)” 的 a 标签跳转行为, 暂时提供 3 种供选择【默认：遵循主题默认行为；当前页：在当前页打开链接；新标签：在新标签页中打开链接】"
+          help: "配置网站 “内容区域(不包含导航条和页脚)” 的 a 标签跳转行为, 暂时提供 3 种供选择【默认: 遵循主题默认行为；当前页: 在当前页打开链接；新标签: 在新标签页中打开链接】"
           options:
             - value: default
               label: 默认
@@ -835,7 +813,7 @@ spec:
         - $formkit: attachment
           name: lazyload_avatar
           label: 头像预载图
-          value: "/themes/Theme-Joe3/assets/svg/spinner-preloader.svg"
+          value: "/themes/Halo-Theme-Joe3/assets/svg/spinner-preloader.svg"
           help: "头像加载出来之前展示的图片"
         - $formkit: attachment
           name: avatar
@@ -845,8 +823,8 @@ spec:
         - $formkit: attachment
           name: default_avatar
           label: 默认头像
-          value: "/themes/Theme-Joe3/assets/img/default_avatar.jpg"
-          help: "用于头像未设置或加载出错时显示的图片(注意：主题优先使用后台配置的头像, 当后台未配置头像或头像加载出错才会用这里设置的图片。此处是有默认值的)"
+          value: "/themes/Halo-Theme-Joe3/assets/img/default_avatar.jpg"
+          help: "用于头像未设置或加载出错时显示的图片(注意: 主题优先使用后台配置的头像, 当后台未配置头像或头像加载出错才会用这里设置的图片。此处是有默认值的)"
         - $formkit: attachment
           name: author_bg
           label: 博主栏背景图
@@ -1258,7 +1236,7 @@ spec:
           name: aside_position
           label: 侧边栏位置
           value: "right"
-          help: "侧边栏展示位置, 左边或右边(注意：文章页侧边栏强制展示在右侧)"
+          help: "侧边栏展示位置, 左边或右边(注意: 文章页侧边栏强制展示在右侧)"
           options:
             - value: left
               label: 左侧
@@ -1354,6 +1332,11 @@ spec:
               label: 是
             - value: false
               label: 否
+        - $formkit: textarea
+          name: site_notice
+          label: 网站公告
+          value: "这是你的公告"
+          help: "网站公告信息, 将展示在页面右侧, 尽量简洁明了, 不填不展示该模块(需要先在 “侧边栏” 中开启公告模块)"
         - $formkit: select
           name: enable_qrcode
           id: enable_qrcode
@@ -1395,7 +1378,7 @@ spec:
           if: "$get(enable_music_player).value === true"
           name: music_id
           label: 歌单ID
-          help: "为音乐播放器配置歌单ID, 大家在网页歌单页直接复制地址栏id参数后面那串数字即可, 不填或填错将不会展示播放器(注意：仅支持网易云歌单ID, 且不支持私密歌单)"
+          help: "为音乐播放器配置歌单ID, 大家在网页歌单页直接复制地址栏id参数后面那串数字即可, 不填或填错将不会展示播放器(注意: 仅支持网易云歌单ID, 且不支持私密歌单)"
           value: ""
         - $formkit: select
           name: enable_newest_post
@@ -1790,7 +1773,7 @@ spec:
           name: archives_list_type
           label: 展示方式
           value: timeline
-          help: "设置归档数据的展示方式, 默认为时间轴。(注意：由于时间轴模式没有分页, 当文章较多时会很卡, 那时你应该切换到列表模式"
+          help: "设置归档数据的展示方式, 默认为时间轴。(注意: 由于时间轴模式没有分页, 当文章较多时会很卡, 那时你应该切换到列表模式"
           options:
             - value: list
               label: 列表
@@ -2122,7 +2105,7 @@ spec:
           name: custom_birthday
           label: 自定义博客起始时间
           value: "2021/11/11 06:30"
-          help: "自定义博客的起始时间/安装时间, 作为计算博客运行时间的参照值, 请严格按照示例格式填写, 否则将导致报错(示例：2021/11/11 06:30)"
+          help: "自定义博客的起始时间/安装时间, 作为计算博客运行时间的参照值, 请严格按照示例格式填写, 否则将导致报错(示例: 2021/11/11 06:30)"
         - $formkit: radio
           name: enable_icp
           label: 展示 ICP
@@ -2132,6 +2115,11 @@ spec:
               label: 是
             - value: false
               label: 否
+        - $formkit: text
+          name: icp
+          label: ICP 备案号
+          value: ""
+          help: "ICP 备案信息将展示在页脚中, 不填不展示(示例: 鄂ICP备20001234号-1)"
         - $formkit: radio
           name: enable_police
           label: 展示公网安备
@@ -2141,6 +2129,11 @@ spec:
               label: 是
             - value: false
               label: 否
+        - $formkit: text
+          name: police
+          label: 公网安备号
+          value: ""
+          help: "公网安备信息将展示在页脚中, 不填不展示, 也可在 “页脚” 一栏中单独关闭(示例: 鄂公网安备42011102001234号)"
         - $formkit: radio
           name: enable_powerby
           label: 展示 PowerBy
