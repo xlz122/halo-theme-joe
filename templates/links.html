@@ -29,49 +29,51 @@
                   <span class="totals"></span>
                 </h3>
                 <div class="links-group" th:each="group : ${groups}">
-                  <h5>[[${group.spec.displayName}]]</h5>
-                  <ul class="joe_detail__friends evan-friends">
-                    <li class="joe_detail__friends-item" th:each="link : ${group.links}">
-                      <a
-                        class="contain"
-                        th:with="randomColor = ${colorArray[#numbers.formatDecimal(T(java.lang.Math).floor(T(java.lang.Math).random()* colorArray.length),1,0)]}"
-                        th:href="${link.spec.url}"
-                        :key="i" target="_blank"
-                        th:style="'--fcolor:'+${randomColor}"
-                        rel="noopener noreferrer"
-                      >
-                        <div class="evan-f-left">
-                          <div class="f-avatar">
-                            <img
-                              width="40"
-                              height="40"
-                              class="avatar lazyloaded"
-                              th:data-src="${theme.config.blogger.lazyload_avatar}"
-                              th:src="${link.spec.logo}"
-                              th:alt="${link.spec.displayName}">
+                  <th th:if="${not #lists.isEmpty(group.links)}">
+                    <h5 th:text="${group.spec.displayName}">[[${group.spec.displayName}]]</h5>
+                    <ul class="joe_detail__friends evan-friends">
+                      <li class="joe_detail__friends-item" th:each="link : ${group.links}">
+                        <a
+                          class="contain"
+                          th:with="randomColor = ${colorArray[#numbers.formatDecimal(T(java.lang.Math).floor(T(java.lang.Math).random()* colorArray.length),1,0)]}"
+                          th:href="${link.spec.url}"
+                          :key="i" target="_blank"
+                          th:style="'--fcolor:'+${randomColor}"
+                          rel="noopener noreferrer"
+                        >
+                          <div class="evan-f-left">
+                            <div class="f-avatar">
+                              <img
+                                width="40"
+                                height="40"
+                                class="avatar lazyloaded"
+                                th:data-src="${theme.config.blogger.lazyload_avatar}"
+                                th:src="${link.spec.logo}"
+                                th:alt="${link.spec.displayName}">
+                            </div>
                           </div>
-                        </div>
-                        <div class="evan-f-right">
-                          <span class="title" th:style="'--fcolor:'+${randomColor}">
-                            <span class="sub-text" th:text="${link.spec.displayName}"></span>
-                            <svg t="1658027717181" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                              xmlns="http://www.w3.org/2000/svg" p-id="25920" width="200" height="200">
-                              <path d="M0 0h1024v1024H0V0z" fill="#202425" opacity=".01" p-id="25921"></path>
-                              <path
-                                d="M989.866667 512c0 263.918933-213.947733 477.866667-477.866667 477.866667S34.133333 775.918933 34.133333 512 248.081067 34.133333 512 34.133333s477.866667 213.947733 477.866667 477.866667z"
-                                fill="#FF7744" p-id="25922"></path>
-                              <path
-                                d="M787.114667 339.285333a51.2 51.2 0 0 1 0 72.362667l-307.2 307.2a51.2 51.2 0 0 1-72.362667 0l-170.666667-170.666667a51.2 51.2 0 0 1 72.362667-72.362666L443.733333 610.235733l271.018667-271.018666a51.2 51.2 0 0 1 72.362667 0z"
-                                fill="#FFFFFF" p-id="25923"></path>
-                            </svg>
-                          </span>
-                          <div class="content">
-                            <div class="desc" th:title="${link.spec.description}">[[${link.spec.description}]]</div>
+                          <div class="evan-f-right">
+                            <span class="title" th:style="'--fcolor:'+${randomColor}">
+                              <span class="sub-text" th:text="${link.spec.displayName}"></span>
+                              <svg t="1658027717181" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="25920" width="200" height="200">
+                                <path d="M0 0h1024v1024H0V0z" fill="#202425" opacity=".01" p-id="25921"></path>
+                                <path
+                                  d="M989.866667 512c0 263.918933-213.947733 477.866667-477.866667 477.866667S34.133333 775.918933 34.133333 512 248.081067 34.133333 512 34.133333s477.866667 213.947733 477.866667 477.866667z"
+                                  fill="#FF7744" p-id="25922"></path>
+                                <path
+                                  d="M787.114667 339.285333a51.2 51.2 0 0 1 0 72.362667l-307.2 307.2a51.2 51.2 0 0 1-72.362667 0l-170.666667-170.666667a51.2 51.2 0 0 1 72.362667-72.362666L443.733333 610.235733l271.018667-271.018666a51.2 51.2 0 0 1 72.362667 0z"
+                                  fill="#FFFFFF" p-id="25923"></path>
+                              </svg>
+                            </span>
+                            <div class="content">
+                              <div class="desc" th:title="${link.spec.description}">[[${link.spec.description}]]</div>
+                            </div>
                           </div>
-                        </div>
-                      </a>
-                    </li>
-                  </ul>
+                        </a>
+                      </li>
+                    </ul>
+                  </th>
                 </div>
               </article>
               <article class="joe_detail__article animated fadeIn">
