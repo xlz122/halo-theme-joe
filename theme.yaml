@@ -1,9 +1,9 @@
 apiVersion: theme.halo.run/v1alpha1
 kind: Theme
 metadata:
-  name: Theme-Joe3
+  name: Halo-Theme-Joe3
 spec:
-  displayName: Theme Joe3
+  displayName: Halo-Theme-Joe3
   author:
     name: xlz122
     website: "https://halo.run"
