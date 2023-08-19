@@ -271,48 +271,6 @@ spec:
           value: "(つェ⊂)咦, 又回来了!"
           help: "在返回到当前标签时, 通过title展示的文字(仅对首页生效)"
 
-    - group: beauty
-      label: 美化
-      formSchema:
-        - $formkit: select
-          name: enable_big_banner
-          id: enable_big_banner
-          label: 顶部大图
-          value: false
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: text
-          if: "$get(enable_big_banner).value"
-          name: big_banner_title
-          label: 大图标题
-          value: ""
-          help: "默认网站名"
-        - $formkit: text
-          if: "$get(enable_big_banner).value"
-          name: big_banner_Photos
-          label: 图片地址或者api地址
-          value: "http://imgapi.xl0408.top/index.php"
-          help: "填写图片地址或者随机图api地址"
-        - $formkit: select
-          if: "$get(enable_big_banner).value"
-          name: enable_big_banner_video
-          id: enable_big_banner_video
-          label: 是否启用视频背景
-          value: false
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: attachment
-          if: "$get(enable_big_banner_video).value"
-          name: big_banner_video
-          label: 视频地址
-          value: ""
-
     - group: navbar
       label: 导航
       formSchema:
@@ -332,7 +290,7 @@ spec:
               label: 关闭
         - $formkit: select
           name: enable_full_header
-          label: 100%宽度
+          label: 导航条100%宽度
           value: false
           help: "导航条宽度是否100%, 默认和内容区域宽度一致"
           options:
@@ -406,6 +364,46 @@ spec:
             - value: false
               label: 关闭
 
+    - group: beauty
+      label: 大图
+      formSchema:
+        - $formkit: select
+          name: enable_big_banner
+          id: enable_big_banner
+          label: 顶部大图
+          value: false
+          help: "不启用的情况下, 下面配置均无效"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: text
+          name: big_banner_title
+          label: 大图标题
+          value: ""
+          help: "默认网站名"
+        - $formkit: text
+          name: big_banner_Photos
+          label: 图片地址或者api地址
+          value: "http://imgapi.xl0408.top/index.php"
+          help: "填写图片地址或者随机图api地址"
+        - $formkit: select
+          name: enable_big_banner_video
+          id: enable_big_banner_video
+          label: 是否启用视频背景
+          value: false
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: attachment
+          if: "$get(enable_big_banner_video).value"
+          name: big_banner_video
+          label: 视频地址
+          value: ""
+
     - group: carousel
       label: 轮播图
       formSchema:
@@ -414,13 +412,13 @@ spec:
           id: enable_banner
           label: 启用轮播图
           value: false
+          help: "不启用的情况下, 下面配置均无效"
           options:
             - value: true
               label: 开启
             - value: false
               label: 关闭
         - $formkit: repeater
-          if: "$get(enable_banner).value"
           name: banner_source
           label: 轮播图文章
           value: []
@@ -429,7 +427,7 @@ spec:
               name: posts
               label: 选择要推荐的文章(至少两个)
               value: ""
-        - $formkit: radio
+        - $formkit: select
           name: banner_direction
           id: banner_direction
           label: 轮播方向
@@ -440,16 +438,6 @@ spec:
             - value: vertical
               label: 垂直
         - $formkit: select
-          name: enable_banner_loop
-          id: enable_banner_loop
-          label: 循环播放
-          value: true
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: radio
           name: banner_effect
           id: banner_effect
           label: 切换效果
@@ -504,6 +492,16 @@ spec:
               label: 开启
             - value: false
               label: 关闭
+        - $formkit: select
+          name: enable_banner_loop
+          id: enable_banner_loop
+          label: 循环播放
+          value: true
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
         - $formkit: text
           name: banner_delay
           id: banner_delay
@@ -540,6 +538,7 @@ spec:
       formSchema:
         - $formkit: select
           name: show_blogger
+          id: show_blogger
           label: 展示博主信息
           value: true
           help: "不展示的情况下, 下面配置均无效"
@@ -549,45 +548,34 @@ spec:
             - value: false
               label: 关闭
         - $formkit: select
-          name: enable_day_words
-          label: 开启每日一句
+          name: enable_strips
+          label: 展示彩带动画
           value: true
-          help: "将覆盖博客描述, 资源来自 https://www.jinrishici.com"
           options:
             - value: true
-              label: 开启
+              label: 是
             - value: false
-              label: 关闭
-        - $formkit: text
-          name: nickname
-          label: 博主显示昵称
-          value: ""
-          help: "默认使用网站title"
-        - $formkit: text
-          name: motto
-          label: 个人独白
-          value: "行动起来, 活在当下"
-          help: "将覆盖每日一句, 若为空则展示每日一句或博客描述"
+              label: 否
+        - $formkit: attachment
+          name: author_bg
+          label: 博主栏背景图
+          value: "/themes/Halo-Theme-Joe3/assets/img/author_bg.jpg"
+          help: "用于博主信息的背景图"
         - $formkit: attachment
           name: lazyload_avatar
           label: 头像预载图
           value: "/themes/Halo-Theme-Joe3/assets/svg/spinner-preloader.svg"
           help: "头像加载出来之前展示的图片"
         - $formkit: attachment
-          name: avatar
-          label: 头像
-          value: ""
-          help: "用于显示博主头像"
-        - $formkit: attachment
           name: default_avatar
           label: 默认头像
           value: "/themes/Halo-Theme-Joe3/assets/img/default_avatar.jpg"
           help: "用于头像未设置或加载出错时显示的图片(注意: 主题优先使用后台配置的头像, 当后台未配置头像或头像加载出错才会用这里设置的图片。此处是有默认值的)"
         - $formkit: attachment
-          name: author_bg
-          label: 博主栏背景图
+          name: avatar
+          label: 头像
           value: ""
-          help: "用于博主信息的背景图"
+          help: "用于显示博主头像"
         - $formkit: select
           name: avatar_type
           label: 头像外形
@@ -597,89 +585,6 @@ spec:
               label: "圆形"
             - value: round
               label: "圆角矩形"
-        - $formkit: select
-          name: overview_type
-          label: 概览指标
-          value: "C"
-          options:
-            - value: A
-              label: 分类+标签+文章
-            - value: B
-              label: 分类+标签+评论
-            - value: C
-              label: 分类+文章+评论
-            - value: D
-              label: 标签+文章+评论
-        - $formkit: select
-          name: enable_social
-          label: 展示社交账号
-          value: true
-          help: "是否展示社交账号"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: radio
-          name: enable_mobile_social
-          label: 展示社交账号(移动端)
-          value: false
-          help: "是否在移动端展示社交账号, 默认关闭"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: repeater
-          name: socials
-          id: socials
-          key: socials
-          label: 社交信息
-          value: []
-          children:
-            - $formkit: select
-              name: socials_select
-              label: 平台
-              options:
-                - label: Github
-                  value: github
-                - label: 邮箱
-                  value: email
-                - label: 知乎
-                  value: zhihu
-                - label: Gitee
-                  value: gitee
-                - label: Telegram
-                  value: telegram
-                - label: 掘金
-                  value: juejin
-                - label: B站
-                  value: bilibili
-                - label: QQ
-                  value: qq
-                - label: 微博
-                  value: weibo
-            - $formkit: text
-              name: socialUrl
-              label: 链接
-              help: "邮箱填邮箱号, QQ填QQ号, 其他填跳转链接"
-        - $formkit: radio
-          name: enable_weather
-          id: enable_weather
-          label: 展示博主信息
-          value: false
-          help: "是否展示简约版天气信息, 必须配置正确的appKey后才可生效"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: text
-          if: "$get(enable_weather).value === true"
-          name: weather_key
-          label: 天气插件appKey
-          value: ""
-          help: "用于初始化天气插件, 请通过 https://widget.qweather.com/create-simple 生成自己的插件, 然后复制其中的key值填到这里"
         - $formkit: select
           name: avatar_frame
           label: 头像框
@@ -766,15 +671,109 @@ spec:
               label: 向日葵
             - value: "swirl-heart"
               label: 上升的心
+        - $formkit: text
+          name: nickname
+          label: 博主显示昵称
+          value: ""
+          help: "默认使用网站title"
         - $formkit: select
-          name: enable_strips
-          label: 展示彩带动画
+          name: enable_day_words
+          label: 开启每日一句
           value: true
+          help: "将覆盖博客描述, 资源来自 https://www.jinrishici.com"
           options:
             - value: true
-              label: 是
+              label: 开启
             - value: false
-              label: 否
+              label: 关闭
+        - $formkit: text
+          name: motto
+          label: 个人独白
+          value: ""
+          help: "将覆盖每日一句, 若为空则展示每日一句或博客描述"
+        - $formkit: select
+          name: overview_type
+          label: 概览指标
+          value: "C"
+          options:
+            - value: A
+              label: 分类+标签+文章
+            - value: B
+              label: 分类+标签+评论
+            - value: C
+              label: 分类+文章+评论
+            - value: D
+              label: 标签+文章+评论
+        - $formkit: select
+          name: enable_social
+          label: 展示社交账号
+          value: true
+          help: "是否展示社交账号"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: select
+          name: enable_mobile_social
+          label: 展示社交账号(移动端)
+          value: true
+          help: "是否在移动端展示社交账号, 默认关闭"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: repeater
+          name: socials
+          id: socials
+          key: socials
+          label: 社交信息
+          value: []
+          children:
+            - $formkit: select
+              name: socials_select
+              label: 平台
+              options:
+                - label: Github
+                  value: github
+                - label: 邮箱
+                  value: email
+                - label: 知乎
+                  value: zhihu
+                - label: Gitee
+                  value: gitee
+                - label: Telegram
+                  value: telegram
+                - label: 掘金
+                  value: juejin
+                - label: B站
+                  value: bilibili
+                - label: QQ
+                  value: qq
+                - label: 微博
+                  value: weibo
+            - $formkit: text
+              name: socialUrl
+              label: 链接
+              help: "邮箱填邮箱号, QQ填QQ号, 其他填跳转链接"
+        - $formkit: select
+          name: enable_weather
+          id: enable_weather
+          label: 展示简约版天气
+          value: false
+          help: "是否展示简约版天气信息, 必须配置正确的appKey后才可生效"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: text
+          if: "$get(enable_weather).value"
+          name: weather_key
+          label: 天气插件appKey
+          value: ""
+          help: "用于初始化天气插件, 请通过 https://widget.qweather.com/create-simple 生成自己的插件, 然后复制其中的key值填到这里"
 
     - group: aside
       label: 侧边栏
@@ -800,20 +799,10 @@ spec:
             - value: right
               label: 右侧
         - $formkit: select
-          name: enable_tags_aside
-          label: 标签页侧边栏
+          name: enable_post_aside
+          label: 文章页侧边栏
           value: true
-          help: "标签页右侧是否展示侧边栏"
-          options:
-            - value: true
-              label: 是
-            - value: false
-              label: 否
-        - $formkit: select
-          name: enable_categories_aside
-          label: 分类页侧边栏
-          value: true
-          help: "分类页右侧是否展示侧边栏"
+          help: "文章页右侧是否展示侧边栏(关闭后, TOC目录也就没有了)"
           options:
             - value: true
               label: 是
@@ -830,10 +819,20 @@ spec:
             - value: false
               label: 否
         - $formkit: select
-          name: enable_post_aside
-          label: 文章页侧边栏
+          name: enable_categories_aside
+          label: 分类页侧边栏
           value: true
-          help: "文章页右侧是否展示侧边栏(关闭后, TOC 目录也就没有了)"
+          help: "分类页右侧是否展示侧边栏"
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否
+        - $formkit: select
+          name: enable_tags_aside
+          label: 标签页侧边栏
+          value: true
+          help: "标签页右侧是否展示侧边栏"
           options:
             - value: true
               label: 是
@@ -841,9 +840,9 @@ spec:
               label: 否
         - $formkit: select
           name: enable_journals_aside
-          label: 日志页侧边栏
+          label: 瞬间页侧边栏
           value: true
-          help: "日志页右侧是否展示侧边栏"
+          help: "瞬间页右侧是否展示侧边栏"
           options:
             - value: true
               label: 是
@@ -881,6 +880,7 @@ spec:
               label: 否
         - $formkit: select
           name: enable_notice
+          id: enable_notice
           label: 展示网站公告
           value: false
           help: "在侧边栏展示公告信息模块, 必须配置公告内容才生效(请在 '基本设置' 栏中配置)"
@@ -890,6 +890,7 @@ spec:
             - value: false
               label: 否
         - $formkit: textarea
+          if: "$get(enable_notice).value"
           name: site_notice
           label: 网站公告
           value: "这是你的公告"
@@ -906,36 +907,19 @@ spec:
             - value: false
               label: 否
         - $formkit: attachment
-          if: "$get(enable_qrcode).value === true"
+          if: "$get(enable_qrcode).value"
           name: qrcode_url
           label: 二维码图片
           value: ""
         - $formkit: text
-          if: "$get(enable_qrcode).value === true"
+          if: "$get(enable_qrcode).value"
           name: qrcode_title
           label: 二维码标题
           value: "我的二维码"
         - $formkit: textarea
-          if: "$get(enable_qrcode).value === true"
+          if: "$get(enable_qrcode).value"
           name: qrcode_description
           label: 二维码描述
-          value: ""
-        - $formkit: select
-          name: enable_music_player
-          id: enable_music_player
-          label: 展示音乐播放器
-          value: false
-          help: "在侧边栏展示音乐播放器模块, 必须配置歌单ID(目前仅支持网易云歌单)"
-          options:
-            - value: true
-              label: 是
-            - value: false
-              label: 否
-        - $formkit: text
-          if: "$get(enable_music_player).value === true"
-          name: music_id
-          label: 歌单ID
-          help: "为音乐播放器配置歌单ID, 大家在网页歌单页直接复制地址栏id参数后面那串数字即可, 不填或填错将不会展示播放器(注意: 仅支持网易云歌单ID, 且不支持私密歌单)"
           value: ""
         - $formkit: select
           name: enable_newest_post
@@ -943,16 +927,6 @@ spec:
           label: 展示最新文章
           value: true
           help: "在侧边栏展示最新文章"
-          options:
-            - value: true
-              label: 是
-            - value: false
-              label: 否
-        - $formkit: select
-          name: enable_lifetime
-          id: enable_lifetime
-          label: 展示人生倒计时
-          value: true
           options:
             - value: true
               label: 是
@@ -975,12 +949,39 @@ spec:
           label: 展示最新评论
           value: 3
           help: "在侧边栏展示最新评论的数量"
+        - $formkit: select
+          name: enable_music_player
+          id: enable_music_player
+          label: 展示音乐播放器
+          value: false
+          help: "在侧边栏展示音乐播放器模块, 必须配置歌单ID(目前仅支持网易云歌单)"
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否
+        - $formkit: text
+          if: "$get(enable_music_player).value === true"
+          name: music_id
+          label: 歌单ID
+          help: "为音乐播放器配置歌单ID, 大家在网页歌单页直接复制地址栏id参数后面那串数字即可, 不填或填错将不会展示播放器(注意: 仅支持网易云歌单ID, 且不支持私密歌单)"
+          value: ""
         - $formkit: radio
           name: enable_tag_cloud
           id: enable_tag_cloud
           label: 展示标签云
           value: false
           help: "在侧边栏展示标签云, 默认关闭以节省性能"
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否
+        - $formkit: select
+          name: enable_lifetime
+          id: enable_lifetime
+          label: 展示人生倒计时
+          value: true
           options:
             - value: true
               label: 是
@@ -1012,31 +1013,6 @@ spec:
       label: 首页
       formSchema:
         - $formkit: select
-          name: enable_post_thumbnail
-          label: 开启文章缩略图
-          value: true
-          help: "是否展示首页文章列表的缩略图"
-          options:
-            - value: true
-              label: 是
-            - value: false
-              label: 否
-        - $formkit: attachment
-          name: lazyload_thumbnail
-          label: 文章预载图
-          value: "/themes/Halo-Theme-Joe3/assets/img/lazyload.gif"
-          help: "文章配图加载出来之前展示的图片, 体积尽可能的小"
-        - $formkit: attachment
-          name: post_thumbnail
-          label: 文章默认缩略图
-          value: "https://picsum.photos/id/1081/350/200"
-          help: "文章无配图时生效, 可使用占位图服务(350*200) https://source.unsplash.com、https://picsum.photos"
-        - $formkit: attachment
-          name: fallback_thumbnail
-          label: 文章错误缺省图
-          value: "/themes/Halo-Theme-Joe3/templates/assets/img/default_thumbnail.png"
-          help: "文章图片加载出错时生效, 可使用占位图服务(350*200)"
-        - $formkit: select
           name: enable_index_list_effect
           label:  开启列表动画效果
           value: true
@@ -1046,60 +1022,6 @@ spec:
               label: 是
             - value: false
               label: 否
-        - $formkit: select
-          name: enable_hot_category
-          id: enable_hot_category
-          label: 展示精品分类
-          value: true
-          help: "是否展示首页的精品分类, 可自定义封面图片"
-          options:
-            - value: true
-              label: 是
-            - value: false
-              label: 否
-        - $formkit: select
-          name: hot_category_source
-          if: "$get(enable_hot_category).value"
-          id: hot_category_source
-          label: 精品分类数据源
-          value: "category"
-          help: "选择首页精品分类的数据来源"
-          options:
-            - value: category
-              label: 分类
-            - value: custom
-              label: 自定义
-        - $formkit: repeater
-          name: category_data
-          if: "$get(hot_category_source).value === 'category'"
-          id: category_data
-          label: 选择展示分类
-          value: []
-          help: "选择要展示的分类"
-          children:
-            - $formkit: categorySelect
-              name: categoryMetaData
-              label: 选择分类
-        - $formkit: repeater
-          name: custom_data
-          if: "$get(hot_category_source).value === 'custom'"
-          id: custom_data
-          label: 自定义信息
-          value: []
-          help: "选择要展示的分类"
-          children:
-            - $formkit: text
-              name: title
-              value: ""
-              help: "名称"
-            - $formkit: text
-              name: url
-              value: ""
-              help: "跳转链接"
-            - $formkit: attachment
-              name: cover
-              value: ""
-              help: "封面图"
         - $formkit: select
           name: index_list_effect_class
           label: 动画效果类名
@@ -1256,10 +1178,116 @@ spec:
               label: "slideOutRight"
             - value: "slideOutUp"
               label: "slideOutUp"
+        - $formkit: select
+          name: enable_hot_category
+          id: enable_hot_category
+          label: 展示精品分类
+          value: true
+          help: "是否展示首页的精品分类, 可自定义封面图片"
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否
+        - $formkit: text
+          name: enable_hot_title
+          label: 精品分类标题
+          value: "精品分类"
+          help: "配置精品分类展示的标题"
+        - $formkit: attachment
+          name: enable_hot_default
+          label: 精品分类默认封面图
+          value: "/themes/Halo-Theme-Joe3/assets/img/hot_cover1.jpg"
+          help: "用于分类封面图未设置或加载出错时显示的图片"
+        - $formkit: select
+          name: hot_category_source
+          if: "$get(enable_hot_category).value"
+          id: hot_category_source
+          label: 精品分类数据源
+          value: "category"
+          help: "选择首页精品分类的数据来源"
+          options:
+            - value: category
+              label: 分类
+            - value: custom
+              label: 自定义
+        - $formkit: repeater
+          name: category_data
+          if: "$get(hot_category_source).value === 'category'"
+          id: category_data
+          label: 选择展示分类
+          value: []
+          help: "选择要展示的分类"
+          children:
+            - $formkit: categorySelect
+              name: categoryMetaData
+              label: 选择分类
+        - $formkit: repeater
+          name: custom_data
+          if: "$get(hot_category_source).value === 'custom'"
+          id: custom_data
+          label: 自定义信息
+          value: []
+          help: "选择要展示的分类"
+          children:
+            - $formkit: text
+              name: title
+              value: ""
+              help: "名称"
+            - $formkit: text
+              name: url
+              value: ""
+              help: "跳转链接"
+            - $formkit: attachment
+              name: cover
+              value: ""
+              help: "封面图"
+        - $formkit: select
+          name: enable_post_thumbnail
+          label: 开启文章缩略图
+          value: true
+          help: "是否展示首页文章列表的缩略图"
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否
+        - $formkit: attachment
+          name: lazyload_thumbnail
+          label: 文章预载图
+          value: "/themes/Halo-Theme-Joe3/assets/img/lazyload.gif"
+          help: "文章配图加载出来之前展示的图片, 体积尽可能的小"
+        - $formkit: attachment
+          name: post_thumbnail
+          label: 文章默认缩略图
+          value: "https://picsum.photos/id/1081/350/200"
+          help: "文章无配图时生效, 可使用占位图服务(350*200) https://source.unsplash.com、https://picsum.photos"
+        - $formkit: attachment
+          name: fallback_thumbnail
+          label: 文章错误缺省图
+          value: "/themes/Halo-Theme-Joe3/templates/assets/img/default_thumbnail.png"
+          help: "文章图片加载出错时生效, 可使用占位图服务(350*200)"
  
     - group: post
       label: 文章页
       formSchema:
+        - $formkit: select
+          name: enable_passage_tips
+          id: enable_passage_tips
+          label: 开启温馨提示
+          value: false
+          help: "是否展示文章页顶部的温馨提示"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: textarea
+          if: "$get(enable_passage_tips).value"
+          name: passage_tips_content
+          label: 温馨提示文案
+          value: ""
+          help: "自定义温馨提示的文案, 为空则使用默认文案, 一般不用设置"
         - $formkit: select
           name: enable_title_shadow
           label: 标题阴影
@@ -1281,23 +1309,6 @@ spec:
             - value: false
               label: 否
         - $formkit: select
-          name: enable_passage_tips
-          id: enable_passage_tips
-          label: 温馨提示
-          value: false
-          help: "是否展示文章页顶部的温馨提示"
-          options:
-            - value: true
-              label: 是
-            - value: false
-              label: 否
-        - $formkit: textarea
-          if: "$get(enable_passage_tips).value"
-          name: passage_tips_content
-          label: 温馨提示文案
-          value: ""
-          help: "自定义温馨提示的文案, 为空则使用默认文案, 一般不用设置"
-        - $formkit: select
           name: post_img_align
           id: post_img_align
           label: 图片对齐方式
@@ -1318,16 +1329,16 @@ spec:
         - $formkit: select
           name: enable_progress_bar
           id: enable_progress_bar
-          label: 启用文章浏览进度条
+          label: 开启文章浏览进度条
           value: true
           help: "文章页底部是否展示浏览进度条"
           options:
             - value: true
-              label: 是
+              label: 开启
             - value: false
-              label: 否
-        - $formkit: textarea
-          if: "$get(enable_progress_bar).value === true"
+              label: 关闭
+        - $formkit: text
+          if: "$get(enable_progress_bar).value"
           name: progress_bar_bgc
           label: 进度条背景色
           value: ""
@@ -1480,11 +1491,6 @@ spec:
               label: 是
             - value: false
               label: 否
-        - $formkit: textarea
-          name: passage_rights_content
-          label: 许可协议文案
-          value: ""
-          help: "自定义文章页底部版权模块中的“作品采用”文案, 为空则使用默认文案, 一般不用设置"
         - $formkit: select
           name: enable_donate
           id: enable_donate
@@ -1507,62 +1513,12 @@ spec:
           label: 微信二维码
           value: ""
           help: "打赏用的微信收款二维码链接, 不填不显示"
-    - group: tags
-      label: 标签页
-      formSchema:
-        - $formkit: text
-          name: tags_title
-          label: 标签页标题
-          value: "全部标签"
-          help: "修改标签页顶部的标题"
-        - $formkit: select
-          name: tags_type
-          label: 展示形式
-          value: "card"
-          help: "配置标签的展示形式, 默认为 <卡片形式>"
-          options:
-            - value: tag
-              label: 标签
-            - value: card
-              label: 卡片
-        - $formkit: select
-          name: enable_tags_post_num
-          label: 展示文章数
-          value: true
-          help: "是否展示标签下的文章数"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-    - group: categories
-      label: 分类页
-      formSchema:
-        - $formkit: text
-          name: categories_title
-          label: 分类页标题
-          value: "全部分类"
-          help: "修改分类页顶部的标题"
-        - $formkit: select
-          name: categories_type
-          label: 展示形式
-          value: "card"
-          help: "配置标签的展示形式, 默认为 <卡片形式>"
-          options:
-            - value: tag
-              label: 标签
-            - value: card
-              label: 卡片
-        - $formkit: select
-          name: enable_categories_post_num
-          label: 展示文章数
-          value: true
-          help: "是否展示分类下的文章数"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
+        - $formkit: textarea
+          name: passage_rights_content
+          label: 许可协议文案
+          value: ""
+          help: "自定义文章页底部版权模块中的“作品采用”文案, 为空则使用默认文案, 一般不用设置"
+
     - group: archives
       label: 归档页
       formSchema:
@@ -1570,12 +1526,21 @@ spec:
           name: archives_title
           label: 归档页标题
           value: "文章归档"
-          help: "修改归档页顶部展示的标题"
+          help: "配置归档页顶部展示的标题"
         - $formkit: text
           name: archives_empty_text
           label: 空白状态文案
           value: "暂无文章数据"
           help: "修改无数据时展示的文案"
+        - $formkit: select
+          name: enable_archives_category
+          label: 展示分类数据
+          value: true
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否
         - $formkit: select
           name: archives_list_type
           label: 展示方式
@@ -1596,44 +1561,93 @@ spec:
               label: 年
             - value: month
               label: 月
+
+    - group: categories
+      label: 分类页
+      formSchema:
+        - $formkit: text
+          name: categories_title
+          label: 分类页标题
+          value: "全部分类"
+          help: "配置分类页顶部展示的标题"
         - $formkit: select
-          name: enable_archives_category
-          label: 展示分类数据
+          name: categories_type
+          label: 展示形式
+          value: "card"
+          help: "配置标签的展示形式, 默认为 <卡片形式>"
+          options:
+            - value: tag
+              label: 标签
+            - value: card
+              label: 卡片
+        - $formkit: select
+          name: enable_categories_post_num
+          label: 展示文章数
           value: true
+          help: "是否展示分类下的文章数"
           options:
             - value: true
-              label: 是
+              label: 开启
             - value: false
-              label: 否
+              label: 关闭
+
+    - group: tags
+      label: 标签页
+      formSchema:
+        - $formkit: text
+          name: tags_title
+          label: 标签页标题
+          value: "全部标签"
+          help: "配置标签页顶部展示的标题"
+        - $formkit: select
+          name: tags_type
+          label: 展示形式
+          value: "card"
+          help: "配置标签的展示形式, 默认为 <卡片形式>"
+          options:
+            - value: tag
+              label: 标签
+            - value: card
+              label: 卡片
+        - $formkit: select
+          name: enable_tags_post_num
+          label: 展示文章数
+          value: true
+          help: "是否展示标签下的文章数"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
 
     - group: journals
-      label: 日志页
+      label: 瞬间页
       formSchema:
+        - $formkit: text
+          name: journals_title
+          label: 瞬间页标题
+          value: "我的动态"
+          help: "瞬间页顶部展示的标题"
+        - $formkit: text
+          name: journals_empty_text
+          label: 空白状态文案
+          value: "暂无瞬间数据"
+          help: "修改无数据时展示的文案"
         - $formkit: select
           name: enable_journal_effect
           label: 开启缓入动画
           value: true
-          help: "是否开启日志块缓入动画"
+          help: "是否开启瞬间块缓入动画"
           options:
             - value: true
               label: 是
             - value: false
               label: 否
-        - $formkit: text
-          name: journals_title
-          label: 日志页标题
-          value: "我的动态"
-          help: "修改日志页顶部展示的标题"
-        - $formkit: text
-          name: journals_empty_text
-          label: 空白状态文案
-          value: "暂无日志数据"
-          help: "修改无数据时展示的文案"
         - $formkit: select
           name: index_list_effect_class
           label:  动画效果类名
           value: "fadeInUp"
-          help: "日志页列表动画效果类名, 来自 animate.css, 默认 fadeInUp"
+          help: "瞬间页列表动画效果类名, 来自 animate.css, 默认 fadeInUp"
           options:
             - value: "fadeIn"
               label: "fadeIn"
@@ -1787,7 +1801,7 @@ spec:
               label: "slideOutUp"
         - $formkit: select
           name: enable_journal_add
-          label: 展示新增日志按钮
+          label: 展示新增瞬间按钮
           value: false
           options:
             - value: true
@@ -1796,7 +1810,7 @@ spec:
               label: 否
         - $formkit: select
           name: enable_like_journal
-          label: 开启日志点赞
+          label: 开启瞬间点赞
           value: true
           options:
             - value: true
@@ -1805,7 +1819,7 @@ spec:
               label: 否
         - $formkit: select
           name: enable_comment_journal
-          label: 开启日志评论
+          label: 开启瞬间评论
           value: true
           options:
             - value: true
@@ -1814,13 +1828,18 @@ spec:
               label: 否
         - $formkit: number
           name: journal_block_height
-          label: 日志块内容最大高度
+          label: 瞬间块内容最大高度
           value: "300"
-          help: "设置日志块内容区域的最大高度(单位像素), 超过此高度则显示折叠/展开按钮, 默认值为 300, 最小值为 100(若输入的值小于 100 则按 100 处理)"
+          help: "设置瞬间块内容区域的最大高度(单位像素), 超过此高度则显示折叠/展开按钮, 默认值为 300, 最小值为 100(若输入的值小于 100 则按 100 处理)"
 
     - group: photos
       label: 相册页
       formSchema:
+        - $formkit: text
+          name: photos_title
+          label: 相册页标题
+          value: "我的图库"
+          help: "配置相册页顶部展示的标题"
         - $formkit: select
           name: enable_photos_effect
           label: 开启展示动画
@@ -1831,16 +1850,12 @@ spec:
               label: 是
             - value: false
               label: 否
-        - $formkit: text
-          name: photos_title
-          label: 相册页标题
-          value: "我的图库"
-          help: "修改相册页顶部展示的标题"
         - $formkit: number
           name: photos_gap
           label: 图片间距
           value: "10"
-          help: "请输入图片间距值, 默认10(请填数字)"
+          help: "请输入图片间距值, 默认10"
+
     - group: links
       label: 友链
       formSchema:
@@ -1848,6 +1863,7 @@ spec:
           name: links_title
           label: 友链页标题
           value: "友情链接"
+          help: "配置友链页顶部展示的标题"
         - $formkit: code
           name: links_article
           height: 200
@@ -1870,9 +1886,9 @@ spec:
         - $formkit: radio
           name: footer_position
           label: 页脚位置
-          value: "none"
+          value: "default"
           options:
-            - value: none
+            - value: default
               label: 默认位置
             - value: fixed
               label: 底部固定
@@ -1885,7 +1901,6 @@ spec:
               label: 是
             - value: false
               label: 否
-
         - $formkit: select
           name: footer_source
           label: 页脚来源
@@ -1997,64 +2012,6 @@ spec:
           name: enable_busuanzi
           label: 展示访问量数据
           value: true
-          options:
-            - value: true
-              label: 是
-            - value: false
-              label: 否
-
-    - group: custom
-      label: 自定义
-      formSchema:
-        - $formkit: attachment
-          name: favicon
-          label: 自定义favicon
-          value: ""
-          help: "覆盖博客默认的favicon图标, 尺寸64*64, 格式jpg、png等"
-        - $formkit: attachment
-          name: custom_font
-          label: 自定义网站字体
-          value: ""
-          help: "修改网站使用的字体, 请填入字体文件的链接(考虑兼容, 建议woff2 格式字体, 最好放CDN链接, 另外主题无法保证使用自定义字体后的页面样式)"
-        - $formkit: text
-          name: iconfont
-          label: 字体图标链接
-          value: ""
-          help: "填入iconfont生成的图标链接, 无需link标签, 将插入head标签尾部"
-        - $formkit: text
-          name: external_css
-          label: 外部CSS链接
-          value: ""
-          help: "填入外部CSS链接, 无需link标签, 将插入head标签尾部"
-        - $formkit: textarea
-          name: custom_css
-          label: 自定义CSS
-          value: ""
-          help: "填入CSS代码, 无需style标签, 将插入head标签尾部"
-        - $formkit: text
-          name: custom_external_js_head
-          label: 外部JS链接(head)
-          value: ""
-          help: "填入外部JS链接, 需要script标签, 可按情况指定async和defer属性, 将插入head标签尾部"
-        - $formkit: textarea
-          name: custom_js_head
-          label: 自定义JS(head)
-          value: ""
-          help: "填入JS代码, 无需script标签, 将插入head标签尾部"
-        - $formkit: text
-          name: custom_external_js_body
-          label: 外部JS链接(body)
-          value: ""
-          help: "填入外部JS链接, 无需script标签, 将插入body标签尾部(可用于添加插件等)"
-        - $formkit: textarea
-          name: custom_js_body
-          label: 自定义JS(body)
-          value: ""
-          help: "填入JS代码, 无需script标签, 将插入body标签尾部"
-        - $formkit: radio
-          name: show_loaded_time
-          label: 控制台输出页面加载耗时
-          value: false
           options:
             - value: true
               label: 是
@@ -2261,6 +2218,64 @@ spec:
           label: 欢迎语
           value: "欢迎加入QQ交流群"
           help: "QQ交流群按钮展示的文案, 对应首页 “推荐文章” 右侧的 “欢迎加入QQ交流群”"
+
+    - group: custom
+      label: 自定义
+      formSchema:
+        - $formkit: attachment
+          name: favicon
+          label: 自定义favicon
+          value: ""
+          help: "覆盖博客默认的favicon图标, 尺寸64*64, 格式jpg、png等"
+        - $formkit: attachment
+          name: custom_font
+          label: 自定义网站字体
+          value: ""
+          help: "修改网站使用的字体, 请填入字体文件的链接(考虑兼容, 建议woff2 格式字体, 最好放CDN链接, 另外主题无法保证使用自定义字体后的页面样式)"
+        - $formkit: text
+          name: iconfont
+          label: 字体图标链接
+          value: ""
+          help: "填入iconfont生成的图标链接, 无需link标签, 将插入head标签尾部"
+        - $formkit: text
+          name: external_css
+          label: 外部CSS链接
+          value: ""
+          help: "填入外部CSS链接, 无需link标签, 将插入head标签尾部"
+        - $formkit: textarea
+          name: custom_css
+          label: 自定义CSS
+          value: ""
+          help: "填入CSS代码, 无需style标签, 将插入head标签尾部"
+        - $formkit: text
+          name: custom_external_js_head
+          label: 外部JS链接(head)
+          value: ""
+          help: "填入外部JS链接, 需要script标签, 可按情况指定async和defer属性, 将插入head标签尾部"
+        - $formkit: textarea
+          name: custom_js_head
+          label: 自定义JS(head)
+          value: ""
+          help: "填入JS代码, 无需script标签, 将插入head标签尾部"
+        - $formkit: text
+          name: custom_external_js_body
+          label: 外部JS链接(body)
+          value: ""
+          help: "填入外部JS链接, 无需script标签, 将插入body标签尾部(可用于添加插件等)"
+        - $formkit: textarea
+          name: custom_js_body
+          label: 自定义JS(body)
+          value: ""
+          help: "填入JS代码, 无需script标签, 将插入body标签尾部"
+        - $formkit: radio
+          name: show_loaded_time
+          label: 控制台输出页面加载耗时
+          value: false
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否
 
     - group: other
       label: 其他
