@@ -7,6 +7,47 @@ spec:
     - group: basic
       label: 基本设置
       formSchema:
+        - $formkit: number
+          name: content_max_width
+          label: 内容区域最大宽度
+          value: 1320
+          help: "限制内容区域的宽度, 默认1320, 单位px"
+        - $formkit: number
+          name: navbar_max_width
+          label: 导航栏最大宽度
+          value: 1320
+          help: "限制导航栏区域的宽度, 默认1320, 单位px"
+        - $formkit: select
+          name: enable_random_img_api
+          id: enable_random_img_api
+          value: false
+          label: 启用随机图
+          help: "是否启用随机图API,无封面时使用"
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否
+        - $formkit: text
+          name: random_img_api_url
+          value: "https://imgapi.xl0408.top/index.php"
+          label: 随机图api
+          help: "输入适当的api地址"
+        - $formkit: textarea
+          name: site_notice
+          label: 网站公告
+          value: "这是你的公告"
+          help: "网站公告信息, 将展示在页面右侧, 尽量简洁明了, 不填不展示该模块(需要先在 “侧边栏” 中开启公告模块)"
+        - $formkit: text
+          name: icp
+          label: ICP 备案号
+          value: ""
+          help: "ICP 备案信息将展示在页脚中, 不填不展示(示例：鄂ICP备20001234号-1)"
+        - $formkit: text
+          name: police
+          label: 公网安备号
+          value: ""
+          help: "公网安备信息将展示在页脚中, 不填不展示, 也可在 “页脚” 一栏中单独关闭(示例：鄂公网安备42011102001234号)"
         - $formkit: select
           name: theme_mode
           label: 主题模式
@@ -26,11 +67,6 @@ spec:
           label: 主题色(浅色)
           value: "#fb6c28"
           help: "浅色主题色色值, 默认#fb6c28"
-        - $formkit: text
-          name: mode_color_dark
-          label: 主题色(暗黑)
-          value: "#9999ff"
-          help: "暗黑主题色色值, 默认#9999ff"
         - $formkit: select
           name: enable_background_light
           value: false
@@ -46,6 +82,11 @@ spec:
           label: 背景图(浅色模式)
           help: "设置浅色模式下的背景图(建议webp格式), 为空则只显示默认背景色"
           value: ""
+        - $formkit: text
+          name: mode_color_dark
+          label: 主题色(暗黑)
+          value: "#9999ff"
+          help: "暗黑主题色色值, 默认#9999ff"
         - $formkit: select
           name: enable_background_dark
           value: false
@@ -58,51 +99,15 @@ spec:
               label: 否
         - $formkit: attachment
           name: background_dark_mode
-          label: 背景图(浅色模式)
+          label: 背景图(暗黑模式)
           help: "设置暗黑模式下的背景图(建议webp格式), 为空则只显示默认背景色"
           value: ""
-        - $formkit: number
-          name: content_max_width
-          label: 内容区最大宽度
-          value: 1320
-          help: "限制内容区域的宽度, 像素或百分比, 默认1320, 单位px"
-        - $formkit: select
-          name: enable_random_img_api
-          id: enable_random_img_api
-          value: false
-          label: 启用随机图
-          help: "是否启用随机图API,无封面时使用"
-          options:
-            - value: true
-              label: 是
-            - value: false
-              label: 否
-        - $formkit: text
-          name: random_img_api_url
-          value: "https://imgapi.xl0408.top/index.php"
-          label: 随机图api
-          help: "输入适当的api地址"
-
-        - $formkit: textarea
-          name: site_notice
-          label: 网站公告
-          value: "这是你的公告"
-          help: "网站公告信息, 将展示在页面右侧, 尽量简洁明了, 不填不展示该模块(需要先在 “侧边栏” 中开启公告模块)"
         - $formkit: text
           name: light_time_scope
           label: 浅色模式生效时间范围
           value: "5:00~19:00"
           help: "设置浅色模式自动生效的时间范围, 范围之外为暗黑模式(仅在主题模式为 “自动模式” 下生效), 请严格按照规定格式设置, 否则会导致报错"
-        - $formkit: text
-          name: icp
-          label: ICP 备案号
-          value: ""
-          help: "ICP 备案信息将展示在页脚中, 不填不展示(示例：鄂ICP备20001234号-1)"
-        - $formkit: text
-          name: police
-          label: 公网安备号
-          value: ""
-          help: "公网安备信息将展示在页脚中, 不填不展示, 也可在 “页脚” 一栏中单独关闭(示例：鄂公网安备42011102001234号)"
+
     - group: home
       label: 首页
       formSchema:
