@@ -1,3 +1,4 @@
+<!-- 友链 -->
 <!DOCTYPE html>
 <html
   lang="en"
@@ -8,7 +9,7 @@
     <body>
       <div id="Joe">
         <th:block th:replace="~{modules/macro/navbar :: navbar}" />
-        <!--首页大图-->
+        <!-- 首页大图 -->
         <th:block th:if="${theme.config.beauty.enable_big_banner}">
           <th:block th:replace="~{modules/macro/big_banner :: big_banner(${title})}" />
         </th:block>
@@ -81,8 +82,10 @@
                   </th:block>
                   <th:block th:if="${#strings.isEmpty(theme.config.links.links_article)}">
                     <p>
-                      <joe-message type="info"
-                        content="<em style=&quot;font-style:normal;font-weight:bold;&quot;>< 博客名称 + 博客地址 + 博客Logo + 博客简介 ></em><br>博客名称：<br>博客地址：<a href=&quot;&quot;></a><br>博客Logo：<a href=&quot;&quot;></a><br>博客简介：<br>(大家在留言栏目中留言即可)">
+                      <joe-message
+                        type="info"
+                        content="<em style=&quot;font-style:normal;font-weight:bold;&quot;>< 博客名称 + 博客地址 + 博客Logo + 博客简介 ></em><br>博客名称：<br>博客地址：<a href=&quot;&quot;></a><br>博客Logo：<a href=&quot;&quot;></a><br>博客简介：<br>(大家在留言栏目中留言即可)"
+                      >
                       </joe-message>
                     </p>
                   </th:block>
@@ -92,12 +95,16 @@
             <div class="joe_comment">
               <div class="joe_comment_box">
                 <h2>评论区</h2>
-                <halo:comment group="content.halo.run" kind="SinglePage" name="links"
-                  colorScheme="document.documentElement.getAttribute('data-mode')" />
+                <halo:comment
+                  group="content.halo.run"
+                  kind="SinglePage"
+                  name="links"
+                  colorScheme="document.documentElement.getAttribute('data-mode')"
+                />
               </div>
             </div>
           </div>
-          <th:block th:if="${theme.config.aside.enable_journals_aside}">
+          <th:block th:if="${theme.config.aside.enable_aside} and ${theme.config.aside.enable_journals_aside}">
             <th:block th:replace="~{modules/common/aside :: aside}" />
           </th:block>
         </div>

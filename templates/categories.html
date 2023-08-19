@@ -1,3 +1,4 @@
+<!-- 文章分类 -->
 <!DOCTYPE html>
 <html
   lang="en"
@@ -64,7 +65,7 @@
               </div>
             </div>
           </div>
-          <th:block th:if="${theme.config.aside.enable_categories_aside}">
+          <th:block th:if="${theme.config.aside.enable_aside} and ${theme.config.aside.enable_categories_aside}">
             <th:block th:replace="~{modules/common/aside :: aside}" />
           </th:block>
         </div>

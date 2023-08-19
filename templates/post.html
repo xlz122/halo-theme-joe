@@ -10,17 +10,29 @@
         <!--navbar-->
         <th:block th:replace="~{modules/macro/navbar :: navbar}" />
         <th:block th:replace="~{modules/post_bread :: post_bread}" />
-        <div class="joe_container joe_main_container page-post"
-          th:classappend="${theme.config.theme.enable_show_in_up ? 'animated fadeIn':''}">
+        <div
+          class="joe_container joe_main_container page-post"
+          th:classappend="${theme.config.theme.enable_show_in_up ? 'animated fadeIn':''}"
+        >
           <div class="joe_main joe_post">
             <th:block th:with="contributor = ${contributorFinder.getContributor(post.status.contributors[0])}">
-              <div class="joe_detail" data-status="PUBLISHED" th:data-cid="${post.metadata.name}"
-                th:data-clikes="${post.stats.upvote}" th:data-author="${contributor.displayName}">
+              <div
+                class="joe_detail"
+                data-status="PUBLISHED"
+                th:data-cid="${post.metadata.name}"
+                th:data-clikes="${post.stats.upvote}"
+                th:data-author="${contributor.displayName}"
+              >
                 <th:block th:if="${post.categories}">
                   <div class="joe_detail__category">
                     <th:block th:each="category : ${post.categories}">
-                      <a th:href="${category.status.permalink}" class="item item-0"
-                        th:title="${category.spec.displayName}">[[${category.spec.displayName}]]</a>
+                      <a
+                        class="item item-0"
+                        th:href="${category.status.permalink}"
+                        th:title="${category.spec.displayName}"
+                      >
+                        [[${category.spec.displayName}]]
+                    </a>
                     </th:block>
                   </div>
                 </th:block>
@@ -35,7 +47,8 @@
                     [[${post.spec.title}]]
                   </h1>
                   <th:block
-                    th:if="${theme.config.post.enable_page_meta} and ${#annotations.getOrDefault(post, 'enable_page_meta', 'true')}">
+                    th:if="${theme.config.post.enable_page_meta} and ${#annotations.getOrDefault(post, 'enable_page_meta', 'true')}"
+                  >
                     <div class="joe_detail__count">
                       <div class="joe_detail__count-information">
                         <img
@@ -69,15 +82,20 @@
                               <span class="text">[[${wordCount}]] 字</span>
                             </th:block>
                             <th:block
-                              th:if="${#annotations.getOrDefault(post, 'enable_collect_check', 'true')} and ${theme.config.other.check_baidu_collect}">
+                              th:if="${#annotations.getOrDefault(post, 'enable_collect_check', 'true')} and ${theme.config.other.check_baidu_collect}"
+                            >
                               <span class="line">/</span>
                               <span class="text" id="joe_baidu_record">正在检测是否收录...</span>
                             </th:block>
                           </div>
                         </div>
                       </div>
-                      <time class="joe_detail__count-created"
-                        th:datetime="${#dates.format(post.spec.publishTime,'MM/dd')}">[[${#dates.format(post.spec.publishTime,'MM/dd')}]]</time>
+                      <time
+                        class="joe_detail__count-created"
+                        th:datetime="${#dates.format(post.spec.publishTime,'MM/dd')}"
+                      >
+                        [[${#dates.format(post.spec.publishTime,'MM/dd')}]]
+                      </time>
                     </div>
                   </th:block>
 
@@ -192,7 +210,8 @@
           <div class="joe_progress_bar" th:style="'background:'+${theme.config.post.progress_bar_bgc ?: ''}"></div>
         </th:block>
         <th:block
-          th:if="${theme.config.post.enable_mobile_toc} or ${theme.config.theme.enable_back2top} or ${theme.config.theme.theme_mode == 'user'}">
+          th:if="${theme.config.post.enable_mobile_toc} or ${theme.config.theme.enable_back2top} or ${theme.config.theme.theme_mode == 'user'}"
+        >
           <th:block th:replace="~{modules/common/actions :: actions}" />
         </th:block>
         <th:block th:if="${theme.config.footer.enable_footer}">

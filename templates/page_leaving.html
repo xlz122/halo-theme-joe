@@ -1,3 +1,4 @@
+<!-- 留言板模板 -->
 <!DOCTYPE html>
 <html
   lang="en"
@@ -65,8 +66,10 @@
                       </div>
                     </div>
                   </div>
-                  <time class="joe_detail__count-created"
-                    th:datetime="${#dates.format(singlePage.spec.publishTime,'MM/dd')}">
+                  <time
+                    class="joe_detail__count-created"
+                    th:datetime="${#dates.format(singlePage.spec.publishTime,'MM/dd')}"
+                  >
                     [[${#dates.format(singlePage.spec.publishTime,'MM/dd')}]]
                   </time>
                 </div>
@@ -79,8 +82,12 @@
                   <ul class="joe_leaving-list">
                     <li th:each="result : ${commentFinder.list(null,1,20)}" class="item">
                       <div class="user">
-                        <img class="avatar lazyload" th:src="${result.owner.avatar}" alt="用户头像"
-                          th:data-src="${result.owner.avatar}" />
+                        <img
+                          class="avatar lazyload"
+                          th:src="${result.owner.avatar}"
+                          alt="用户头像"
+                          th:data-src="${result.owner.avatar}"
+                        />
                         <div class="nickname" th:text="${result.spec.owner.displayName}"></div>
                         <div class="date" th:text="${#dates.format(result.metadata.creationTimestamp, 'yyyy-MM-dd')}">
                         </div>
@@ -108,12 +115,14 @@
                 </th:block>
                 <th:block th:if="${#annotations.getOrDefault(singlePage, 'enable_comment', 'true') == 'true'}">
                   <th:block
-                    th:replace="~{modules/macro/comment :: comment(name=${singlePage.metadata.name}, kind='SinglePage')}" />
+                    th:replace="~{modules/macro/comment :: comment(name=${singlePage.metadata.name}, kind='SinglePage')}"
+                  />
                 </th:block>
               </div>
             </th:block>
             <th:block
-              th:if="${theme.config.other.enable_clean_mode == true} or ${theme.config.post.enable_comment !=true}">
+              th:if="${theme.config.other.enable_clean_mode == true} or ${theme.config.post.enable_comment !=true}"
+            >
               <div class="joe_comment">
                 <div class="joe_comment__close">
                   <svg class="joe_comment__close-icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"
@@ -127,7 +136,8 @@
             </th:block>
           </div>
           <th:block
-            th:if="${theme.config.aside.enable_sheet_aside} and ${#annotations.getOrDefault(singlePage, 'enable_aside', 'true') == 'true'}">
+            th:if="${theme.config.aside.enable_sheet_aside} and ${#annotations.getOrDefault(singlePage, 'enable_aside', 'true') == 'true'}"
+          >
             <th:block th:replace="~{modules/common/aside :: aside}" />
           </th:block>
         </div>
