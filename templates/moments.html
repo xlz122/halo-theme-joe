@@ -33,20 +33,20 @@
                     class="avatar lazyload"
                     th:data-src="${theme.config.blogger.avatar ?: theme.config.blogger.default_avatar}"
                     th:src="${theme.config.blogger.lazyload_avatar}"
-                    th:alt="${moment.owner.displayName}"
+                    th:alt="${theme.config.blogger.nickname ?: site.title}"
                   />
                   <div class="meta">
                     <div class="author">
                       <a
                         class="link"
-                        th:href="@{authors}+'/'+${moment.owner.name}"
-                        th:title="${moment.owner.displayName}"
+                        th:href="'/moments'"
+                        th:title="${theme.config.blogger.nickname ?: site.title}"
                       >
-                        [[${moment.owner.displayName}]]
+                        [[${theme.config.blogger.nickname ?: site.title}]]
                       </a>
                     </div>
                     <div class="item">
-                      <span class="text">[[${theme.config.blogger.motto?:'一句话介绍自己吧！'}]]</span>
+                      <span class="text">[[${theme.config.blogger.motto ?: '一句话介绍自己吧！'}]]</span>
                       <th:block th:if="${theme.config.other.check_baidu_collect}">
                         <span class="line">/</span>
                         <span class="text" id="joe_baidu_record">正在检测是否收录...</span>
@@ -139,7 +139,6 @@
                   </li>
                 </th:block>
               </ul>
-              <!--<#include "template/common/pager.ftl">-->
             </div>
           </div>
           <th:block th:if="${theme.config.aside.enable_aside} and ${theme.config.aside.enable_journals_aside}">
