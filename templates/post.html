@@ -1,3 +1,4 @@
+<!-- 文章详情 -->
 <!DOCTYPE html>
 <html
   lang="en"
@@ -7,7 +8,6 @@
   <th:block th:fragment="content">
     <body>
       <div id="Joe">
-        <!--navbar-->
         <th:block th:replace="~{modules/macro/navbar :: navbar}" />
         <th:block th:replace="~{modules/post_bread :: post_bread}" />
         <div
@@ -63,7 +63,7 @@
                           <div class="author">
                             <a
                               class="link"
-                              th:href="${contributor.permalink}"
+                              th:href="${singlePage.status.permalink}"
                               th:title="${contributor.displayName}"
                             >
                               [[${contributor.displayName}]]
