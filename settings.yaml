@@ -1262,6 +1262,23 @@ spec:
       label: 文章页
       formSchema:
         - $formkit: select
+          name: enable_passage_tips
+          id: enable_passage_tips
+          label: 开启温馨提示
+          value: false
+          help: "是否展示文章页顶部的温馨提示"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: textarea
+          if: "$get(enable_passage_tips).value"
+          name: passage_tips_content
+          label: 温馨提示文案
+          value: ""
+          help: "自定义温馨提示的文案, 为空则使用默认文案, 一般不用设置"
+        - $formkit: select
           name: enable_title_shadow
           label: 标题阴影
           value: true
@@ -1281,23 +1298,6 @@ spec:
               label: 是
             - value: false
               label: 否
-        - $formkit: select
-          name: enable_passage_tips
-          id: enable_passage_tips
-          label: 温馨提示
-          value: false
-          help: "是否展示文章页顶部的温馨提示"
-          options:
-            - value: true
-              label: 是
-            - value: false
-              label: 否
-        - $formkit: textarea
-          if: "$get(enable_passage_tips).value"
-          name: passage_tips_content
-          label: 温馨提示文案
-          value: ""
-          help: "自定义温馨提示的文案, 为空则使用默认文案, 一般不用设置"
         - $formkit: select
           name: post_img_align
           id: post_img_align
@@ -1319,16 +1319,16 @@ spec:
         - $formkit: select
           name: enable_progress_bar
           id: enable_progress_bar
-          label: 启用文章浏览进度条
+          label: 开启文章浏览进度条
           value: true
           help: "文章页底部是否展示浏览进度条"
           options:
             - value: true
-              label: 是
+              label: 开启
             - value: false
-              label: 否
-        - $formkit: textarea
-          if: "$get(enable_progress_bar).value === true"
+              label: 关闭
+        - $formkit: text
+          if: "$get(enable_progress_bar).value"
           name: progress_bar_bgc
           label: 进度条背景色
           value: ""
@@ -1481,11 +1481,6 @@ spec:
               label: 是
             - value: false
               label: 否
-        - $formkit: textarea
-          name: passage_rights_content
-          label: 许可协议文案
-          value: ""
-          help: "自定义文章页底部版权模块中的“作品采用”文案, 为空则使用默认文案, 一般不用设置"
         - $formkit: select
           name: enable_donate
           id: enable_donate
@@ -1508,6 +1503,11 @@ spec:
           label: 微信二维码
           value: ""
           help: "打赏用的微信收款二维码链接, 不填不显示"
+        - $formkit: textarea
+          name: passage_rights_content
+          label: 许可协议文案
+          value: ""
+          help: "自定义文章页底部版权模块中的“作品采用”文案, 为空则使用默认文案, 一般不用设置"
 
     - group: archives
       label: 归档页
@@ -1516,12 +1516,21 @@ spec:
           name: archives_title
           label: 归档页标题
           value: "文章归档"
-          help: "修改归档页顶部展示的标题"
+          help: "配置归档页顶部展示的标题"
         - $formkit: text
           name: archives_empty_text
           label: 空白状态文案
           value: "暂无文章数据"
           help: "修改无数据时展示的文案"
+        - $formkit: select
+          name: enable_archives_category
+          label: 展示分类数据
+          value: true
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否
         - $formkit: select
           name: archives_list_type
           label: 展示方式
@@ -1542,15 +1551,6 @@ spec:
               label: 年
             - value: month
               label: 月
-        - $formkit: select
-          name: enable_archives_category
-          label: 展示分类数据
-          value: true
-          options:
-            - value: true
-              label: 是
-            - value: false
-              label: 否
 
     - group: categories
       label: 分类页
@@ -1559,7 +1559,7 @@ spec:
           name: categories_title
           label: 分类页标题
           value: "全部分类"
-          help: "修改分类页顶部的标题"
+          help: "配置分类页顶部展示的标题"
         - $formkit: select
           name: categories_type
           label: 展示形式
@@ -1588,7 +1588,7 @@ spec:
           name: tags_title
           label: 标签页标题
           value: "全部标签"
-          help: "修改标签页顶部的标题"
+          help: "配置标签页顶部展示的标题"
         - $formkit: select
           name: tags_type
           label: 展示形式
@@ -1613,6 +1613,16 @@ spec:
     - group: journals
       label: 瞬间页
       formSchema:
+        - $formkit: text
+          name: journals_title
+          label: 瞬间页标题
+          value: "我的动态"
+          help: "瞬间页顶部展示的标题"
+        - $formkit: text
+          name: journals_empty_text
+          label: 空白状态文案
+          value: "暂无瞬间数据"
+          help: "修改无数据时展示的文案"
         - $formkit: select
           name: enable_journal_effect
           label: 开启缓入动画
@@ -1623,16 +1633,6 @@ spec:
               label: 是
             - value: false
               label: 否
-        - $formkit: text
-          name: journals_title
-          label: 瞬间页标题
-          value: "我的动态"
-          help: "修改瞬间页顶部展示的标题"
-        - $formkit: text
-          name: journals_empty_text
-          label: 空白状态文案
-          value: "暂无瞬间数据"
-          help: "修改无数据时展示的文案"
         - $formkit: select
           name: index_list_effect_class
           label:  动画效果类名
@@ -1825,6 +1825,11 @@ spec:
     - group: photos
       label: 相册页
       formSchema:
+        - $formkit: text
+          name: photos_title
+          label: 相册页标题
+          value: "我的图库"
+          help: "配置相册页顶部展示的标题"
         - $formkit: select
           name: enable_photos_effect
           label: 开启展示动画
@@ -1835,16 +1840,11 @@ spec:
               label: 是
             - value: false
               label: 否
-        - $formkit: text
-          name: photos_title
-          label: 相册页标题
-          value: "我的图库"
-          help: "修改相册页顶部展示的标题"
         - $formkit: number
           name: photos_gap
           label: 图片间距
           value: "10"
-          help: "请输入图片间距值, 默认10(请填数字)"
+          help: "请输入图片间距值, 默认10"
 
     - group: links
       label: 友链
@@ -1853,6 +1853,7 @@ spec:
           name: links_title
           label: 友链页标题
           value: "友情链接"
+          help: "配置友链页顶部展示的标题"
         - $formkit: code
           name: links_article
           height: 200
@@ -1875,9 +1876,9 @@ spec:
         - $formkit: radio
           name: footer_position
           label: 页脚位置
-          value: "none"
+          value: "default"
           options:
-            - value: none
+            - value: default
               label: 默认位置
             - value: fixed
               label: 底部固定
@@ -1890,7 +1891,6 @@ spec:
               label: 是
             - value: false
               label: 否
-
         - $formkit: select
           name: footer_source
           label: 页脚来源
