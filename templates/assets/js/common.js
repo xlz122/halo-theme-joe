@@ -310,7 +310,7 @@ const commonContext = {
 			} else {
 				htmlStr = `
       <div class="joe_pdf">
-        <iframe src="/themes/Theme-Joe3/assets/lib/pdfjs/web/viewer.html?file=${options.src}" style="width:${options.width};height:${options.height}"></iframe>
+        <iframe src="/themes/Halo-Theme-Joe3/assets/lib/pdfjs/web/viewer.html?file=${options.src}" style="width:${options.width};height:${options.height}"></iframe>
       </div>`;
 			}
 			$(item).replaceWith(htmlStr);
@@ -535,7 +535,7 @@ const commonContext = {
 		)
 			return;
 		$.getScript(
-			`/themes/Theme-Joe3/assets/lib/3dtag/3dtag.min.js`,
+			`/themes/Halo-Theme-Joe3/assets/lib/3dtag/3dtag.min.js`,
 			(_res) => {
 				const entries = [];
 				const colors = [
@@ -835,7 +835,7 @@ const commonContext = {
 		)
 			return;
 		$.getScript(
-			`/themes/Theme-Joe3/assets/effect/cursor/${ThemeConfig.cursor_effect}.js`
+			`/themes/Halo-Theme-Joe3/assets/effect/cursor/${ThemeConfig.cursor_effect}.js`
 		);
 	},
 	/* 加载背景特效 */
@@ -847,7 +847,7 @@ const commonContext = {
 		)
 			return;
 		$.getScript(
-			`/themes/Theme-Joe3/assets/effect/backdrop/${ThemeConfig.backdrop}.js`
+			`/themes/Halo-Theme-Joe3/assets/effect/backdrop/${ThemeConfig.backdrop}.js`
 		);
 	},
 	/* 自定义favicon */
