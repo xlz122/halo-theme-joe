@@ -9,7 +9,7 @@
       >
         <div
           class="joe_container joe_header_container"
-          th:classappend="${theme.config.navbar.enable_full_header ? 'full':''}"
+          th:style="'max-width:'+${theme.config.navbar.navbar_max_width} ?: ''"
         >
           <th>
             <i class="joe-font joe-icon-caidan joe_header__above-slideicon"></i>
