@@ -1508,62 +1508,7 @@ spec:
           label: 微信二维码
           value: ""
           help: "打赏用的微信收款二维码链接, 不填不显示"
-    - group: tags
-      label: 标签页
-      formSchema:
-        - $formkit: text
-          name: tags_title
-          label: 标签页标题
-          value: "全部标签"
-          help: "修改标签页顶部的标题"
-        - $formkit: select
-          name: tags_type
-          label: 展示形式
-          value: "card"
-          help: "配置标签的展示形式, 默认为 <卡片形式>"
-          options:
-            - value: tag
-              label: 标签
-            - value: card
-              label: 卡片
-        - $formkit: select
-          name: enable_tags_post_num
-          label: 展示文章数
-          value: true
-          help: "是否展示标签下的文章数"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-    - group: categories
-      label: 分类页
-      formSchema:
-        - $formkit: text
-          name: categories_title
-          label: 分类页标题
-          value: "全部分类"
-          help: "修改分类页顶部的标题"
-        - $formkit: select
-          name: categories_type
-          label: 展示形式
-          value: "card"
-          help: "配置标签的展示形式, 默认为 <卡片形式>"
-          options:
-            - value: tag
-              label: 标签
-            - value: card
-              label: 卡片
-        - $formkit: select
-          name: enable_categories_post_num
-          label: 展示文章数
-          value: true
-          help: "是否展示分类下的文章数"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
+
     - group: archives
       label: 归档页
       formSchema:
@@ -1607,14 +1552,72 @@ spec:
             - value: false
               label: 否
 
+    - group: categories
+      label: 分类页
+      formSchema:
+        - $formkit: text
+          name: categories_title
+          label: 分类页标题
+          value: "全部分类"
+          help: "修改分类页顶部的标题"
+        - $formkit: select
+          name: categories_type
+          label: 展示形式
+          value: "card"
+          help: "配置标签的展示形式, 默认为 <卡片形式>"
+          options:
+            - value: tag
+              label: 标签
+            - value: card
+              label: 卡片
+        - $formkit: select
+          name: enable_categories_post_num
+          label: 展示文章数
+          value: true
+          help: "是否展示分类下的文章数"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+
+    - group: tags
+      label: 标签页
+      formSchema:
+        - $formkit: text
+          name: tags_title
+          label: 标签页标题
+          value: "全部标签"
+          help: "修改标签页顶部的标题"
+        - $formkit: select
+          name: tags_type
+          label: 展示形式
+          value: "card"
+          help: "配置标签的展示形式, 默认为 <卡片形式>"
+          options:
+            - value: tag
+              label: 标签
+            - value: card
+              label: 卡片
+        - $formkit: select
+          name: enable_tags_post_num
+          label: 展示文章数
+          value: true
+          help: "是否展示标签下的文章数"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+
     - group: journals
-      label: 日志页
+      label: 瞬间页
       formSchema:
         - $formkit: select
           name: enable_journal_effect
           label: 开启缓入动画
           value: true
-          help: "是否开启日志块缓入动画"
+          help: "是否开启瞬间块缓入动画"
           options:
             - value: true
               label: 是
@@ -1622,19 +1625,19 @@ spec:
               label: 否
         - $formkit: text
           name: journals_title
-          label: 日志页标题
+          label: 瞬间页标题
           value: "我的动态"
-          help: "修改日志页顶部展示的标题"
+          help: "修改瞬间页顶部展示的标题"
         - $formkit: text
           name: journals_empty_text
           label: 空白状态文案
-          value: "暂无日志数据"
+          value: "暂无瞬间数据"
           help: "修改无数据时展示的文案"
         - $formkit: select
           name: index_list_effect_class
           label:  动画效果类名
           value: "fadeInUp"
-          help: "日志页列表动画效果类名, 来自 animate.css, 默认 fadeInUp"
+          help: "瞬间页列表动画效果类名, 来自 animate.css, 默认 fadeInUp"
           options:
             - value: "fadeIn"
               label: "fadeIn"
@@ -1788,7 +1791,7 @@ spec:
               label: "slideOutUp"
         - $formkit: select
           name: enable_journal_add
-          label: 展示新增日志按钮
+          label: 展示新增瞬间按钮
           value: false
           options:
             - value: true
@@ -1797,7 +1800,7 @@ spec:
               label: 否
         - $formkit: select
           name: enable_like_journal
-          label: 开启日志点赞
+          label: 开启瞬间点赞
           value: true
           options:
             - value: true
@@ -1806,7 +1809,7 @@ spec:
               label: 否
         - $formkit: select
           name: enable_comment_journal
-          label: 开启日志评论
+          label: 开启瞬间评论
           value: true
           options:
             - value: true
@@ -1815,9 +1818,9 @@ spec:
               label: 否
         - $formkit: number
           name: journal_block_height
-          label: 日志块内容最大高度
+          label: 瞬间块内容最大高度
           value: "300"
-          help: "设置日志块内容区域的最大高度(单位像素), 超过此高度则显示折叠/展开按钮, 默认值为 300, 最小值为 100(若输入的值小于 100 则按 100 处理)"
+          help: "设置瞬间块内容区域的最大高度(单位像素), 超过此高度则显示折叠/展开按钮, 默认值为 300, 最小值为 100(若输入的值小于 100 则按 100 处理)"
 
     - group: photos
       label: 相册页
@@ -1842,6 +1845,7 @@ spec:
           label: 图片间距
           value: "10"
           help: "请输入图片间距值, 默认10(请填数字)"
+
     - group: links
       label: 友链
       formSchema:
