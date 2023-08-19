@@ -130,7 +130,7 @@
       <th:block th:if="${theme.config.blogger.enable_weather and theme.config.blogger.weather_key !=''}">
         <div id="he-plugin-simple"></div>
       </th:block>
-      <th:block th:if="${theme.config.blogger.enable_social}">
+      <th:block th:if="${theme.config.blogger.enable_social} and ${not #lists.isEmpty(theme.config.blogger.socials)}">
         <div class="social-account">
           <th:block th:each="socials : ${theme.config.blogger.socials}">
             <th:block th:replace="~{modules/macro/social :: ${socials.socials_select}}" />

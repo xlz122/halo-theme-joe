@@ -702,7 +702,7 @@ spec:
         - $formkit: select
           name: enable_social
           label: 展示社交账号
-          value: true
+          value: false
           help: "是否展示社交账号"
           options:
             - value: true
@@ -712,7 +712,7 @@ spec:
         - $formkit: select
           name: enable_mobile_social
           label: 展示社交账号(移动端)
-          value: true
+          value: false
           help: "是否在移动端展示社交账号, 默认关闭"
           options:
             - value: true
