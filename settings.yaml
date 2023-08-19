@@ -8,11 +8,6 @@ spec:
       label: 基本设置
       formSchema:
         - $formkit: number
-          name: navbar_max_width
-          label: 导航栏最大宽度
-          value: 1320
-          help: "限制导航栏区域的宽度, 主要用于网站logo隐藏后调整宽度, 默认1320, 单位px"
-        - $formkit: number
           name: content_max_width
           label: 内容区域最大宽度
           value: 1320
@@ -32,7 +27,7 @@ spec:
           name: random_img_api_url
           value: "https://imgapi.xl0408.top/index.php"
           label: 随机图api
-          help: "输入适当的api地址"
+          help: "填入正确的随机图api地址, 默认 https://imgapi.xl0408.top/index.php"
         - $formkit: select
           name: web_font
           label: 网站字体
@@ -525,6 +520,141 @@ spec:
           value: "(つェ⊂)咦, 又回来了!"
           help: "在返回到当前标签时, 通过title展示的文字(仅对首页生效)"
 
+    - group: beauty
+      label: 美化
+      formSchema:
+        - $formkit: select
+          name: enable_big_banner
+          id: enable_big_banner
+          label: 顶部大图
+          value: false
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: text
+          if: "$get(enable_big_banner).value"
+          name: big_banner_title
+          label: 大图标题
+          value: ""
+          help: "默认网站名"
+        - $formkit: text
+          if: "$get(enable_big_banner).value"
+          name: big_banner_Photos
+          label: 图片地址或者api地址
+          value: "http://imgapi.xl0408.top/index.php"
+          help: "填写图片地址或者随机图api地址"
+        - $formkit: select
+          if: "$get(enable_big_banner).value"
+          name: enable_big_banner_video
+          id: enable_big_banner_video
+          label: 是否启用视频背景
+          value: false
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: attachment
+          if: "$get(enable_big_banner_video).value"
+          name: big_banner_video
+          label: 视频地址
+          value: ""
+
+    - group: navbar
+      label: 导航
+      formSchema:
+        - $formkit: menuRadio
+          name: menu
+          label: 选择导航展示菜单
+          value: ""
+        - $formkit: select
+          name: enable_fixed_header
+          label: 导航条吸顶
+          value: true
+          help: "开启后, 当页面滚动时, 导航条会始终固定在可视区域顶部(默认只在向上滚动时显示, 移动端强制吸顶展示)"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: select
+          name: enable_full_header
+          label: 100%宽度
+          value: false
+          help: "导航条宽度是否100%, 默认和内容区域宽度一致"
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否
+        - $formkit: select
+          name: show_logo
+          id: show_logo
+          label: 展示博客LOGO
+          value: false
+          help: "导航条是否展示博客LOGO"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: text
+          if: "$get(show_logo).value"
+          name: logo_link
+          label: LOGO跳转链接
+          value: ""
+          help: "点击LOGO时跳转的链接, 不填默认跳转博客主页(不想跳转请填入#)"
+        - $formkit: text
+          if: "$get(show_logo).value"
+          name: logo_radius
+          label: LOGO圆角值
+          value: "4px"
+          help: "导航栏博客LOGO的圆角值, 默认4px"
+        - $formkit: select
+          name: enable_navbar_icon
+          id: enable_navbar_icon
+          label: 开启菜单图标
+          value: false
+          help: "导航条菜单默认展示后台配置的图标, 若不需要可以在这里统一关闭"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: select
+          if: "$get(enable_navbar_icon).value"
+          name: enable_icon_animate
+          label: 开启菜单图标悬浮动画
+          value: false
+          help: "导航条菜单默认展示后台配置的图标, 若不需要可以在这里统一关闭"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: select
+          name: enable_active_shadow
+          label: 开启文字阴影效果
+          value: false
+          help: "是否开启当前选中项的文字阴影效果(默认关闭以节省性能)"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: select
+          name: enable_glass_blur
+          label: 开启毛玻璃效果
+          value: false
+          help: "是否开启导航条毛玻璃效果(默认关闭以节省性能, 仅在“导航条吸顶”开启时生效)"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+
     - group: carousel
       label: 轮播图
       formSchema:
@@ -653,134 +783,7 @@ spec:
               label: 当前页
             - value: new
               label: 新标签
-    - group: beauty
-      label: 美化
-      formSchema:
-        - $formkit: select
-          name: enable_big_banner
-          id: enable_big_banner
-          label: 顶部大图
-          value: false
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: text
-          if: "$get(enable_big_banner).value === true"
-          name: big_banner_title
-          label: 标题
-          value:
-          help: "默认网站名"
-        - $formkit: text
-          if: "$get(enable_big_banner).value === true"
-          name: big_banner_Photos
-          label: 图片或者api地址
-          value: "http://imgapi.xl0408.top/index.php"
-          help: "填写图片地址或者随机图api地址"
-        - $formkit: select
-          if: "$get(enable_big_banner).value === true"
-          name: enable_big_banner_video
-          id: enable_big_banner_video
-          label: 是否启用视频背景
-          value: false
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: attachment
-          if: "$get(enable_big_banner_video).value === true"
-          name: big_banner_video
-          label: 视频地址
-          value:
-    - group: navbar
-      label: 导航
-      formSchema:
-        - $formkit: menuRadio
-          name: menu
-          label: 选择导航展示菜单
-          value: ""
-        - $formkit: select
-          name: enable_fixed_header
-          label: 导航条吸顶
-          value: true
-          help: "开启后, 当页面滚动时, 导航条会始终固定在可视区域顶部(默认只在向上滚动时显示, 移动端强制吸顶展示)"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: radio
-          name: enable_full_header
-          label: 100%宽度
-          value: false
-          help: "导航条宽度是否100%, 默认和内容区域宽度一致"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: select
-          name: show_logo
-          label: 展示博客LOGO
-          value: false
-          help: "导航条是否展示博客LOGO"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: text
-          name: logo_link
-          label: LOGO跳转链接
-          value: ""
-          help: "点击LOGO时跳转的链接, 不填默认跳转博客主页(不想跳转请填入#)"
-        - $formkit: text
-          name: logo_radius
-          label: LOGO圆角值
-          value: "4px"
-          help: "导航栏博客LOGO的圆角值, 像素或百分比, 默认4px"
-        - $formkit: select
-          name: enable_navbar_icon
-          label: 开启菜单图标
-          value: false
-          help: "导航条菜单默认展示后台配置的图标, 若不需要可以在这里统一关闭"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: radio
-          name: enable_icon_animate
-          label: 菜单图标悬浮动画
-          value: false
-          help: "导航条菜单默认展示后台配置的图标, 若不需要可以在这里统一关闭"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: radio
-          name: enable_active_shadow
-          label: 文字阴影效果
-          value: false
-          help: "是否开启当前选中项的文字阴影效果(默认关闭以节省性能)"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: radio
-          name: enable_glass_blur
-          label: 毛玻璃效果
-          value: false
-          help: "是否开启导航条毛玻璃效果(默认关闭以节省性能, 仅在“导航条吸顶”开启时生效)"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
+
     - group: blogger
       label: 博主信息
       formSchema:
