@@ -1,3 +1,4 @@
+<!-- 侧边栏 -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
   <th:block th:fragment="aside">
@@ -11,7 +12,6 @@
       <th:block th:if="${theme.config.aside.enable_notice}">
         <section class="joe_aside__item notice">
           <div class="joe_aside__item-title">
-            <!--<#&#45;&#45;  <i class="joe-font joe-icon-speaker"></i>  &ndash;&gt;-->
             <th:block th:replace="~{modules/macro/speaker :: speaker}" />
             <span class="text">公告信息</span>
           </div>
@@ -124,10 +124,6 @@
               </div>
             </th:block>
           </div>
-          <!--    <#else>-->
-          <!--    <div class="empty">暂无标签</div>-->
-          <!--  </#if>-->
-          <!--</@tagTag>-->
         </section>
       </th:block>
     </aside>

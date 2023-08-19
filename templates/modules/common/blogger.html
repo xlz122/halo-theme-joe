@@ -1,3 +1,4 @@
+<!-- 博主信息 -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
   <th:block th:fragment="blogger">
@@ -54,10 +55,6 @@
         </th:block>
       </div>
       <div class="count" th:with="stats = ${siteStatsFinder.getStats()}">
-        <!--<div class="item" th:title="'累计访问数 '+${stats.visit}">-->
-        <!--<span class="num">[[${stats.visit}]]</span>-->
-        <!--<span>访问量</span>-->
-        <!--</div>-->
         <!--搭配A-->
         <th:block th:if="${theme.config.blogger.overview_type == 'A'}">
           <div class="item" th:title="'累计分类数 '+${stats.category}">
