@@ -41,255 +41,6 @@ spec:
             - value: "joe_future.woff2"
               label: "Joe Future"
 
-    - group: home
-      label: 首页
-      formSchema:
-        - $formkit: select
-          name: enable_post_thumbnail
-          label: 开启文章缩略图
-          value: true
-          help: "是否展示首页文章列表的缩略图"
-          options:
-            - value: true
-              label: 是
-            - value: false
-              label: 否
-        - $formkit: attachment
-          name: lazyload_thumbnail
-          label: 文章预载图
-          value: "/themes/Halo-Theme-Joe3/assets/img/lazyload.gif"
-          help: "文章配图加载出来之前展示的图片, 体积尽可能的小"
-        - $formkit: attachment
-          name: post_thumbnail
-          label: 文章默认缩略图
-          value: "https://picsum.photos/id/1081/350/200"
-          help: "文章无配图时生效, 可使用占位图服务(350*200) https://source.unsplash.com、https://picsum.photos"
-        - $formkit: attachment
-          name: fallback_thumbnail
-          label: 文章错误缺省图
-          value: "/themes/Halo-Theme-Joe3/templates/assets/img/default_thumbnail.png"
-          help: "文章图片加载出错时生效, 可使用占位图服务(350*200)"
-        - $formkit: select
-          name: enable_index_list_effect
-          label:  开启列表动画效果
-          value: true
-          help: "是否开启首页列表动画效果"
-          options:
-            - value: true
-              label: 是
-            - value: false
-              label: 否
-        - $formkit: select
-          name: enable_hot_category
-          id: enable_hot_category
-          label: 展示精品分类
-          value: true
-          help: "是否展示首页的精品分类, 可自定义封面图片"
-          options:
-            - value: true
-              label: 是
-            - value: false
-              label: 否
-        - $formkit: select
-          name: hot_category_source
-          if: "$get(enable_hot_category).value"
-          id: hot_category_source
-          label: 精品分类数据源
-          value: "category"
-          help: "选择首页精品分类的数据来源"
-          options:
-            - value: category
-              label: 分类
-            - value: custom
-              label: 自定义
-        - $formkit: repeater
-          name: category_data
-          if: "$get(hot_category_source).value === 'category'"
-          id: category_data
-          label: 选择展示分类
-          value: []
-          help: "选择要展示的分类"
-          children:
-            - $formkit: categorySelect
-              name: categoryMetaData
-              label: 选择分类
-        - $formkit: repeater
-          name: custom_data
-          if: "$get(hot_category_source).value === 'custom'"
-          id: custom_data
-          label: 自定义信息
-          value: []
-          help: "选择要展示的分类"
-          children:
-            - $formkit: text
-              name: title
-              value: ""
-              help: "名称"
-            - $formkit: text
-              name: url
-              value: ""
-              help: "跳转链接"
-            - $formkit: attachment
-              name: cover
-              value: ""
-              help: "封面图"
-        - $formkit: select
-          name: index_list_effect_class
-          label: 动画效果类名
-          value: "fadeInUp"
-          help: "首页列表动画效果类名, 来自 animate.css, 默认 fadeInUp"
-          options:
-            - value: "fadeIn"
-              label: "fadeIn"
-            - value: "fadeInUp"
-              label: "fadeInUp"
-            - value: "fadeInDown"
-              label: "fadeInDown"
-            - value: "fadeInDownBig"
-              label: "fadeInDownBig"
-            - value: "fadeInLeft"
-              label: "fadeInLeft"
-            - value: "fadeInLeftBig"
-              label: "fadeInLeftBig"
-            - value: "fadeInRight"
-              label: "fadeInRight"
-            - value: "fadeInRightBig"
-              label: "fadeInRightBig"
-            - value: "fadeInUpBig"
-              label: "fadeInUpBig"
-            - value: "fadeOut"
-              label: "fadeOut"
-            - value: "fadeOutDown"
-              label: "fadeOutDown"
-            - value: "fadeOutDownBig"
-              label: "fadeOutDownBig"
-            - value: "fadeOutLeft"
-              label: "fadeOutLeft"
-            - value: "fadeOutLeftBig"
-              label: "fadeOutLeftBig"
-            - value: "fadeOutRight"
-              label: "fadeOutRight"
-            - value: "fadeOutRightBig"
-              label: "fadeOutRightBig"
-            - value: "fadeOutUp"
-              label: "fadeOutUp"
-            - value: "fadeOutUpBig"
-              label: "fadeOutUpBig"
-            - value: "bounce"
-              label: "bounce"
-            - value: "flash"
-              label: "flash"
-            - value: "pulse"
-              label: "pulse"
-            - value: "rubberBand"
-              label: "rubberBand"
-            - value: "headShake"
-              label: "headShake"
-            - value: "swing"
-              label: "swing"
-            - value: "tada"
-              label: "tada"
-            - value: "wobble"
-              label: "wobble"
-            - value: "jello"
-              label: "jello"
-            - value: "heartBeat"
-              label: "heartBeat"
-            - value: "bounceIn"
-              label: "bounceIn"
-            - value: "bounceInDown"
-              label: "bounceInDown"
-            - value: "bounceInLeft"
-              label: "bounceInLeft"
-            - value: "bounceInRight"
-              label: "bounceInRight"
-            - value: "bounceInUp"
-              label: "bounceInUp"
-            - value: "bounceOut"
-              label: "bounceOut"
-            - value: "bounceOutDown"
-              label: "bounceOutDown"
-            - value: "bounceOutLeft"
-              label: "bounceOutLeft"
-            - value: "bounceOutRight"
-              label: "bounceOutRight"
-            - value: "bounceOutUp"
-              label: "bounceOutUp"
-            - value: "flip"
-              label: "flip"
-            - value: "flipInX"
-              label: "flipInX"
-            - value: "flipInY"
-              label: "flipInY"
-            - value: "flipOutX"
-              label: "flipOutX"
-            - value: "flipOutY"
-              label: "flipOutY"
-            - value: "rotateIn"
-              label: "rotateIn"
-            - value: "rotateInDownLeft"
-              label: "rotateInDownLeft"
-            - value: "rotateInDownRight"
-              label: "rotateInDownRight"
-            - value: "rotateInUpLeft"
-              label: "rotateInUpLeft"
-            - value: "rotateInUpRight"
-              label: "rotateInUpRight"
-            - value: "rotateOut"
-              label: "rotateOut"
-            - value: "rotateOutDownLeft"
-              label: "rotateOutDownLeft"
-            - value: "rotateOutDownRight"
-              label: "rotateOutDownRight"
-            - value: "rotateOutUpLeft"
-              label: "rotateOutUpLeft"
-            - value: "rotateOutUpRight"
-              label: "rotateOutUpRight"
-            - value: "hinge"
-              label: "hinge"
-            - value: "jackInTheBox"
-              label: "jackInTheBox"
-            - value: "rollIn"
-              label: "rollIn"
-            - value: "rollOut"
-              label: "rollOut"
-            - value: "zoomIn"
-              label: "zoomIn"
-            - value: "zoomInDown"
-              label: "zoomInDown"
-            - value: "zoomInLeft"
-              label: "zoomInLeft"
-            - value: "zoomInRight"
-              label: "zoomInRight"
-            - value: "zoomInUp"
-              label: "zoomInUp"
-            - value: "zoomOut"
-              label: "zoomOut"
-            - value: "zoomOutDown"
-              label: "zoomOutDown"
-            - value: "zoomOutLeft"
-              label: "zoomOutLeft"
-            - value: "zoomOutRight"
-              label: "zoomOutRight"
-            - value: "zoomOutUp"
-              label: "zoomOutUp"
-            - value: "slideInDown"
-              label: "slideInDown"
-            - value: "slideInLeft"
-              label: "slideInLeft"
-            - value: "slideInRight"
-              label: "slideInRight"
-            - value: "slideInUp"
-              label: "slideInUp"
-            - value: "slideOutDown"
-              label: "slideOutDown"
-            - value: "slideOutLeft"
-              label: "slideOutLeft"
-            - value: "slideOutRight"
-              label: "slideOutRight"
-            - value: "slideOutUp"
-              label: "slideOutUp"
-
     - group: theme
       label: 主题相关
       formSchema:
@@ -1025,207 +776,6 @@ spec:
             - value: false
               label: 否
 
-    - group: code_block
-      label: 代码块
-      formSchema:
-        - $formkit: select
-          name: enable_code_title
-          label: 代码标题
-          value: true
-          help: "开启代码块的标题, 默认显示语言类型, 也可自定义标题"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: select
-          name: enable_code_hr
-          label: 标题分隔线
-          value: true
-          help: "是否展示标题和内容之间的分割线, 不展示时会更加简洁"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: select
-          name: enable_code_macdot
-          label: mac彩点
-          value: true
-          help: "是否展示左上角的mac风格彩点"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: select
-          name: enable_code_copy
-          label: 代码复制
-          value: true
-          help: "开启代码块复制按钮"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: select
-          name: enable_code_line_number
-          label: 代码行号
-          value: false
-          help: "开启代码块行号功能(“自动换行” 开启时无效)"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: select
-          name: enable_code_newline
-          label: 自动换行
-          value: false
-          help: "当代码长度超过容器宽度时是否自动换行, 开启后将不会出现横向滚动条, 且不会展示代码行号(代码自动换行后看起来可能不会很美观, 请根据个人需要配置)"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: select
-          name: enable_code_expander
-          label: 代码折叠
-          value: false
-          help: "开启代码块折叠功能"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: select
-          name: enable_fold_long_code
-          label: 自动折叠长代码块
-          value: false
-          help: "自动折叠 <文章页> 中内容很长的代码块, 提高阅读效率, 此操作会出现布局偏移, 可能带来一些滚动相关问题, 如无必要不建议开启(必须先开启“代码折叠”选项, 否则无效, 也可以通过元数据 enable_fold_long_code 单独控制)"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: text
-          name: long_code_height
-          label: 自动折叠的高度
-          value: "800"
-          help: "触发长代码块自动折叠的高度(单位px), 只填数字即可(默认800), 填 0 将折叠所有代码块"
-        - $formkit: select
-          name: code_theme
-          label: 代码主题
-          value: "one-dark"
-          help: "设置代码块主题, 可通过后台元数据为每篇文章设置单独的代码主题, 主题来自 prism-themes, 见https://github.com/PrismJS/prism-themes"
-          options:
-            - value: "one-dark"
-              label: "one-dark"
-            - value: "one-light"
-              label: "one-light"
-            - value: "a11y-dark"
-              label: "a11y-dark"
-            - value: "atom-dark"
-              label: "atom-dark"
-            - value: "base16-ateliersulphurpool.light"
-              label: "base16-ateliersulphurpool.light"
-            - value: "cb"
-              label: "cb"
-            - value: "coldark-cold"
-              label: "coldark-cold"
-            - value: "coldark-dark"
-              label: "coldark-dark"
-            - value: "coy-without-shadows"
-              label: "coy-without-shadows"
-            - value: "darcula"
-              label: "darcula"
-            - value: "dracula"
-              label: "dracula"
-            - value: "duotone-dark"
-              label: "duotone-dark"
-            - value: "duotone-earth"
-              label: "duotone-earth"
-            - value: "duotone-forest"
-              label: "duotone-forest"
-            - value: "duotone-light"
-              label: "duotone-light"
-            - value: "duotone-sea"
-              label: "duotone-sea"
-            - value: "duotone-space"
-              label: "duotone-space"
-            - value: "ghcolors"
-              label: "ghcolors"
-            - value: "gruvbox-dark"
-              label: "gruvbox-dark"
-            - value: "gruvbox-light"
-              label: "gruvbox-light"
-            - value: "holi-theme"
-              label: "holi-theme"
-            - value: "hopscotch"
-              label: "hopscotch"
-            - value: "lucario"
-              label: "lucario"
-            - value: "material-dark"
-              label: "material-dark"
-            - value: "material-light"
-              label: "material-light"
-            - value: "material-oceanic"
-              label: "material-oceanic"
-            - value: "night-owl"
-              label: "night-owl"
-            - value: "nord"
-              label: "nord"
-            - value: "pojoaque"
-              label: "pojoaque"
-            - value: "shades-of-purple"
-              label: "shades-of-purple"
-            - value: "solarized-dark-atom"
-              label: "solarized-dark-atom"
-            - value: "synthwave84"
-              label: "synthwave84"
-            - value: "vs"
-              label: "vs"
-            - value: "vsc-dark-plus"
-              label: "vsc-dark-plus"
-            - value: "xonokai"
-              label: "xonokai"
-            - value: "z-touch"
-              label: "z-touch"
-        - $formkit: select
-          name: show_tools_when_hover
-          label: 仅悬浮时显示操作按钮
-          value: true
-          help: "是否仅在鼠标悬浮到当前代码块时才显示相关操作按钮, 不显示时会更加简洁"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: select
-          name: enable_single_code_select
-          label: 点击行内代码自动全选
-          value: false
-          help: "开启后, 当点击单行/行内代码时, 会自动全选内容"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-
-    - group: social
-      label: 社交
-      formSchema:
-        - $formkit: textarea
-          name: qq_group
-          label: QQ交流群「首页」
-          value: ""
-          help: "请填入QQ交流群链接, 留空则不显示"
-        - $formkit: textarea
-          name: qq_text
-          label: 欢迎语
-          value: "欢迎加入QQ交流群"
-          help: "QQ交流群按钮展示的文案, 对应首页 “推荐文章” 右侧的 “欢迎加入QQ交流群”"
-
     - group: aside
       label: 侧边栏
       formSchema:
@@ -1457,6 +1007,256 @@ spec:
               label: 固定宽度
             - value: responsive
               label: 自适应宽度
+
+    - group: home
+      label: 首页
+      formSchema:
+        - $formkit: select
+          name: enable_post_thumbnail
+          label: 开启文章缩略图
+          value: true
+          help: "是否展示首页文章列表的缩略图"
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否
+        - $formkit: attachment
+          name: lazyload_thumbnail
+          label: 文章预载图
+          value: "/themes/Halo-Theme-Joe3/assets/img/lazyload.gif"
+          help: "文章配图加载出来之前展示的图片, 体积尽可能的小"
+        - $formkit: attachment
+          name: post_thumbnail
+          label: 文章默认缩略图
+          value: "https://picsum.photos/id/1081/350/200"
+          help: "文章无配图时生效, 可使用占位图服务(350*200) https://source.unsplash.com、https://picsum.photos"
+        - $formkit: attachment
+          name: fallback_thumbnail
+          label: 文章错误缺省图
+          value: "/themes/Halo-Theme-Joe3/templates/assets/img/default_thumbnail.png"
+          help: "文章图片加载出错时生效, 可使用占位图服务(350*200)"
+        - $formkit: select
+          name: enable_index_list_effect
+          label:  开启列表动画效果
+          value: true
+          help: "是否开启首页列表动画效果"
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否
+        - $formkit: select
+          name: enable_hot_category
+          id: enable_hot_category
+          label: 展示精品分类
+          value: true
+          help: "是否展示首页的精品分类, 可自定义封面图片"
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否
+        - $formkit: select
+          name: hot_category_source
+          if: "$get(enable_hot_category).value"
+          id: hot_category_source
+          label: 精品分类数据源
+          value: "category"
+          help: "选择首页精品分类的数据来源"
+          options:
+            - value: category
+              label: 分类
+            - value: custom
+              label: 自定义
+        - $formkit: repeater
+          name: category_data
+          if: "$get(hot_category_source).value === 'category'"
+          id: category_data
+          label: 选择展示分类
+          value: []
+          help: "选择要展示的分类"
+          children:
+            - $formkit: categorySelect
+              name: categoryMetaData
+              label: 选择分类
+        - $formkit: repeater
+          name: custom_data
+          if: "$get(hot_category_source).value === 'custom'"
+          id: custom_data
+          label: 自定义信息
+          value: []
+          help: "选择要展示的分类"
+          children:
+            - $formkit: text
+              name: title
+              value: ""
+              help: "名称"
+            - $formkit: text
+              name: url
+              value: ""
+              help: "跳转链接"
+            - $formkit: attachment
+              name: cover
+              value: ""
+              help: "封面图"
+        - $formkit: select
+          name: index_list_effect_class
+          label: 动画效果类名
+          value: "fadeInUp"
+          help: "首页列表动画效果类名, 来自 animate.css, 默认 fadeInUp"
+          options:
+            - value: "fadeIn"
+              label: "fadeIn"
+            - value: "fadeInUp"
+              label: "fadeInUp"
+            - value: "fadeInDown"
+              label: "fadeInDown"
+            - value: "fadeInDownBig"
+              label: "fadeInDownBig"
+            - value: "fadeInLeft"
+              label: "fadeInLeft"
+            - value: "fadeInLeftBig"
+              label: "fadeInLeftBig"
+            - value: "fadeInRight"
+              label: "fadeInRight"
+            - value: "fadeInRightBig"
+              label: "fadeInRightBig"
+            - value: "fadeInUpBig"
+              label: "fadeInUpBig"
+            - value: "fadeOut"
+              label: "fadeOut"
+            - value: "fadeOutDown"
+              label: "fadeOutDown"
+            - value: "fadeOutDownBig"
+              label: "fadeOutDownBig"
+            - value: "fadeOutLeft"
+              label: "fadeOutLeft"
+            - value: "fadeOutLeftBig"
+              label: "fadeOutLeftBig"
+            - value: "fadeOutRight"
+              label: "fadeOutRight"
+            - value: "fadeOutRightBig"
+              label: "fadeOutRightBig"
+            - value: "fadeOutUp"
+              label: "fadeOutUp"
+            - value: "fadeOutUpBig"
+              label: "fadeOutUpBig"
+            - value: "bounce"
+              label: "bounce"
+            - value: "flash"
+              label: "flash"
+            - value: "pulse"
+              label: "pulse"
+            - value: "rubberBand"
+              label: "rubberBand"
+            - value: "headShake"
+              label: "headShake"
+            - value: "swing"
+              label: "swing"
+            - value: "tada"
+              label: "tada"
+            - value: "wobble"
+              label: "wobble"
+            - value: "jello"
+              label: "jello"
+            - value: "heartBeat"
+              label: "heartBeat"
+            - value: "bounceIn"
+              label: "bounceIn"
+            - value: "bounceInDown"
+              label: "bounceInDown"
+            - value: "bounceInLeft"
+              label: "bounceInLeft"
+            - value: "bounceInRight"
+              label: "bounceInRight"
+            - value: "bounceInUp"
+              label: "bounceInUp"
+            - value: "bounceOut"
+              label: "bounceOut"
+            - value: "bounceOutDown"
+              label: "bounceOutDown"
+            - value: "bounceOutLeft"
+              label: "bounceOutLeft"
+            - value: "bounceOutRight"
+              label: "bounceOutRight"
+            - value: "bounceOutUp"
+              label: "bounceOutUp"
+            - value: "flip"
+              label: "flip"
+            - value: "flipInX"
+              label: "flipInX"
+            - value: "flipInY"
+              label: "flipInY"
+            - value: "flipOutX"
+              label: "flipOutX"
+            - value: "flipOutY"
+              label: "flipOutY"
+            - value: "rotateIn"
+              label: "rotateIn"
+            - value: "rotateInDownLeft"
+              label: "rotateInDownLeft"
+            - value: "rotateInDownRight"
+              label: "rotateInDownRight"
+            - value: "rotateInUpLeft"
+              label: "rotateInUpLeft"
+            - value: "rotateInUpRight"
+              label: "rotateInUpRight"
+            - value: "rotateOut"
+              label: "rotateOut"
+            - value: "rotateOutDownLeft"
+              label: "rotateOutDownLeft"
+            - value: "rotateOutDownRight"
+              label: "rotateOutDownRight"
+            - value: "rotateOutUpLeft"
+              label: "rotateOutUpLeft"
+            - value: "rotateOutUpRight"
+              label: "rotateOutUpRight"
+            - value: "hinge"
+              label: "hinge"
+            - value: "jackInTheBox"
+              label: "jackInTheBox"
+            - value: "rollIn"
+              label: "rollIn"
+            - value: "rollOut"
+              label: "rollOut"
+            - value: "zoomIn"
+              label: "zoomIn"
+            - value: "zoomInDown"
+              label: "zoomInDown"
+            - value: "zoomInLeft"
+              label: "zoomInLeft"
+            - value: "zoomInRight"
+              label: "zoomInRight"
+            - value: "zoomInUp"
+              label: "zoomInUp"
+            - value: "zoomOut"
+              label: "zoomOut"
+            - value: "zoomOutDown"
+              label: "zoomOutDown"
+            - value: "zoomOutLeft"
+              label: "zoomOutLeft"
+            - value: "zoomOutRight"
+              label: "zoomOutRight"
+            - value: "zoomOutUp"
+              label: "zoomOutUp"
+            - value: "slideInDown"
+              label: "slideInDown"
+            - value: "slideInLeft"
+              label: "slideInLeft"
+            - value: "slideInRight"
+              label: "slideInRight"
+            - value: "slideInUp"
+              label: "slideInUp"
+            - value: "slideOutDown"
+              label: "slideOutDown"
+            - value: "slideOutLeft"
+              label: "slideOutLeft"
+            - value: "slideOutRight"
+              label: "slideOutRight"
+            - value: "slideOutUp"
+              label: "slideOutUp"
+ 
     - group: post
       label: 文章页
       formSchema:
@@ -2260,6 +2060,208 @@ spec:
               label: 是
             - value: false
               label: 否
+
+    - group: code_block
+      label: 代码块
+      formSchema:
+        - $formkit: select
+          name: enable_code_title
+          label: 代码标题
+          value: true
+          help: "开启代码块的标题, 默认显示语言类型, 也可自定义标题"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: select
+          name: enable_code_hr
+          label: 标题分隔线
+          value: true
+          help: "是否展示标题和内容之间的分割线, 不展示时会更加简洁"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: select
+          name: enable_code_macdot
+          label: mac彩点
+          value: true
+          help: "是否展示左上角的mac风格彩点"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: select
+          name: enable_code_copy
+          label: 代码复制
+          value: true
+          help: "开启代码块复制按钮"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: select
+          name: enable_code_line_number
+          label: 代码行号
+          value: false
+          help: "开启代码块行号功能(“自动换行” 开启时无效)"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: select
+          name: enable_code_newline
+          label: 自动换行
+          value: false
+          help: "当代码长度超过容器宽度时是否自动换行, 开启后将不会出现横向滚动条, 且不会展示代码行号(代码自动换行后看起来可能不会很美观, 请根据个人需要配置)"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: select
+          name: enable_code_expander
+          label: 代码折叠
+          value: false
+          help: "开启代码块折叠功能"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: select
+          name: enable_fold_long_code
+          label: 自动折叠长代码块
+          value: false
+          help: "自动折叠 <文章页> 中内容很长的代码块, 提高阅读效率, 此操作会出现布局偏移, 可能带来一些滚动相关问题, 如无必要不建议开启(必须先开启“代码折叠”选项, 否则无效, 也可以通过元数据 enable_fold_long_code 单独控制)"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: text
+          name: long_code_height
+          label: 自动折叠的高度
+          value: "800"
+          help: "触发长代码块自动折叠的高度(单位px), 只填数字即可(默认800), 填 0 将折叠所有代码块"
+        - $formkit: select
+          name: code_theme
+          label: 代码主题
+          value: "one-dark"
+          help: "设置代码块主题, 可通过后台元数据为每篇文章设置单独的代码主题, 主题来自 prism-themes, 见https://github.com/PrismJS/prism-themes"
+          options:
+            - value: "one-dark"
+              label: "one-dark"
+            - value: "one-light"
+              label: "one-light"
+            - value: "a11y-dark"
+              label: "a11y-dark"
+            - value: "atom-dark"
+              label: "atom-dark"
+            - value: "base16-ateliersulphurpool.light"
+              label: "base16-ateliersulphurpool.light"
+            - value: "cb"
+              label: "cb"
+            - value: "coldark-cold"
+              label: "coldark-cold"
+            - value: "coldark-dark"
+              label: "coldark-dark"
+            - value: "coy-without-shadows"
+              label: "coy-without-shadows"
+            - value: "darcula"
+              label: "darcula"
+            - value: "dracula"
+              label: "dracula"
+            - value: "duotone-dark"
+              label: "duotone-dark"
+            - value: "duotone-earth"
+              label: "duotone-earth"
+            - value: "duotone-forest"
+              label: "duotone-forest"
+            - value: "duotone-light"
+              label: "duotone-light"
+            - value: "duotone-sea"
+              label: "duotone-sea"
+            - value: "duotone-space"
+              label: "duotone-space"
+            - value: "ghcolors"
+              label: "ghcolors"
+            - value: "gruvbox-dark"
+              label: "gruvbox-dark"
+            - value: "gruvbox-light"
+              label: "gruvbox-light"
+            - value: "holi-theme"
+              label: "holi-theme"
+            - value: "hopscotch"
+              label: "hopscotch"
+            - value: "lucario"
+              label: "lucario"
+            - value: "material-dark"
+              label: "material-dark"
+            - value: "material-light"
+              label: "material-light"
+            - value: "material-oceanic"
+              label: "material-oceanic"
+            - value: "night-owl"
+              label: "night-owl"
+            - value: "nord"
+              label: "nord"
+            - value: "pojoaque"
+              label: "pojoaque"
+            - value: "shades-of-purple"
+              label: "shades-of-purple"
+            - value: "solarized-dark-atom"
+              label: "solarized-dark-atom"
+            - value: "synthwave84"
+              label: "synthwave84"
+            - value: "vs"
+              label: "vs"
+            - value: "vsc-dark-plus"
+              label: "vsc-dark-plus"
+            - value: "xonokai"
+              label: "xonokai"
+            - value: "z-touch"
+              label: "z-touch"
+        - $formkit: select
+          name: show_tools_when_hover
+          label: 仅悬浮时显示操作按钮
+          value: true
+          help: "是否仅在鼠标悬浮到当前代码块时才显示相关操作按钮, 不显示时会更加简洁"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: select
+          name: enable_single_code_select
+          label: 点击行内代码自动全选
+          value: false
+          help: "开启后, 当点击单行/行内代码时, 会自动全选内容"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+
+    - group: social
+      label: 社交
+      formSchema:
+        - $formkit: textarea
+          name: qq_group
+          label: QQ交流群「首页」
+          value: ""
+          help: "请填入QQ交流群链接, 留空则不显示"
+        - $formkit: textarea
+          name: qq_text
+          label: 欢迎语
+          value: "欢迎加入QQ交流群"
+          help: "QQ交流群按钮展示的文案, 对应首页 “推荐文章” 右侧的 “欢迎加入QQ交流群”"
+
     - group: other
       label: 其他
       formSchema:
