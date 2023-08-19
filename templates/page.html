@@ -1,3 +1,4 @@
+<!-- 独立页面 -->
 <!DOCTYPE html>
 <html
   lang="en"
@@ -8,8 +9,10 @@
     <body>
       <div id="Joe">
         <th:block th:replace="~{modules/macro/navbar :: navbar}" />
-        <div class="joe_container joe_main_container page-sheet"
-          th:classappend="|${theme.config.theme.enable_show_in_up ? 'animated showInUp':''} ${theme.config.aside.aside_position == 'left' ? 'revert':''}|">
+        <div
+          class="joe_container joe_main_container page-sheet"
+          th:classappend="|${theme.config.theme.enable_show_in_up ? 'animated showInUp':''} ${theme.config.aside.aside_position == 'left' ? 'revert':''}|"
+        >
           <div class="joe_main">
             <div
               class="joe_detail"
@@ -38,7 +41,7 @@
                       <div class="author">
                         <a
                           class="link"
-                          th:href="${contributor.permalink}"
+                          th:href="${singlePage.status.permalink}"
                           th:title="${contributor.displayName}"
                         >
                           [[${contributor.displayName}]]
@@ -55,15 +58,18 @@
                           <span class="text">[[${wordCount}]] 字</span>
                         </th:block>
                         <th:block
-                          th:if="${#annotations.getOrDefault(singlePage, 'enable_collect_check', 'true')} and ${theme.config.other.check_baidu_collect}">
+                          th:if="${#annotations.getOrDefault(singlePage, 'enable_collect_check', 'true')} and ${theme.config.other.check_baidu_collect}"
+                        >
                           <span class="line">/</span>
                           <span class="text" id="joe_baidu_record">正在检测是否收录...</span>
                         </th:block>
                       </div>
                     </div>
                   </div>
-                  <time class="joe_detail__count-created"
-                    th:datetime="${#dates.format(singlePage.spec.publishTime,'MM/dd')}">
+                  <time 
+                    class="joe_detail__count-created"
+                    th:datetime="${#dates.format(singlePage.spec.publishTime,'MM/dd')}"
+                  >
                     [[${#dates.format(singlePage.spec.publishTime,'MM/dd')}]]
                   </time>
                 </div>
@@ -108,7 +114,8 @@
               </div>
             </th:block>
             <th:block
-              th:if="${theme.config.other.enable_clean_mode == true} or ${theme.config.post.enable_comment !=true}">
+              th:if="${theme.config.other.enable_clean_mode == true} or ${theme.config.post.enable_comment !=true}"
+            >
               <div class="joe_comment">
                 <div class="joe_comment__close">
                   <svg class="joe_comment__close-icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"
@@ -122,7 +129,7 @@
             </th:block>
           </div>
 
-          <th:block th:if="${theme.config.aside.enable_sheet_aside}">
+          <th:block th:if="${theme.config.aside.enable_aside} and ${theme.config.aside.enable_sheet_aside}">
             <th:block th:replace="~{modules/common/aside :: aside}" />
           </th:block>
         </div>

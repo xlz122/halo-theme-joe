@@ -33,7 +33,7 @@
   <link rel="preload stylesheet" as="style" th:href="@{/assets/css/min/theme.min.css?v={version}(version=${theme.spec.version})}">
   <style th:inline="text">
     #Joe .joe_container {
-      max-width: [[${theme.config.basic.content_max_width+'px'}]];
+      max-width: [[${theme.config.basic.content_max_width}]];
     }
   </style>
     <link rel="stylesheet" th:href="@{/assets/lib/qmsg/qmsg.css}">

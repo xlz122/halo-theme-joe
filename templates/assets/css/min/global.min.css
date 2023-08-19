@@ -477,10 +477,6 @@ body:after {
   margin: 0 auto;
 }
 
-.joe_header .full {
-  max-width: 100% !important;
-}
-
 .joe_header__above {
   position: fixed;
   top: 0;

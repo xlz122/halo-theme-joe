@@ -33,20 +33,20 @@
                     class="avatar lazyload"
                     th:data-src="${theme.config.blogger.avatar ?: theme.config.blogger.default_avatar}"
                     th:src="${theme.config.blogger.lazyload_avatar}"
-                    th:alt="${moment.owner.displayName}"
+                    th:alt="${theme.config.blogger.nickname ?: site.title}"
                   />
                   <div class="meta">
                     <div class="author">
                       <a
                         class="link"
-                        th:href="@{authors}+'/'+${moment.owner.name}"
-                        th:title="${moment.owner.displayName}"
+                        th:href="'/moments'"
+                        th:title="${theme.config.blogger.nickname ?: site.title}"
                       >
-                        [[${moment.owner.displayName}]]
+                        [[${theme.config.blogger.nickname ?: site.title}]]
                       </a>
                     </div>
                     <div class="item">
-                      <span class="text">[[${theme.config.blogger.motto?:'一句话介绍自己吧！'}]]</span>
+                      <span class="text">[[${theme.config.blogger.motto ?: '一句话介绍自己吧！'}]]</span>
                       <th:block th:if="${theme.config.other.check_baidu_collect}">
                         <span class="line">/</span>
                         <span class="text" id="joe_baidu_record">正在检测是否收录...</span>
@@ -56,12 +56,15 @@
                 </div>
               </div>
               <th:block th:replace="~{modules/macro/loading :: loading}" />
-
               <ul class="joe_journals__list hidden"
                 th:classappend="${theme.config.journals.enable_journal_effect ? 'effects':''}">
                 <th:block th:each="moment,iteration : ${moments.items}" th:with="content=${moment.spec.content}">
-                  <li class="joe_journal__item animated wow" th:data-wow-delay="'0.'+${iteration.index}+'s'"
-                    th:data-cid="${moment.metadata.name}" th:data-clikes="${moment.stats.upvote}">
+                  <li
+                    class="joe_journal__item animated wow"
+                    th:data-wow-delay="'0.'+${iteration.index}+'s'"
+                    th:data-cid="${moment.metadata.name}"
+                    th:data-clikes="${moment.stats.upvote}"
+                    >
                     <p class="joe_journal_date">
                       <i class="joe-font joe-icon-feather"></i>
                       <em class="joe_journal-posttime">
@@ -69,9 +72,11 @@
                       </em>
                     </p>
                     <div class="joe_journal_block">
-                      <div class="joe_journal_body"
+                      <div
+                        class="joe_journal_body"
                         th:style="'max-height:'+${theme.config.journals.journal_block_height?: '300'}+'px'"
-                        th:classappend="${(theme.config.code_block.enable_code_line_number == true &&theme.config.code_block.enable_code_newline!=true) ?'line-numbers':''}">
+                        th:classappend="${(theme.config.code_block.enable_code_line_number == true &&theme.config.code_block.enable_code_newline!=true) ?'line-numbers':''}"
+                      >
                         <div class="content-wrp">
                           <th:block th:utext="${content.html}"></th:block>
                           <th:block
@@ -85,11 +90,13 @@
                             ></joe-dplayer>
                           </th:block>
                         </div>
-                        <span class="joe_journal_operate_item journal_content_expander"><i
-                            class="joe-font joe-icon-arrow-down"></i></span>
+                        <span class="joe_journal_operate_item journal_content_expander">
+                          <i class="joe-font joe-icon-arrow-down"></i>
+                        </span>
                       </div>
                       <th:block
-                        th:if="${theme.config.journals.enable_like_journal} or ${theme.config.journals.enable_comment_journal}">
+                        th:if="${theme.config.journals.enable_like_journal} or ${theme.config.journals.enable_comment_journal}"
+                      >
                         <div class="joe_journal_footer">
                           <div class="footer-wrap">
                             <th:block th:if="${theme.config.journals.enable_like_journal}">
@@ -114,7 +121,8 @@
                               </th:block>
                             </th:block>
                             <th:block
-                              th:if="${theme.config.journals.enable_comment_journal} and ${theme.config.other.enable_clean_mode != true}">
+                              th:if="${theme.config.journals.enable_comment_journal} and ${theme.config.other.enable_clean_mode != true}"
+                            >
                               <div class="joe_journal_comment">
                                 <halo:comment
                                   group="moment.halo.run"
@@ -131,11 +139,9 @@
                   </li>
                 </th:block>
               </ul>
-              <!--<#include "template/common/pager.ftl">-->
             </div>
           </div>
-
-          <th:block th:if="${theme.config.aside.enable_journals_aside}">
+          <th:block th:if="${theme.config.aside.enable_aside} and ${theme.config.aside.enable_journals_aside}">
             <th:block th:replace="~{modules/common/aside :: aside}" />
           </th:block>
         </div>
