@@ -31,8 +31,8 @@
                     class="image ls-is-cached lazyload"
                     width="100%"
                     height="120"
-                    th:data-src="${category.spec.cover ?: '/themes/Halo-Theme-Joe3/assets/img/hot_cover1.jpg'}"
-                    th:src="${theme.config.home.lazyload_thumbnail}"
+                    th:data-src="${category.spec.cover ?: theme.config.basic.random_img_api_url+'?pageid='+category.metadata.name}"
+                    th:src="${theme.config.theme.lazyload_thumbnail}"
                     th:alt="${category.spec.displayName}"
                   />
                   <figcaption class="title">[[${category.spec.displayName}]]</figcaption>
