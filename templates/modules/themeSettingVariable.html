@@ -3,7 +3,7 @@
 <th:block th:fragment="themeSetting">
   <script th:inline="javascript" id="theme-config-getter">
      const ThemeConfig = {
-       theme_mode : /*[[${theme.config.basic.theme_mode}]]*/ 'user',
+       theme_mode : /*[[${theme.config.theme.theme_mode}]]*/ 'user',
        enable_loading_bar : /*[[${theme.config.theme.enable_loading_bar}]]*/ true,
        enable_footer : /*[[${theme.config.footer.enable_footer}]]*/ true,
        footer_position : /*[[${theme.config.footer.footer_position}]]*/ 'none',
@@ -22,7 +22,7 @@
        enable_offscreen_tip : /*[[${theme.config.theme.enable_offscreen_tip}]]*/ false,
        enable_birthday : /*[[${theme.config.footer.enable_birthday}]]*/ false,
        birthday : /*[[${theme.config.footer.custom_birthday}]]*/ '',
-       light_time_scope : /*[[${theme.config.basic.light_time_scope}]]*/ '5:00~19:00',
+       light_time_scope : /*[[${theme.config.theme.light_time_scope}]]*/ '5:00~19:00',
        enable_console_theme : /*[[${theme.config.other.enable_console_theme}]]*/ false,
        version : /*[[${theme.spec.version}]]*/ '1.0.0',
 

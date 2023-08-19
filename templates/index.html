@@ -74,7 +74,7 @@
 
         <!--悬浮按钮-->
         <th:block
-          th:if="${theme.config.post.enable_mobile_toc} or ${theme.config.theme.enable_back2top} or ${theme.config.basic.theme_mode == 'user'}">
+          th:if="${theme.config.post.enable_mobile_toc} or ${theme.config.theme.enable_back2top} or ${theme.config.theme.theme_mode == 'user'}">
           <th:block th:replace="~{modules/common/actions :: actions}" />
         </th:block>
         <th:block th:if="${theme.config.footer.enable_footer}">
