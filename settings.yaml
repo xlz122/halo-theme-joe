@@ -752,6 +752,30 @@ spec:
               name: socialUrl
               label: 链接
               help: "邮箱填邮箱号, QQ填QQ号, 其他填跳转链接"
+        - $formkit: radio
+          name: enable_icp
+          label: 展示 ICP
+          value: false
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否
+        - $formkit: text
+          name: icp
+          label: ICP 备案号
+          value: ""
+          help: "ICP 备案信息将展示在博主信息栏中, 不填不展示(示例: 鄂ICP备20001234号-1)"
+        - $formkit: textarea
+          name: qq_group
+          label: QQ交流群「首页」
+          value: ""
+          help: "请填入QQ交流群链接, 留空则不显示"
+        - $formkit: textarea
+          name: qq_text
+          label: 欢迎语
+          value: "欢迎加入QQ交流群"
+          help: "QQ交流群按钮展示的文案, 对应首页 “推荐文章” 右侧的 “欢迎加入QQ交流群”"
         - $formkit: select
           name: enable_weather
           id: enable_weather
@@ -2204,20 +2228,6 @@ spec:
               label: 开启
             - value: false
               label: 关闭
-
-    - group: social
-      label: 社交
-      formSchema:
-        - $formkit: textarea
-          name: qq_group
-          label: QQ交流群「首页」
-          value: ""
-          help: "请填入QQ交流群链接, 留空则不显示"
-        - $formkit: textarea
-          name: qq_text
-          label: 欢迎语
-          value: "欢迎加入QQ交流群"
-          help: "QQ交流群按钮展示的文案, 对应首页 “推荐文章” 右侧的 “欢迎加入QQ交流群”"
 
     - group: custom
       label: 自定义
