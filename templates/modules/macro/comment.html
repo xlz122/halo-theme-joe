@@ -3,8 +3,11 @@
   <th:block th:fragment="comment(name, kind)">
     <div class="joe_comment_box">
       <h2>评论区</h2>
-      <halo:comment group="content.halo.run" th:attr="name=${name},kind=${kind}"
-        colorScheme="document.documentElement.getAttribute('data-mode')" />
+      <halo:comment
+        group="content.halo.run"
+        th:attr="name=${name},kind=${kind}"
+        colorScheme="document.documentElement.getAttribute('data-mode')"
+        />
     </div>
   </th:block>
 </html>

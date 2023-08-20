@@ -20,7 +20,8 @@
 .joe_index__banner .swiper-container .swiper-slide {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
-  overflow: hidden
+  overflow: hidden;
+  border-radius: 18px;
 }
 
 .joe_index__banner .swiper-container .item {
@@ -40,12 +41,6 @@
   height: 100%;
   -o-object-fit: cover;
   object-fit: cover;
-  -webkit-transition: opacity .35s;
-  transition: opacity .35s
-}
-
-.joe_index__banner .swiper-container .item .thumbnail:hover {
-  opacity: .85
 }
 
 .joe_index__banner .swiper-container .item .title-row {
