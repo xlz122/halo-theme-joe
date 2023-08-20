@@ -19,6 +19,14 @@
     <script th:src="@{/assets/lib/tocbot/tocbot.min.js}"></script>
   </th:block>
   <script th:src="@{/assets/lib/fancybox/jquery.fancybox.min.js}"></script>
+  <!-- 文章详情页 - 二维码生成 -->
+  <th:block th:if="${htmlType == 'post'}">
+      <script th:src="@{/assets/lib/jquery-qrcode/jquery.qrcode.min.js}"></script>
+  </th:block>
+  <!--相册-->
+  <th:block th:if="${htmlType == 'photos'}">
+    <script th:src="@{/assets/lib/justifiedGallery/justifiedGallery.min.js}"></script>
+  </th:block>
   <!-- 播放器 -->
   <th:block
     th:if="${theme.config.aside.enable_aside} and ${theme.config.aside.enable_music_player && theme.config.aside.music_id != null && theme.config.aside.music_id != ''}"
