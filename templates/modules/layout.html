@@ -30,11 +30,11 @@
     <meta property="og:url" th:content="${site.url}">
     <meta property="og:title" th:content="${titlie}">
     <meta property="twitter:partner" content="ogwp">
-    <!-- /OG -->
+    <!-- OG -->
     <th:block th:replace="~{modules/config :: config}" />
     <th:block th:replace="~{modules/link :: links}" />
     <script th:src="@{/assets/lib/jquery@3.5.1/jquery.min.js}"></script>
   </head>
-  <!-- /OG -->
+  <!-- OG -->
   <th:block th:replace="${content}"></th:block>
 </html>
