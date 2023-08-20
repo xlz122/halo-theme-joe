@@ -134,6 +134,13 @@
           </th:block>
         </div>
       </th:block>
+      <th:block th:if="${theme.config.blogger.enable_icp} and ${not #lists.isEmpty(theme.config.blogger.icp)}">
+        <div class="icp">
+          <a class="link" target="_blank" href="https://beian.miit.gov.cn/">
+            [[${theme.config.blogger.icp}]]
+          </a>
+        </div>
+      </th:block>
       <th:block th:if="${theme.config.blogger.enable_strips}">
         <canvas id="canvas-strips" width="300" height="340"></canvas>
         <script th:src="@{/assets/effect/bg/strips.js}"></script>

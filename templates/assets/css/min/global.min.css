@@ -2296,6 +2296,41 @@ body:after {
   transform: scale(1);
 }
 
+.joe_aside__item.author .icp {
+  position: relative;
+  max-width: 100%;
+  margin-top: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.joe_aside__item.author .icp .link {
+  position: relative;
+  color: var(--routine);
+  cursor: pointer;
+}
+
+.joe_aside__item.author .icp:hover .link {
+  color: var(--theme);
+}
+
+.joe_aside__item.author .icp .link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--theme);
+  transition: all 0.35s;
+}
+
+.joe_aside__item.author .icp:hover .link::after {
+  width: 100%;
+}
+
 .joe_aside__item.author .list {
   padding-top: 15px;
 }
