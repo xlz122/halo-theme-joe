@@ -104,25 +104,39 @@
           <img width="100%" height="150" class="joe_header__slideout-image"
             th:src="${theme.config.blogger.author_bg ?: #theme.assets('/img/author_bg.jpg')}" alt="侧边栏壁纸">
           <div class="joe_header__slideout-author">
-            <img width="50" height="50" class="avatar ls-is-cached lazyloaded"
-              th:data-src="${theme.config.blogger.lazyload_avatar}"
-              th:src="${theme.config.blogger.avatar ?: theme.config.blogger.default_avatar}" alt="博主头像">
-            <div class="info">
-              <a
-                class="link"
-                th:href="${site.url}"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-              >
-                [[${theme.config.blogger.name ?: site.title}]]
-                <img
-                  class="level"
-                  th:src="@{/assets/svg/level_1.svg}"
-                  alt="博主等级"
-                />
-              </a>
-              <p class="motto joe_motto">[[${theme.config.blogger.motto}]]</p>
+            <div class="user-profile">
+              <img
+                width="50"
+                height="50"
+                class="avatar ls-is-cached lazyloaded"
+                th:data-src="${theme.config.blogger.lazyload_avatar}"
+                th:src="${theme.config.blogger.avatar ?: theme.config.blogger.default_avatar}"
+                alt="博主头像"
+              />
+              <div class="info">
+                <a
+                  class="link"
+                  th:href="${site.url}"
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                >
+                  [[${theme.config.blogger.name ?: site.title}]]
+                  <img
+                    class="level"
+                    th:src="@{/assets/svg/level_1.svg}"
+                    alt="博主等级"
+                  />
+                </a>
+                <p class="motto joe_motto">[[${theme.config.blogger.motto}]]</p>
+              </div>
             </div>
+            <th:block th:if="${theme.config.blogger.enable_mobile_social} and ${not #lists.isEmpty(theme.config.blogger.socials)}">
+              <div class="social-account">
+                <th:block th:each="socials : ${theme.config.blogger.socials}">
+                  <th:block th:replace="~{modules/macro/social :: ${socials.socials_select}}" />
+                </th:block>
+              </div>
+            </th:block>
           </div>
           <ul class="joe_header__slideout-count" th:with="stats = ${siteStatsFinder.getStats()}">
             <li class="item">
