@@ -36,10 +36,6 @@
   >
     <script th:src="@{/assets/lib/favico/favico.min.js}"></script>
   </th:block>
-  <!--相册-->
-  <th:block th:if="${htmlType == 'photos'}">
-    <script th:src="@{/assets/lib/justifiedGallery/justifiedGallery.min.js}"></script>
-  </th:block>
 
   <!--===== 引入页面级js start =====-->
   <script th:src="@{/assets/js/min/common.min.js?v={version}(version=${theme.spec.version})}"></script>
