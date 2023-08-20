@@ -1331,7 +1331,7 @@ spec:
           if: "$get(enable_progress_bar).value"
           name: progress_bar_bgc
           label: 进度条背景色
-          value: ""
+          value: "linear-gradient(45deg, #3884d9 50%, #40d968)"
           help: "浏览进度条的背景色, 接受任何合法的颜色值(为空将使用默认背景色)"
         - $formkit: select
           name: enable_toc
