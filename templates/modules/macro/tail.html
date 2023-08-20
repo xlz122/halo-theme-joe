@@ -3,6 +3,7 @@
 <th:block th:fragment="tail">
   <!-- ===== 引入脚本 start ===== -->
   <!-- <th:block th:if="${htmlType == 'index' && theme.config.home.enable_index_list_effect == true} or ${htmlType == 'journals' && theme.config.journals.enable_journal_effect == true} or ${htmlType == 'photos' && theme.config.photos.enable_photos_effect == true}">-->
+  <!-- 动画效果 -->
   <script th:src="@{/assets/lib/wowjs/wow.min.js}"></script>
   <!-- </th:block>-->
   <script th:src="@{/assets/lib/lazysizes/lazysizes.min.js}"></script>
@@ -16,12 +17,6 @@
   </th:block>
   <th:block th:if="${htmlType == 'post'} and ${theme.config.post.enable_toc == true}">
     <script th:src="@{/assets/lib/tocbot/tocbot.min.js}"></script>
-  </th:block>
-  <th:block
-    th:if="${theme.config.other.enable_clean_mode != false && (htmlType =='post' || htmlType =='journals' || htmlType =='sheet')}"
-  >
-    <script th:src="@{/assets/lib/vue@2.6.10/vue.min.js}"></script>
-
   </th:block>
   <script th:src="@{/assets/lib/fancybox/jquery.fancybox.min.js}"></script>
   <th:block
