@@ -11,7 +11,7 @@
     <script th:src="@{/assets/lib/j-marked/marked.min.js}"></script>
   </th:block>
   <script th:src="@{/assets/js/min/utils.min.js}"></script>
-
+  <!-- 轮播图 -->
   <th:block th:if="${htmlType == 'index' && theme.config.carousel.enable_banner}">
     <script th:src="@{/assets/lib/swiper/swiper.min.js}"></script>
   </th:block>
@@ -19,6 +19,7 @@
     <script th:src="@{/assets/lib/tocbot/tocbot.min.js}"></script>
   </th:block>
   <script th:src="@{/assets/lib/fancybox/jquery.fancybox.min.js}"></script>
+  <!-- 播放器 -->
   <th:block
     th:if="${theme.config.aside.enable_aside} and ${theme.config.aside.enable_music_player && theme.config.aside.music_id != null && theme.config.aside.music_id != ''}"
   >
@@ -34,9 +35,6 @@
     th:if="${theme.config.custom.favicon == true && theme.config.custom.favicon != null && theme.config.custom.favicon != ''}"
   >
     <script th:src="@{/assets/lib/favico/favico.min.js}"></script>
-  </th:block>
-  <th:block th:if="${htmlType == 'post'}">
-    <script th:src="@{/assets/lib/jquery-qrcode/jquery.qrcode.min.js}"></script>
   </th:block>
   <!--相册-->
   <th:block th:if="${htmlType == 'photos'}">
