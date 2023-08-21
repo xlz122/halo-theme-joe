@@ -8,13 +8,15 @@
 }
 
 .joe_index__banner .swiper-container {
+  position: relative;
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
   min-width: 0;
   height: 400px;
   border-radius: 5px;
-  --swiper-theme-color: #fff
+  --swiper-theme-color: #fff;
+  overflow: hidden;
 }
 
 .joe_index__banner .swiper-container .swiper-slide {
@@ -85,6 +87,13 @@
   color: #fff;
   font-size: 20px;
   opacity: .5
+}
+
+.joe_index__banner .swiper-container .swiper-pagination {
+  left: auto;
+  right: 18px;
+  width: 200px;
+  text-align: right;
 }
 
 .joe_index__banner .swiper-container.swiper-container-horizontal .swiper-pagination-bullets {
