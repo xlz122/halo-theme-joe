@@ -271,7 +271,7 @@ const commonContext = {
 	},
 	/* 音乐播放器 */
 	initMusic() {
-		if (!ThemeConfig.enable_global_music_player) return;
+		if (!ThemeConfig.enable_music_player) return;
 		Utils.request({
 			url: `${ThemeConfig.music_api}?server=${ThemeConfig.music_source}&type=${ThemeConfig.music_player_type}&id=${ThemeConfig.music_list_id}`,
 			type: "GET",

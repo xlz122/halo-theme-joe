@@ -446,11 +446,22 @@ spec:
               label: 立方体
             - value: coverflow
               label: 封面
+            - value: flip
+              label: 翻转
+            - value: cards
+              label: 卡片
+            - value: creative
+              label: 创意
         - $formkit: number
           name: banner_speed
           label: 切换速度
           value: 500
           help: "设置轮播图的切换速度, 默认500(单位: 毫秒)"
+        - $formkit: number
+          name: banner_space_between
+          label: 轮播图左右间距
+          value: 0
+          help: "设置轮播图的左右间距, 默认 0"
         - $formkit: select
           name: enable_banner_loop
           label: 循环播放
@@ -1273,7 +1284,7 @@ spec:
         - $formkit: attachment
           name: fallback_thumbnail
           label: 文章错误缺省图
-          value: "/themes/Halo-Theme-Joe3/templates/assets/img/default_thumbnail.png"
+          value: "/themes/Halo-Theme-Joe3/templates/assets/img/Joe3.png"
           help: "文章图片加载出错时生效, 可使用占位图服务(350*200)"
  
     - group: post
@@ -2271,15 +2282,6 @@ spec:
           label: 自定义JS(body)
           value: ""
           help: "填入JS代码, 无需script标签, 将插入body标签尾部"
-        - $formkit: radio
-          name: show_loaded_time
-          label: 控制台输出页面加载耗时
-          value: false
-          options:
-            - value: true
-              label: 是
-            - value: false
-              label: 否
 
     - group: other
       label: 其他
@@ -2321,3 +2323,12 @@ spec:
               label: 开启
             - value: false
               label: 关闭
+        - $formkit: radio
+          name: show_loaded_time
+          label: 控制台输出页面加载耗时
+          value: false
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否

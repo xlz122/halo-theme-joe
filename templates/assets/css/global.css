@@ -1484,7 +1484,7 @@ body:after {
   width: 90px;
   height: 90px;
   margin: 0 auto 14px;
-  background: url(../../img/folder_empty.png) no-repeat center;
+  background: url(../img/folder_empty.png) no-repeat center;
   background-size: auto 100%;
 }
 
@@ -3404,7 +3404,7 @@ body:after {
   display: inline-block;
   width: 22px;
   height: 24px;
-  background: url(../../img/raw.png) no-repeat center;
+  background: url(../img/raw.png) no-repeat center;
   background-size: cover;
 }
 
@@ -5806,7 +5806,7 @@ body:after {
   padding: 28px 110px;
   font-size: 18px;
   color: var(--routine);
-  background: url(../../img/t_left.png) 0/90px auto, url(../../img/t_right.png) 100%/90px auto;
+  background: url(../img/t_left.png) 0/90px auto, url(../img/t_right.png) 100%/90px auto;
   background-repeat: no-repeat;
   filter: grayscale(1);
 }

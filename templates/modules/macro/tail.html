@@ -7,9 +7,25 @@
     <th:block th:if="${htmlType == 'index' && theme.config.carousel.enable_banner}">
       <script th:src="@{/assets/lib/swiper/swiper.min.js}"></script>
     </th:block>
-    <!-- 大图 -->
+    <!-- 顶部大图 -->
     <th:block th:if="${theme.config.beauty.enable_big_banner}">
-      <script th:src="@{/assets/js/min/beauty.min.js}"></script>
+      <script th:src="@{/assets/js/beauty.js}"></script>
+      <script th:inline="javascript">
+        new EvanBigBanner({
+          followMode: false,                       // 跟随模式
+          followTheme: false,                      // 跟随主题
+          titlePrint: true,                        // 是否启用打字机效果
+          titlePrintInterval: 300,                 // 打字机速度
+          titleTiktok: false,                      // 标题文字抖音效果
+          titleText: /*[[${(theme.config.beauty.big_banner_title != null and theme.config.beauty.big_banner_title != '') ? theme.config.beauty.big_banner_title : site.title}]]*/ "",    // 标题文字
+          titleColor: "#ffffff",                   // 标题文字颜色
+          titleShadow: "-3px 2px 6px #1c1f21",     // 标题文字阴影
+          hitokotoParams: {},                      // 一言参数，参考：https://developer.hitokoto.cn/sentence/#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0
+          hitokotoApi: "https://v1.hitokoto.cn",   // 一言API
+          hitokotoColor: "#ffffff",                // 一言文字颜色
+          hitokotoEnable: true                     // 是否使用一言
+        });
+      </script>
     </th:block>
     <!-- 播放器 -->
     <th:block
@@ -47,29 +63,29 @@
 
     <!-- 页面级js start -->
     <script th:src="@{/assets/lib/fancybox/jquery.fancybox.min.js}"></script>
-    <script th:src="@{/assets/js/min/utils.min.js}"></script>
-    <script th:src="@{/assets/js/min/common.min.js?v={version}(version=${theme.spec.version})}"></script>
+    <script th:src="@{/assets/utils/utils.js}"></script>
+    <script th:src="@{/assets/js/common.js?v={version}(version=${theme.spec.version})}"></script>
     <th:block th:if="${htmlType == 'post'} or ${htmlType == 'journals'} or ${htmlType == 'sheet'}">
       <script th:src="@{/assets/lib/prism/prism.min.js}"></script>
     </th:block>
     <th:block th:if="${htmlType == 'index'}">
-      <script th:src="@{/assets/js/min/index.min.js?v={version}(version=${theme.spec.version})}"></script>
+      <script th:src="@{/assets/js/index.js?v={version}(version=${theme.spec.version})}"></script>
     </th:block>
     <th:block th:if="${htmlType == 'archives'}">
-      <script th:src="@{/assets/js/min/archives.min.js?v={version}(version=${theme.spec.version})}"></script>
+      <script th:src="@{/assets/js/archives.js?v={version}(version=${theme.spec.version})}"></script>
     </th:block>
     <th:block th:if="${htmlType == 'post'}">
-      <script th:src="@{/assets/js/min/post.min.js?v={version}(version=${theme.spec.version})}"></script>
+      <script th:src="@{/assets/js/post.js?v={version}(version=${theme.spec.version})}"></script>
     </th:block>
     <th:block th:if="${htmlType == 'journals'}">
-      <script th:src="@{/assets/js/min/journals.min.js?v={version}(version=${theme.spec.version})}"></script>
+      <script th:src="@{/assets/js/journals.js?v={version}(version=${theme.spec.version})}"></script>
     </th:block>
     <th:block th:if="${htmlType == 'photos'}">
-      <script th:src="@{/assets/js/min/photos.min.js?v={version}(version=${theme.spec.version})}"></script>
+      <script th:src="@{/assets/js/photos.js?v={version}(version=${theme.spec.version})}"></script>
     </th:block>
     <th:block th:if="${htmlType == 'sheet'}">
       <script th:src="@{/assets/lib/draggabilly/draggabilly.min.js}"></script>
-      <script th:src="@{/assets/js/min/leaving.min.js}"></script>
+      <script th:src="@{/assets/js/leaving.js}"></script>
     </th:block>
     <!--页面级js end -->
 
@@ -94,25 +110,6 @@
       const searchButton = document.getElementById("halo-search");
       searchButton.addEventListener("click", function () {
         SearchWidget.open();
-      });
-    </script>
-
-    <!-- 大图配置 -->
-    <script th:inline="javascript">
-      // 以下配置参数均为默认值
-      new EvanBigBanner({
-        followMode: false,                       // 跟随模式
-        followTheme: false,                      // 跟随主题
-        titlePrint: true,                        // 是否启用打字机效果
-        titlePrintInterval: 300,                 // 打字机速度
-        titleTiktok: false,                      // 标题文字抖音效果
-        titleText: /*[[${(theme.config.beauty.big_banner_title != null and theme.config.beauty.big_banner_title != '') ? theme.config.beauty.big_banner_title : site.title}]]*/ "",    // 标题文字
-        titleColor: "#ffffff",                   // 标题文字颜色
-        titleShadow: "-3px 2px 6px #1c1f21",     // 标题文字阴影
-        hitokotoParams: {},                      // 一言参数，参考：https://developer.hitokoto.cn/sentence/#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0
-        hitokotoApi: "https://v1.hitokoto.cn",   // 一言API
-        hitokotoColor: "#ffffff",                // 一言文字颜色
-        hitokotoEnable: true,                    // 是否使用一言
       });
     </script>
 

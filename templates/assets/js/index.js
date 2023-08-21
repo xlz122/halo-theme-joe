@@ -9,11 +9,12 @@ const homeContext = {
       const config = {
         direction: ThemeConfig.banner_direction,
         effect: ThemeConfig.banner_effect,
-        speed: ThemeConfig.banner_speed,
+        speed: Number(ThemeConfig.banner_speed),
+        spaceBetween: Number(ThemeConfig.banner_space_between),
         loop: ThemeConfig.enable_banner_loop,
         autoplay: ThemeConfig.enable_banner_autoplay
           ? {
-            delay: ThemeConfig.banner_delay,
+            delay: Number(ThemeConfig.banner_delay),
             disableOnInteraction: false,
           }
           : false,
@@ -34,6 +35,7 @@ const homeContext = {
       ThemeConfig.enable_banner_pagination
         ? (config.pagination = {
           el: ".swiper-pagination",
+          clickable: true
         })
         : null;
 
@@ -292,24 +294,18 @@ const homeContext = {
     );
   });
 
-  // window.addEventListener("load", function () {
-  //   if (omits.length === 1) {
-  //     homeContext[omits[0]]();
-  //   } else {
-  //     omits.forEach((c) => homeContext[c]());
-  //   }
-  // });
-})();
-const link = document.getElementById('evan-big-banner_goto');
-const target = document.querySelector('#indexPosition');
+  // 顶部大图
+  if (!ThemeConfig.enable_big_banner) return;
 
-link.addEventListener('click', (event) => {
-  event.preventDefault();
+  const link = document.getElementById('evan-big-banner_goto');
+  const target = document.querySelector('#indexPosition');
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
 
-  const targetPosition = target.getBoundingClientRect().top + window.scrollY;
-
-  window.scrollTo({
-    top: targetPosition,
-    behavior: 'smooth'
+    const targetPosition = target.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
+    });
   });
-});
+})();
