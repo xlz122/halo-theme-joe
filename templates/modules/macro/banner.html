@@ -4,33 +4,72 @@
     <div class="joe_index__banner">
       <div class="swiper-container">
         <div class="swiper-wrapper">
-          <th:block th:each="bannerData : ${theme.config.carousel.banner_source}">
-            <th:block th:with="post = ${postFinder.getByName(bannerData.posts)}">
-              <div class="swiper-slide">
-                <a
-                  class="item"
-                  th:classappend="${post.status.permalink !='' ? 'clickable': ''}"
-                  th:href="${post.status.permalink !='' ? post.status.permalink : 'javascript:;'}"
-                  target="_blank"
-                  rel="noopener noreferrer nofollow"
-                >
-                  <img
-                    class="thumbnail lazyload"
-                    width="100%"
-                    height="100%"
-                    th:data-src="${post.spec.cover ?: '/themes/Halo-Theme-Joe3/assets/img/Joe3.png'}"
-                    th:src="${theme.config.carousel.banner_lazyload_img}"
-                    th:alt="${post.spec.title}"
-                  />
-                  <div class="title-row">
-                    <h3 class="title">[[${post.spec.title}]]</h3>
-                    <th:block th:if="${post.status.excerpt != ''}">
-                      <p class="subtitle">[[${post.status.excerpt}]]</p>
-                    </th:block>
-                  </div>
-                  <i class="joe-font joe-icon-zhifeiji"></i>
-                </a>
-              </div>
+          <!-- 手动配置 -->
+          <th:block
+            th:if="${theme.config.carousel.banner_source == 'manual'} and ${not #lists.isEmpty(theme.config.carousel.banner_manual)}"
+          >
+            <th:block th:each="bannerData : ${theme.config.carousel.banner_manual}">
+              <th:block th:with="post = ${postFinder.getByName(bannerData.posts)}">
+                <div class="swiper-slide">
+                  <a
+                    class="item"
+                    th:classappend="${post.status.permalink !='' ? 'clickable': ''}"
+                    th:href="${post.status.permalink !='' ? post.status.permalink : 'javascript:;'}"
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                  >
+                    <img
+                      class="thumbnail lazyload"
+                      width="100%"
+                      height="100%"
+                      th:data-src="${post.spec.cover ?: '/themes/Halo-Theme-Joe3/assets/img/Joe3.png'}"
+                      th:src="${theme.config.carousel.banner_lazyload_img}"
+                      th:alt="${post.spec.title}"
+                    />
+                    <div class="title-row">
+                      <h3 class="title">[[${post.spec.title}]]</h3>
+                      <th:block th:if="${post.status.excerpt != ''}">
+                        <p class="subtitle">[[${post.status.excerpt}]]</p>
+                      </th:block>
+                    </div>
+                    <i class="joe-font joe-icon-zhifeiji"></i>
+                  </a>
+                </div>
+              </th:block>
+            </th:block>
+          </th:block>
+          <!-- 自动获取 -->
+          <th:block
+            th:if="${theme.config.carousel.banner_source == 'uptodate'} and ${not #lists.isEmpty(postFinder.list(1, 5))}"
+          >
+            <th:block th:with="posts = ${postFinder.list(1, 5)}">
+              <th:block th:each="post : ${posts}">
+                <div class="swiper-slide">
+                  <a
+                    class="item"
+                    th:classappend="${post.status.permalink !='' ? 'clickable': ''}"
+                    th:href="${post.status.permalink !='' ? post.status.permalink : 'javascript:;'}"
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                  >
+                    <img
+                      class="thumbnail lazyload"
+                      width="100%"
+                      height="100%"
+                      th:data-src="${post.spec.cover ?: '/themes/Halo-Theme-Joe3/assets/img/Joe3.png'}"
+                      th:src="${theme.config.carousel.banner_lazyload_img}"
+                      th:alt="${post.spec.title}"
+                    />
+                    <div class="title-row">
+                      <h3 class="title">[[${post.spec.title}]]</h3>
+                      <th:block th:if="${post.status.excerpt != ''}">
+                        <p class="subtitle">[[${post.status.excerpt}]]</p>
+                      </th:block>
+                    </div>
+                    <i class="joe-font joe-icon-zhifeiji"></i>
+                  </a>
+                </div>
+              </th:block>
             </th:block>
           </th:block>
         </div>
