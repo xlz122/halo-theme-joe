@@ -1273,7 +1273,7 @@ spec:
         - $formkit: attachment
           name: fallback_thumbnail
           label: 文章错误缺省图
-          value: "/themes/Halo-Theme-Joe3/templates/assets/img/default_thumbnail.png"
+          value: "/themes/Halo-Theme-Joe3/templates/assets/img/Joe3.png"
           help: "文章图片加载出错时生效, 可使用占位图服务(350*200)"
  
     - group: post
