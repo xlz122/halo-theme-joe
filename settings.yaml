@@ -2271,15 +2271,6 @@ spec:
           label: 自定义JS(body)
           value: ""
           help: "填入JS代码, 无需script标签, 将插入body标签尾部"
-        - $formkit: radio
-          name: show_loaded_time
-          label: 控制台输出页面加载耗时
-          value: false
-          options:
-            - value: true
-              label: 是
-            - value: false
-              label: 否
 
     - group: other
       label: 其他
@@ -2321,3 +2312,12 @@ spec:
               label: 开启
             - value: false
               label: 关闭
+        - $formkit: radio
+          name: show_loaded_time
+          label: 控制台输出页面加载耗时
+          value: false
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否
