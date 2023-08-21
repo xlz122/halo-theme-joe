@@ -446,11 +446,22 @@ spec:
               label: 立方体
             - value: coverflow
               label: 封面
+            - value: flip
+              label: 翻转
+            - value: cards
+              label: 卡片
+            - value: creative
+              label: 创意
         - $formkit: number
           name: banner_speed
           label: 切换速度
           value: 500
           help: "设置轮播图的切换速度, 默认500(单位: 毫秒)"
+        - $formkit: number
+          name: banner_space_between
+          label: 轮播图左右间距
+          value: 0
+          help: "设置轮播图的左右间距, 默认 0"
         - $formkit: select
           name: enable_banner_loop
           label: 循环播放
