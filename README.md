@@ -7,7 +7,7 @@
 
 ## 项目简介
 > Halo Theme Joe3 是一款 [Halo2.0](https://halo.run/) 的博客主题  
-> 由[halo-theme-joe2.0](https://github.com/qinhua/halo-theme-joe2.0)适配而来，感谢原作者的无私奉献
+> 由[halo-theme-joe2.0](https://github.com/qinhua/halo-theme-joe2.0)适配而来，感谢原作者的无私奉献    
 > 由[halo-theme-joe3.0](https://github.com/jiewenhuang/halo-theme-joe3.0)适配而来，感谢原作者的无私奉献
 
 ## 加入项目
