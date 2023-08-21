@@ -10,8 +10,8 @@ spec:
         - $formkit: text
           name: content_max_width
           label: 内容区域最大宽度
-          value: "1320px"
-          help: "限制内容区域的宽度, 像素或百分比, 默认1320px"
+          value: ""
+          help: "限制内容区域的宽度, 像素或百分比"
         - $formkit: select
           name: enable_random_img_api
           id: enable_random_img_api
@@ -291,8 +291,8 @@ spec:
         - $formkit: text
           name: navbar_max_width
           label: 导航条最大宽度
-          value: ""
-          help: "限制导航条的宽度, 像素或百分比, 默认跟随内容区域宽度(基本设置 - 内容区域宽度)"
+          value: "1140px"
+          help: "限制导航条的宽度, 像素或百分比, 默认1140px"
         - $formkit: select
           name: show_logo
           id: show_logo
@@ -321,7 +321,7 @@ spec:
           id: enable_navbar_icon
           label: 开启菜单图标
           value: false
-          help: "导航条菜单默认展示后台配置的图标, 若不需要可以在这里统一关闭"
+          help: "导航条展示后台配置的图标, 若不需要可以在这里统一关闭, 图标类名查看: https://bbchin.com/iconfont-joe2.0/"
           options:
             - value: true
               label: 开启
@@ -413,14 +413,25 @@ spec:
               label: 开启
             - value: false
               label: 关闭
-        - $formkit: repeater
+        - $formkit: select
           name: banner_source
-          label: 轮播图文章
+          id: banner_source
+          label: 数据来源
+          value: "manual"
+          help: "主题提供了 2 种数据来源, 默认手动配置(需要自己在下面配置轮播数据), 其它会自动去获取数据(最大5条数据)"
+          options:
+            - value: manual
+              label: 手动配置
+            - value: uptodate
+              label: 最新文章
+        - $formkit: repeater
+          name: banner_manual
+          label: 手动配置轮播数据
           value: []
           children:
             - $formkit: postSelect
               name: posts
-              label: 选择要推荐的文章(至少两个)
+              label: 选择要推荐的文章
               value: ""
         - $formkit: select
           name: banner_direction
