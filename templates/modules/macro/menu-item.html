@@ -2,7 +2,8 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
   <th:block th:fragment="menu-item(menuItem)">
     <a
-      class="item" th:href="@{${menuItem.status.href}}"
+      class="item"
+      th:href="@{${menuItem.status.href}}"
       th:target="${menuItem.spec.target?.value}"
       th:title="${menuItem.status.displayName}"
     >
