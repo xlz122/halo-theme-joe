@@ -1001,22 +1001,22 @@ spec:
           label: 歌单ID
           help: "为音乐播放器配置歌单ID, 大家在网页歌单页直接复制地址栏id参数后面那串数字即可, 不填或填错将不会展示播放器(注意: 仅支持网易云歌单ID, 且不支持私密歌单)"
           value: ""
+        - $formkit: select
+          name: enable_lifetime
+          id: enable_lifetime
+          label: 展示人生倒计时
+          value: true
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否
         - $formkit: radio
           name: enable_tag_cloud
           id: enable_tag_cloud
           label: 展示标签云
           value: false
           help: "在侧边栏展示标签云, 默认关闭以节省性能"
-          options:
-            - value: true
-              label: 是
-            - value: false
-              label: 否
-        - $formkit: select
-          name: enable_lifetime
-          id: enable_lifetime
-          label: 展示人生倒计时
-          value: true
           options:
             - value: true
               label: 是
