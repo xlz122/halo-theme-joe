@@ -133,9 +133,10 @@
             <th:block th:replace="~{modules/common/aside :: aside}" />
           </th:block>
         </div>
-        <!--    action-->
         <th:block th:replace="~{modules/common/actions :: actions}" />
-        <th:block th:replace="~{modules/common/footer :: footer}" />
+        <th:block th:if="${theme.config.footer.enable_footer}">
+          <th:block th:replace="~{modules/common/footer :: footer}" />
+        </th:block>
       </div>
       <th:block th:replace="~{modules/macro/tail :: tail}" />
     </body>
