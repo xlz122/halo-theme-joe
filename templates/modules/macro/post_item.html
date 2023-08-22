@@ -8,12 +8,12 @@
         <a
           class="thumbnail"
           th:href="${post.status.permalink}"
-          title="${post.title!}"
+          th:title="${post.spec.title}"
           target="_blank"
           rel="noopener noreferrer"
         >
           <th:block
-            th:with="postCover = ${theme.config.basic.enable_random_img_api ? theme.config.basic.random_img_api_url+'?pageid='+post.metadata.name ?: theme.config.home.post_thumbnail}"
+            th:with="postCover = ${theme.config.basic.enable_random_img_api ? theme.config.basic.random_img_api_url+'?pageid='+post.metadata.name : theme.config.home.post_thumbnail}"
           >
             <img
               class="lazyload"
@@ -33,8 +33,8 @@
       <div class="information">
         <a
           class="title"
+          th:title="${post.spec.title}"
           th:href="${post.status.permalink}"
-          title="${post.title}"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -45,8 +45,8 @@
         </a>
         <a
           class="abstract"
-          th:href="${post.status.permalink}"
           th:title="${post.spec.title}"
+          th:href="${post.status.permalink}"
           target="_blank"
           rel="noopener noreferrer"
         >

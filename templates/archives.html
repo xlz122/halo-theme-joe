@@ -58,7 +58,7 @@
                             <a
                               rel="noopener noreferrer"
                               target="_blank"
-                              title="${post.title!}"
+                              th:title="${post.spec.title}"
                               th:href="@{${post.status.permalink}}"
                             >
                               [[${post.spec.title}]]
@@ -94,7 +94,7 @@
                                     th:title="${post.spec.title}"
                                     th:href="@{${post.status.permalink}}"
                                   >
-                                    [[${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}]]：[[${post.spec.title}]]
+                                    [[${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}]]: [[${post.spec.title}]]
                                   </a>
                                 </li>
                               </ol>
@@ -121,7 +121,7 @@
                                       th:title="${post.spec.title}"
                                       th:href="@{${post.status.permalink}}"
                                     >
-                                      [[${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}]]：[[${post.spec.title}]]
+                                      [[${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}]]: [[${post.spec.title}]]
                                     </a>
                                   </li>
                                 </th:block>
