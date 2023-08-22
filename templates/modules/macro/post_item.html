@@ -13,7 +13,7 @@
           rel="noopener noreferrer"
         >
           <th:block
-            th:with="postCover = ${theme.config.basic.enable_random_img_api ? theme.config.basic.random_img_api_url+'?pageid='+post.metadata.name ?: theme.config.home.post_thumbnail}"
+            th:with="postCover = ${theme.config.basic.enable_random_img_api ? theme.config.basic.random_img_api_url+'?pageid='+post.metadata.name : theme.config.home.post_thumbnail}"
           >
             <img
               class="lazyload"
