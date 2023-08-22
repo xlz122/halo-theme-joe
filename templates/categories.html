@@ -38,14 +38,18 @@
                           <th:block th:if="${theme.config.categories.enable_categories_post_num}">
                             <th:block th:replace="~{modules/macro/post_num :: post_num}" />
                           </th:block>
-                          <img
-                            class="image lazyload"
-                            width="100%"
-                            height="120"
-                            th:data-src="${category.spec.cover ?: theme.config.basic.random_img_api_url+'?pageid='+category.metadata.name}"
-                            th:src="${theme.config.theme.lazyload_thumbnail}"
-                            th:alt="${category.spec.displayName}"
-                          />
+                          <th:block
+                            th:with="postCover = ${theme.config.basic.enable_random_img_api ? theme.config.basic.random_img_api_url+'?pageid='+category.metadata.name : theme.config.categories.categories_default_img}"
+                          >
+                            <img
+                              class="image lazyload"
+                              width="100%"
+                              height="120"
+                              th:data-src="${category.spec.cover ?: postCover}"
+                              th:src="${theme.config.categories.categories_lazyload_img}"
+                              th:alt="${category.spec.displayName}"
+                            />
+                          </th:block>
                           <figcaption class="title">[[${category.spec.displayName}]]</figcaption>
                         </figure>
                       </a>
