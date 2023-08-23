@@ -419,7 +419,7 @@ spec:
           id: banner_source
           label: 数据来源
           value: "manual"
-          help: "主题提供了 2 种数据来源, 默认手动配置(需要自己在下面配置轮播数据), 其它会自动去获取数据(最大5条数据)"
+          help: "主题提供了 2 种数据来源, 默认手动配置(需要自己在下面配置轮播数据), 最新文章会自动去获取数据(最大5条数据)"
           options:
             - value: manual
               label: 手动配置
