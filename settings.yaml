@@ -17,7 +17,7 @@ spec:
           id: enable_random_img_api
           value: false
           label: 全局随机缩略图
-          help: "是否启用随机图API, 启用之后, 配置缩略图 > 随机缩略图 > 默认缩略图"
+          help: "是否启用随机图API, 启用后优先级为(配置 > 随机 > 默认)"
           options:
             - value: true
               label: 是
@@ -33,7 +33,7 @@ spec:
           name: web_font
           label: 网站字体
           value: "off"
-          help: "优先使用自定义字体"
+          help: "优先使用自定义字体, 自定义字体 > 网站字体 > 默认"
           options:
             - value: "off"
               label: 默认
