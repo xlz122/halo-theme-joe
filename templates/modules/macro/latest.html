@@ -12,8 +12,11 @@
             <th:block th:each="archive : ${archives.items}">
               <th:block th:each="month : ${archive.months}">
                 <li class="item" th:each="post : ${month.posts}">
-                  <a class="link" th:href="@{${post.status.permalink}}" th:text="${post.spec.title}">
-                    ${post.title!}
+                  <a
+                    class="link"
+                    th:href="@{${post.status.permalink}}"
+                    th:text="${post.spec.title}"
+                  >
                   </a>
                   <i class="joe-font joe-icon-link"></i>
                 </li>
