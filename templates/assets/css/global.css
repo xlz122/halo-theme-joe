@@ -4636,7 +4636,6 @@ body:after {
 .joe_detail__article img {
   display: inline-block;
   max-width: var(--img-max-width) !important;
-  cursor: zoom-in;
   margin: 5px 0;
   border-radius: var(--radius-img);
   transition: transform 0.35s, box-shadow 0.35s;
