@@ -51,7 +51,7 @@
   bottom: 0;
   left: 0;
   z-index: 1;
-  padding: 10px 80px 10px 14px;
+  padding: 10px 120px 10px 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -91,7 +91,7 @@
 
 .joe_index__banner .swiper-container .swiper-pagination {
   left: auto;
-  right: 18px;
+  right: 10px;
   width: 200px;
   text-align: right;
 }
