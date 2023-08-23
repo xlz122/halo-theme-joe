@@ -18,11 +18,11 @@
         font-weight: 400;
         font-style: normal;
         font-display: swap;
+        [# th:if="${theme.config.basic.web_font != 'off'}"]
+        src: url("/themes/Halo-Theme-Joe3/assets/font/[[${theme.config.basic.web_font}]]") format("woff2");
+        [/]
         [# th:if="${theme.config.custom.custom_font != ''} and ${theme.config.custom.custom_font != null}"]
         src: url("[[${theme.config.custom.custom_font}]]") format("woff2");
-        [/]
-        [# th:if="${theme.config.basic.web_font != 'off'} and (${theme.config.custom.custom_font != null} or ${theme.config.custom.custom_font != ''})"]
-        src: url("/themes/Halo-Theme-Joe3/assets/font/[[${theme.config.basic.web_font}]]") format("woff2");
         [/]
       }
       html body {

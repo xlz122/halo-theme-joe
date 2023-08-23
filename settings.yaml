@@ -7,6 +7,18 @@ spec:
     - group: basic
       label: 基本设置
       formSchema:
+        - $formkit: select
+          name: web_font
+          label: 网站字体
+          value: "off"
+          help: "优先使用自定义字体, 优先级为(自定义字体 > 网站字体 > 默认)"
+          options:
+            - value: "off"
+              label: 默认
+            - value: "joe_slate.woff2"
+              label: "Joe Slate"
+            - value: "joe_future.woff2"
+              label: "Joe Future"
         - $formkit: text
           name: content_max_width
           label: 内容区域最大宽度
@@ -16,31 +28,19 @@ spec:
           name: enable_random_img_api
           id: enable_random_img_api
           value: false
-          label: 全局随机缩略图
-          help: "是否启用随机图API, 启用后优先级为(配置 > 随机 > 默认)"
+          label: 开启全局随机缩略图
+          help: "是否开启随机图API, 优先级为(配置 > 随机 > 默认)"
           options:
             - value: true
-              label: 是
+              label: 开启
             - value: false
-              label: 否
+              label: 关闭
         - $formkit: text
           if: "$get(enable_random_img_api).value"
           name: random_img_api_url
           value: "https://imgapi.xl0408.top/index.php"
           label: 随机图api
           help: "填入正确的随机图api地址, 默认 https://imgapi.xl0408.top/index.php"
-        - $formkit: select
-          name: web_font
-          label: 网站字体
-          value: "off"
-          help: "优先使用自定义字体, 自定义字体 > 网站字体 > 默认"
-          options:
-            - value: "off"
-              label: 默认
-            - value: "joe_slate.woff2"
-              label: "Joe Slate"
-            - value: "joe_future.woff2"
-              label: "Joe Future"
 
     - group: theme
       label: 主题相关
@@ -72,9 +72,9 @@ spec:
           help: "开启后, 需要配置好浅色模式背景图后才有效"
           options:
             - value: true
-              label: 是
+              label: 开启
             - value: false
-              label: 否
+              label: 关闭
         - $formkit: attachment
           if: "$get(enable_background_light).value"
           name: background_light_mode
@@ -94,9 +94,9 @@ spec:
           help: "开启后, 需要配置好暗黑模式背景图后才有效"
           options:
             - value: true
-              label: 是
+              label: 开启
             - value: false
-              label: 否
+              label: 关闭
         - $formkit: attachment
           if: "$get(enable_background_dark).value"
           name: background_dark_mode
@@ -188,7 +188,7 @@ spec:
               label: 上升的气球
         - $formkit: select
           name: enable_loading_bar
-          label: 页面顶部加载条
+          label: 开启页面顶部加载条
           value: true
           help: "是否开启页面顶部的加载条"
           options:
@@ -231,7 +231,7 @@ spec:
           id: enable_back2top
           label: 开启返回顶部
           value: true
-          help: "是否开启返回顶部功能"
+          help: "开启返回顶部功能"
           options:
             - value: true
               label: 开启
@@ -240,14 +240,14 @@ spec:
         - $formkit: select
           if: "$get(enable_back2top).value"
           name: enable_back2top_smooth
-          label: 是否平滑返回顶部
+          label: 是否开启平滑返回顶部
           value: true
           help: "点击返回顶部按钮后, 是否平滑的返回顶部, 关闭后则没有任何过渡效果"
           options:
             - value: true
-              label: 是
+              label: 开启
             - value: false
-              label: 否
+              label: 关闭
         - $formkit: select
           name: enable_offscreen_tip
           id: enable_offscreen_tip
@@ -281,7 +281,7 @@ spec:
           value: ""
         - $formkit: select
           name: enable_fixed_header
-          label: 导航条吸顶
+          label: 开启导航条吸顶
           value: true
           help: "开启后, 当页面滚动时, 导航条会始终固定在可视区域顶部(默认只在向上滚动时显示, 移动端强制吸顶展示)"
           options:
@@ -297,7 +297,7 @@ spec:
         - $formkit: select
           name: show_logo
           id: show_logo
-          label: 展示博客LOGO
+          label: 开启展示博客LOGO
           value: false
           help: "导航条是否展示博客LOGO"
           options:
@@ -366,7 +366,7 @@ spec:
         - $formkit: select
           name: enable_big_banner
           id: enable_big_banner
-          label: 顶部大图
+          label: 开启顶部大图
           value: false
           help: "不启用的情况下, 下面配置均无效"
           options:
@@ -387,7 +387,7 @@ spec:
         - $formkit: select
           name: enable_big_banner_video
           id: enable_big_banner_video
-          label: 是否启用视频背景
+          label: 开启视频背景
           value: false
           options:
             - value: true
@@ -406,7 +406,7 @@ spec:
         - $formkit: select
           name: enable_banner
           id: enable_banner
-          label: 启用轮播图
+          label: 开启轮播图
           value: false
           help: "不启用的情况下, 下面配置均无效"
           options:
@@ -948,16 +948,16 @@ spec:
               label: 是
             - value: false
               label: 否
-        - $formkit: attachment
-          if: "$get(enable_qrcode).value"
-          name: qrcode_url
-          label: 二维码图片
-          value: ""
         - $formkit: text
           if: "$get(enable_qrcode).value"
           name: qrcode_title
           label: 二维码标题
           value: "我的二维码"
+        - $formkit: attachment
+          if: "$get(enable_qrcode).value"
+          name: qrcode_url
+          label: 二维码图片
+          value: ""
         - $formkit: textarea
           if: "$get(enable_qrcode).value"
           name: qrcode_description
@@ -2275,45 +2275,25 @@ spec:
       label: 自定义
       formSchema:
         - $formkit: attachment
-          name: favicon
-          label: 自定义favicon
-          value: ""
-          help: "覆盖博客默认的favicon图标, 尺寸64*64, 格式jpg、png等"
-        - $formkit: attachment
           name: custom_font
           label: 自定义网站字体
           value: ""
-          help: "修改网站使用的字体, 请填入字体文件的链接(考虑兼容, 建议woff2 格式字体, 最好放CDN链接, 另外主题无法保证使用自定义字体后的页面样式)"
+          help: "修改网站使用的字体, 请填入字体文件的链接(考虑兼容, 建议 woff2 格式字体, 最好放CDN链接, 另外主题无法保证使用自定义字体后的页面样式)"
         - $formkit: text
           name: iconfont
           label: 字体图标链接
           value: ""
           help: "填入iconfont生成的图标链接, 无需link标签, 将插入head标签尾部"
-        - $formkit: text
-          name: external_css
-          label: 外部CSS链接
-          value: ""
-          help: "填入外部CSS链接, 无需link标签, 将插入head标签尾部"
         - $formkit: textarea
           name: custom_css
-          label: 自定义CSS
+          label: 自定义CSS(head)
           value: ""
           help: "填入CSS代码, 无需style标签, 将插入head标签尾部"
-        - $formkit: text
-          name: custom_external_js_head
-          label: 外部JS链接(head)
-          value: ""
-          help: "填入外部JS链接, 需要script标签, 可按情况指定async和defer属性, 将插入head标签尾部"
         - $formkit: textarea
           name: custom_js_head
           label: 自定义JS(head)
           value: ""
           help: "填入JS代码, 无需script标签, 将插入head标签尾部"
-        - $formkit: text
-          name: custom_external_js_body
-          label: 外部JS链接(body)
-          value: ""
-          help: "填入外部JS链接, 无需script标签, 将插入body标签尾部(可用于添加插件等)"
         - $formkit: textarea
           name: custom_js_body
           label: 自定义JS(body)

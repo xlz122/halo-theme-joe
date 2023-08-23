@@ -27,8 +27,12 @@
             <span class="text">[[${theme.config.aside.qrcode_title}]]</span>
           </div>
           <div class="joe_aside__item-contain">
-            <img class="qrcode_img lazyload" th:src="${theme.config.aside.qrcode_url}"
-              th:data-src="${theme.config.aside.qrcode_url}" alt="二维码" />
+            <img
+              class="qrcode_img lazyload"
+              th:src="${theme.config.aside.qrcode_url}"
+              th:data-src="${theme.config.aside.qrcode_url}"
+              alt="二维码"
+            />
             <th:block th:if="${theme.config.aside.qrcode_description != ''}">
               <p class="qrcode_description">[[${theme.config.aside.qrcode_description}]]</p>
             </th:block>
@@ -58,7 +62,7 @@
       <th:block th:if="${theme.config.aside.enable_newest_post}">
         <th:block th:replace="~{modules/macro/latest :: latest}" />
       </th:block>
-      <th:block th:if="${theme.config.other.enable_clean_mode !=true and theme.config.aside.show_newreply == true}">
+      <th:block th:if="${theme.config.other.enable_clean_mode != true and theme.config.aside.show_newreply == true}">
         <section class="joe_aside__item newreply">
           <div class="joe_aside__item-title">
             <i class="joe-font joe-icon-message"></i>
@@ -105,12 +109,15 @@
           <div class="joe_aside__item-title">
             <i class="joe-font joe-icon-tag"></i>
             <span class="text">标签云</span>
-            <a class="tags_more" th:href="@{/tags}">更多<i class="joe-font joe-icon-more-right"></i></a>
+            <a class="tags_more" th:href="@{/tags}">
+              更多
+              <i class="joe-font joe-icon-more-right"></i>
+            </a>
           </div>
           <div class="joe_aside__item-contain">
             <div
-              th:class="'tags-cloud-list'+${theme.config.aside.tag_cloud_width =='responsive' ? 'responsive':''}"
-              th:style="${theme.config.aside.tag_cloud_type == '3d' ? 'display:none':''}"
+              th:class="'tags-cloud-list'+${theme.config.aside.tag_cloud_width =='responsive' ? 'responsive' : ''}"
+              th:style="${theme.config.aside.tag_cloud_type == '3d' ? 'display:none' : ''}"
             >
               <th:block th:with="tags = ${tagFinder.listAll()}">
                 <a th:each="tag : ${tags}" th:data-url="@{${tag.status.permalink}}"

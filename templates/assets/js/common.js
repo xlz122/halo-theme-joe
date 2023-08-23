@@ -850,16 +850,6 @@ const commonContext = {
 			`/themes/Halo-Theme-Joe3/assets/effect/backdrop/${ThemeConfig.backdrop}.js`
 		);
 	},
-	/* 自定义favicon */
-	setFavicon() {
-		if (!ThemeConfig.favicon) return;
-		const favicon = new Favico();
-		const image = new Image();
-		image.onload = function () {
-			favicon.image(image);
-		};
-		image.src = ThemeConfig.favicon;
-	},
 	/* 首页离屏提示 */
 	offscreenTip() {
 		if (Joe.isMobile || !ThemeConfig.enable_offscreen_tip) return;

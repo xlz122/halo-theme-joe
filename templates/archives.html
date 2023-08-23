@@ -1,4 +1,3 @@
-<!-- 文章归档 -->
 <!DOCTYPE html>
 <html
   lang="en"
@@ -9,13 +8,12 @@
     <body>
       <div id="Joe">
         <th:block th:replace="~{modules/macro/navbar :: navbar}" />
-        <!-- 首页大图 -->
         <th:block th:if="${theme.config.beauty.enable_big_banner}">
           <th:block th:replace="~{modules/macro/big_banner :: big_banner(${title})}" />
         </th:block>
         <div
           class="joe_container joe_main_container page-archives"
-          th:classappend="|${theme.config.theme.enable_show_in_up ?'animated showInUp':''} ${theme.config.aside.aside_position == 'left' ? 'revert':''}|"
+          th:classappend="|${theme.config.theme.enable_show_in_up ? 'animated showInUp' : ''} ${theme.config.aside.aside_position == 'left' ? 'revert' : ''}|"
         >
           <div class="joe_main">
             <div class="joe_index joe_archives__filing">
@@ -28,8 +26,8 @@
                       <li class="item" th:each="category : ${categories}">
                         <a
                           class="link"
-                          th:href="@{${category.status.permalink}}"
                           th:title="${category.spec.displayName}"
+                          th:href="@{${category.status.permalink}}"
                         >
                           <span th:title="${category.spec.displayName}">[[${category.spec.displayName}]]</span>
                           <em>[[${category.status.postCount}]]</em>
@@ -43,23 +41,23 @@
                     <th:block th:if="${theme.config.archives.archives_list_type == 'timeline'}">
                       <i class="joe-font joe-icon-timeline"></i>
                       时间轴
-                      <em>[[${theme.config.archives.archives_timeline_metric == 'month' ? '(月)':'(年)'}]]</em>
+                      <em>[[${theme.config.archives.archives_timeline_metric == 'month' ? '(月)' : '(年)'}]]</em>
                     </th:block>
                     <th:block th:if="${theme.config.archives.archives_list_type == 'list'}">
                       <i class="joe-font joe-icon-rili"></i>
                       列表
                     </th:block>
                   </div>
-                  <th:block th:if="${theme.config.archives.archives_list_type =='list'}">
+                  <th:block th:if="${theme.config.archives.archives_list_type == 'list'}">
                     <ul class="joe_archives-list">
                       <th:block th:each="archive : ${archives.items}">
                         <th:block th:each="month : ${archive.months}">
                           <li class="item" th:each="post : ${month.posts}">
                             <a
-                              rel="noopener noreferrer"
-                              target="_blank"
                               th:title="${post.spec.title}"
                               th:href="@{${post.status.permalink}}"
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
                               [[${post.spec.title}]]
                             </a>
@@ -70,7 +68,7 @@
                     </ul>
                     <th:block th:replace="~{modules/common/pagination :: archives}" />
                   </th:block>
-                  <th:block th:if="${theme.config.archives.archives_list_type =='timeline'}">
+                  <th:block th:if="${theme.config.archives.archives_list_type == 'timeline'}">
                     <ul class="joe_archives-timelist" th:with="allArchives = ${postFinder.archives(1,9999)}">
                       <th:block th:each="archive : ${allArchives.items}">
                         <th:block
@@ -89,10 +87,10 @@
                               <ol class="panel-body">
                                 <li th:each="post : ${month.posts}">
                                   <a
-                                    rel="noopener noreferrer"
-                                    target="_blank"
                                     th:title="${post.spec.title}"
                                     th:href="@{${post.status.permalink}}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                   >
                                     [[${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}]]: [[${post.spec.title}]]
                                   </a>
@@ -116,10 +114,10 @@
                                   th:each="month : ${archive.months}">
                                   <li th:each="post : ${month.posts}">
                                     <a
-                                      rel="noopener noreferrer"
-                                      target="_blank"
                                       th:title="${post.spec.title}"
                                       th:href="@{${post.status.permalink}}"
+                                      target="_blank"
+                                      rel="noopener noreferrer"
                                     >
                                       [[${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}]]: [[${post.spec.title}]]
                                     </a>
