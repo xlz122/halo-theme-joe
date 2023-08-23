@@ -2275,15 +2275,10 @@ spec:
       label: 自定义
       formSchema:
         - $formkit: attachment
-          name: favicon
-          label: 自定义favicon
-          value: ""
-          help: "覆盖博客默认的favicon图标, 尺寸64*64, 格式jpg、png等"
-        - $formkit: attachment
           name: custom_font
           label: 自定义网站字体
           value: ""
-          help: "修改网站使用的字体, 请填入字体文件的链接(考虑兼容, 建议woff2 格式字体, 最好放CDN链接, 另外主题无法保证使用自定义字体后的页面样式)"
+          help: "修改网站使用的字体, 请填入字体文件的链接(考虑兼容, 建议 woff2 格式字体, 最好放CDN链接, 另外主题无法保证使用自定义字体后的页面样式)"
         - $formkit: text
           name: iconfont
           label: 字体图标链接
