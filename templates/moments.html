@@ -1,4 +1,3 @@
-<!-- 瞬间页 -->
 <!DOCTYPE html>
 <html
   lang="en"
@@ -11,7 +10,7 @@
         <th:block th:replace="~{modules/macro/navbar :: navbar}" />
         <div
           class="joe_container joe_main_container page-journals"
-          th:classappend="|${theme.config.theme.enable_show_in_up ? 'animated showInUp':''} ${theme.config.aside.aside_position == 'left' ? 'revert':''}|"
+          th:classappend="|${theme.config.theme.enable_show_in_up ? 'animated showInUp' : ''} ${theme.config.aside.aside_position == 'left' ? 'revert' : ''}|"
         >
           <div class="joe_main">
             <div class="joe_detail">
@@ -29,9 +28,9 @@
               <div class="joe_detail__count">
                 <div class="joe_detail__count-information">
                   <img
+                    class="avatar lazyload"
                     width="35"
                     height="35"
-                    class="avatar lazyload"
                     th:data-src="${theme.config.blogger.avatar ?: theme.config.blogger.default_avatar}"
                     th:src="${theme.config.blogger.lazyload_avatar}"
                     th:alt="${theme.config.blogger.nickname ?: site.title}"
@@ -40,8 +39,8 @@
                     <div class="author">
                       <a
                         class="link"
-                        th:href="'/moments'"
                         th:title="${theme.config.blogger.nickname ?: site.title}"
+                        th:href="'/moments'"
                       >
                         [[${theme.config.blogger.nickname ?: site.title}]]
                       </a>
@@ -50,22 +49,24 @@
                       <span class="text">[[${theme.config.blogger.motto ?: '一句话介绍自己吧！'}]]</span>
                       <th:block th:if="${theme.config.other.check_baidu_collect}">
                         <span class="line">/</span>
-                        <span class="text" id="joe_baidu_record">正在检测是否收录...</span>
+                        <span id="joe_baidu_record" class="text">正在检测是否收录...</span>
                       </th:block>
                     </div>
                   </div>
                 </div>
               </div>
               <th:block th:replace="~{modules/macro/loading :: loading}" />
-              <ul class="joe_journals__list hidden"
-                th:classappend="${theme.config.journals.enable_journal_effect ? 'effects':''}">
+              <ul
+                class="joe_journals__list hidden"
+                th:classappend="${theme.config.journals.enable_journal_effect ? 'effects' : ''}"
+              >
                 <th:block th:each="moment,iteration : ${moments.items}" th:with="content=${moment.spec.content}">
                   <li
                     class="joe_journal__item animated wow"
                     th:data-wow-delay="'0.'+${iteration.index}+'s'"
                     th:data-cid="${moment.metadata.name}"
                     th:data-clikes="${moment.stats.upvote}"
-                    >
+                  >
                     <p class="joe_journal_date">
                       <i class="joe-font joe-icon-feather"></i>
                       <em class="joe_journal-posttime">
@@ -75,8 +76,8 @@
                     <div class="joe_journal_block">
                       <div
                         class="joe_journal_body"
+                        th:classappend="${(theme.config.code_block.enable_code_line_number == true &&theme.config.code_block.enable_code_newline!=true) ? 'line-numbers' : ''}"
                         th:style="'max-height:'+${theme.config.journals.journal_block_height?: '300'}+'px'"
-                        th:classappend="${(theme.config.code_block.enable_code_line_number == true &&theme.config.code_block.enable_code_newline!=true) ?'line-numbers':''}"
                       >
                         <div class="content-wrp">
                           <th:block th:utext="${content.html}"></th:block>

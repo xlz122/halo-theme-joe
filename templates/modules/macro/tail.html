@@ -50,11 +50,6 @@
     <th:block th:if="${htmlType == 'photos'}">
       <script th:src="@{/assets/lib/justifiedGallery/justifiedGallery.min.js}"></script>
     </th:block>
-    <th:block
-      th:if="${theme.config.custom.favicon == true && theme.config.custom.favicon != null && theme.config.custom.favicon != ''}"
-    >
-      <script th:src="@{/assets/lib/favico/favico.min.js}"></script>
-    </th:block>
     <th:block th:if="${theme.config.aside.show_newreply == true} or ${htmlType == 'sheet'}">
       <script th:src="@{/assets/lib/j-marked/marked.min.js}"></script>
     </th:block>
@@ -87,19 +82,13 @@
       <script th:src="@{/assets/lib/draggabilly/draggabilly.min.js}"></script>
       <script th:src="@{/assets/js/leaving.js}"></script>
     </th:block>
-    <!--页面级js end -->
+    <!-- 页面级js end -->
 
     <!-- 卜算子 -->
     <th:block th:if="${theme.config.footer.enable_busuanzi}">
       <script th:src="@{/assets/lib/busuanzi/busuanzi.min.js}"></script>
     </th:block>
 
-    <!-- 自定义外部js -->
-    <th:block
-      th:if="${theme.config.custom.custom_external_js_body != null} and ${theme.config.custom.custom_external_js_body != ''}"
-    >
-      <script th:src="${theme.config.custom.custom_external_js_body}"></script>
-    </th:block>
     <!-- 自定义js -->
     <th:block th:if="${theme.config.custom.custom_js_body != null} and ${theme.config.custom.custom_js_body != ''}">
       <script type="text/javascript" th:inline="javascript">/*[[${theme.config.custom.custom_js_body}]]*/</script>
