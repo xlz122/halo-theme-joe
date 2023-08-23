@@ -14,7 +14,13 @@
           <th>
             <i class="joe-font joe-icon-caidan joe_header__above-slideicon"></i>
             <th th:if="${theme.config.navbar.show_logo}">
-              <a class="joe_header__above-logo" th:title="${site.title}" th:href="${site.url}">
+              <a
+                class="joe_header__above-logo"
+                th:title="${site.title}"
+                th:href="${theme.config.navbar.logo_link ?: site.url}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   th:src="${site.logo}"
                   th:alt="${site.title}"
