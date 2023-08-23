@@ -16,6 +16,7 @@ const homeContext = {
           ? {
             delay: Number(ThemeConfig.banner_delay),
             disableOnInteraction: false,
+            pauseOnMouseEnter: true
           }
           : false,
         grabCursor: ThemeConfig.enable_banner_handle,
