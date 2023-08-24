@@ -948,16 +948,16 @@ spec:
               label: 是
             - value: false
               label: 否
-        - $formkit: attachment
-          if: "$get(enable_qrcode).value"
-          name: qrcode_url
-          label: 二维码图片
-          value: ""
         - $formkit: text
           if: "$get(enable_qrcode).value"
           name: qrcode_title
           label: 二维码标题
           value: "我的二维码"
+        - $formkit: attachment
+          if: "$get(enable_qrcode).value"
+          name: qrcode_url
+          label: 二维码图片
+          value: ""
         - $formkit: textarea
           if: "$get(enable_qrcode).value"
           name: qrcode_description
