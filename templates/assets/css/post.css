@@ -28,7 +28,8 @@
 
 .joe_bread__bread .line {
   color: var(--seat);
-  padding: 0 5px
+  padding: 0 5px;
+  margin-top: 3px;
 }
 
 .joe_bread__bread .item {
@@ -49,7 +50,8 @@
 }
 
 .joe_bread__bread .item .joe-font {
-  margin-right: 3px
+  margin-top: 2px;
+  margin-right: 3px;
 }
 
 .joe_bread__bread .item:first-child {

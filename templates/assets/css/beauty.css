@@ -209,7 +209,8 @@
 }
 
 .evan-big-banner_goto .index-goto-icon {
-  font-size: 24px;
+  font-size: 26px;
+  font-weight: bold;
   color: #fff;
   animation: aniIndexGotoIcon 2s ease-in-out infinite;
   display: inline-block
