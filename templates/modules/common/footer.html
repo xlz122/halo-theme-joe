@@ -3,11 +3,11 @@
   <th:block th:fragment="footer">
     <footer
       class="joe_footer"
-      th:classappend="|${theme.config.footer.footer_position == 'fixed'? 'fixed' :''} ${theme.config.footer.enable_full_footer ? 'full' :''} |"
+      th:classappend="|${theme.config.footer.footer_position == 'fixed' ? 'fixed' : ''} ${theme.config.footer.enable_full_footer ? 'full' : ''} |"
     >
       <div
         class="joe_container"
-        th:classappend="${theme.config.footer.enable_rss == false} and ${theme.config.footer.enable_rss ==false} ?'central':''"
+        th:classappend="${theme.config.footer.enable_rss == false} and ${theme.config.footer.enable_rss ==false} ? 'central' : ''"
       >
         <div class="item">
           <p>
@@ -64,8 +64,11 @@
               <p class="site_driven">
                 本站点由
                 <a href="https://www.aliyun.com" target="_blank" rel="noopener noreferrer nofollow">
-                  <img th:class="${theme.config.footer.driven_by}"
-                    th:src="@{/assets/img/cloud}+'/'+${theme.config.footer.driven_by}+'.svg'" alt="云服务商" />
+                  <img
+                    th:class="${theme.config.footer.driven_by}"
+                    th:src="@{/assets/img/cloud}+'/'+${theme.config.footer.driven_by}+'.svg'"
+                    alt="云服务商"
+                  />
                 </a>
                 提供云服务
               </p>
@@ -74,8 +77,11 @@
               <p class="site_driven">
                 本站点由
                 <a href="https://cloud.tencent.com" target="_blank" rel="noopener noreferrer nofollow">
-                  <img th:class="${theme.config.footer.driven_by}"
-                    th:src="@{/assets/img/cloud}+'/'+${theme.config.footer.driven_by}+'.svg'" alt="云服务商" />
+                  <img
+                    th:class="${theme.config.footer.driven_by}"
+                    th:src="@{/assets/img/cloud}+'/'+${theme.config.footer.driven_by}+'.svg'"
+                    alt="云服务商"
+                  />
                 </a>
                 提供云服务
               </p>
@@ -84,8 +90,11 @@
               <p class="site_driven">
                 本站点由
                 <a href="https://cloud.baidu.com" target="_blank" rel="noopener noreferrer nofollow">
-                  <img th:class="${theme.config.footer.driven_by}"
-                    th:src="@{/assets/img/cloud}+'/'+${theme.config.footer.driven_by}+'.svg'" alt="云服务商" />
+                  <img
+                    th:class="${theme.config.footer.driven_by}"
+                    th:src="@{/assets/img/cloud}+'/'+${theme.config.footer.driven_by}+'.svg'"
+                    alt="云服务商"
+                  />
                 </a>
                 提供云服务
               </p>
@@ -94,8 +103,11 @@
               <p class="site_driven">
                 本站点由
                 <a href="https://www.upyun.com" target="_blank" rel="noopener noreferrer nofollow">
-                  <img th:class="${theme.config.footer.driven_by}"
-                    th:src="@{/assets/img/cloud}+'/'+${theme.config.footer.driven_by}+'.svg'" alt="云服务商" />
+                  <img
+                    th:class="${theme.config.footer.driven_by}"
+                    th:src="@{/assets/img/cloud}+'/'+${theme.config.footer.driven_by}+'.svg'"
+                    alt="云服务商"
+                  />
                 </a>
                 提供云服务
               </p>
@@ -104,8 +116,11 @@
               <p class="site_driven">
                 本站点由
                 <a href="https://www.qiniu.com" target="_blank" rel="noopener noreferrer nofollow">
-                  <img th:class="${theme.config.footer.driven_by}"
-                    th:src="@{/assets/img/cloud}+'/'+${theme.config.footer.driven_by}+'.svg'" alt="云服务商" />
+                  <img
+                    th:class="${theme.config.footer.driven_by}"
+                    th:src="@{/assets/img/cloud}+'/'+${theme.config.footer.driven_by}+'.svg'"
+                    alt="云服务商"
+                  />
                 </a>
                 提供云服务
               </p>
@@ -114,8 +129,11 @@
               <p class="site_driven">
                 本站点由
                 <a href="https://www.huaweicloud.com" target="_blank" rel="noopener noreferrer nofollow">
-                  <img th:class="${theme.config.footer.driven_by}"
-                    th:src="@{/assets/img/cloud}+'/'+${theme.config.footer.driven_by}+'.svg'" alt="云服务商" />
+                  <img
+                    th:class="${theme.config.footer.driven_by}"
+                    th:src="@{/assets/img/cloud}+'/'+${theme.config.footer.driven_by}+'.svg'"
+                    alt="云服务商"
+                  />
                 </a>
                 提供云服务
               </p>
@@ -124,20 +142,28 @@
               <p class="site_driven">
                 本站点由
                 <a href="https://www.ksyun.com" target="_blank" rel="noopener noreferrer nofollow">
-                  <img th:class="${theme.config.footer.driven_by}"
-                    th:src="@{/assets/img/cloud}+'/'+${theme.config.footer.driven_by}+'.svg'" alt="云服务商" />
+                  <img
+                    th:class="${theme.config.footer.driven_by}"
+                    th:src="@{/assets/img/cloud}+'/'+${theme.config.footer.driven_by}+'.svg'"
+                    alt="云服务商"
+                  />
                 </a>
                 提供云服务
               </p>
             </th:block>
-
-
           </th:block>
           <th:block th:if="${theme.config.footer.enable_birthday}">
             <div class="site_life">
-              <i class="joe-font joe-icon-jiasu"></i>已运行&nbsp;<strong class="joe_run__day">00</strong> 天 <strong
-                class="joe_run__hour">00</strong> 时 <strong class="joe_run__minute">00</strong> 分 <strong
-                class="joe_run__second">00</strong> 秒
+              <i class="joe-font joe-icon-jiasu"></i>
+              已运行&nbsp;
+              <strong class="joe_run__day">00</strong>
+               天 
+              <strong class="joe_run__hour">00</strong>
+               时 
+              <strong class="joe_run__minute">00</strong>
+               分 
+              <strong class="joe_run__second">00</strong>
+               秒
             </div>
           </th:block>
           <th:block

@@ -1,4 +1,3 @@
-<!-- 博主信息 -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
   <th:block th:fragment="blogger">
@@ -14,7 +13,7 @@
       <div class="user">
         <div
           class="avatar_wrapper"
-          th:classappend="${theme.config.blogger.avatar_type == 'circle' ? 'circle':'round'}"
+          th:classappend="${theme.config.blogger.avatar_type == 'circle' ? 'circle' : 'round'}"
         >
           <img
             class="avatar lazyload"
@@ -39,7 +38,6 @@
         </div>
         <a class="link" th:href="${site.url}" target="_blank" rel="noopener noreferrer nofollow">
           [[${theme.config.blogger.nickname ?: site.title}]]
-          <!--这里应该还有一个等级-->
         </a>
         <th:block th:if="${theme.config.blogger.motto != ''}">
           <p class="motto joe_motto">[[${theme.config.blogger.motto}]]</p>
@@ -55,7 +53,7 @@
         </th:block>
       </div>
       <div class="count" th:with="stats = ${siteStatsFinder.getStats()}">
-        <!--搭配A-->
+        <!--搭配-->
         <th:block th:if="${theme.config.blogger.overview_type == 'A'}">
           <div class="item" th:title="'累计分类数 '+${stats.category}">
             <span class="num">[[${stats.category}]]</span>
@@ -72,7 +70,6 @@
             <span>文章数</span>
           </div>
         </th:block>
-        <!--搭配B-->
         <th:block th:if="${theme.config.blogger.overview_type == 'B'}">
           <div class="item" th:title="'累计分类数 '+${stats.category}">
             <span class="num">[[${stats.category}]]</span>
@@ -89,7 +86,6 @@
             <span>评论数</span>
           </div>
         </th:block>
-        <!--搭配C-->
         <th:block th:if="${theme.config.blogger.overview_type == 'C'}">
           <div class="item" th:title="'累计分类数 '+${stats.category}">
             <span class="num">[[${stats.category}]]</span>
@@ -104,11 +100,9 @@
             <span>评论数</span>
           </div>
         </th:block>
-        <!--搭配D-->
         <th:block th:if="${theme.config.blogger.overview_type == 'D'}">
-
           <th:block th:with="tags = ${tagFinder.listAll()}">
-            <div th:with="tagNum = ${#lists.size(tags)}" class="item" th:title="'累计标签数 '+${tagNum}">
+            <div class="item" th:with="tagNum = ${#lists.size(tags)}" th:title="'累计标签数 '+${tagNum}">
               <span class="num">[[${tagNum}]]</span>
               <span>标签数</span>
             </div>
@@ -124,7 +118,7 @@
           </div>
         </th:block>
       </div>
-      <th:block th:if="${theme.config.blogger.enable_weather and theme.config.blogger.weather_key !=''}">
+      <th:block th:if="${theme.config.blogger.enable_weather and theme.config.blogger.weather_key != ''}">
         <div id="he-plugin-simple"></div>
       </th:block>
       <th:block th:if="${theme.config.blogger.enable_social} and ${not #lists.isEmpty(theme.config.blogger.socials)}">

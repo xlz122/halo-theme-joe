@@ -22,9 +22,9 @@
               <li class="item animated fadeIn">
                 <a
                   class="link"
-                  target="_blank"
-                  th:href="@{${category.status.permalink}}"
                   th:title="${category.spec.displayName}"
+                  th:href="@{${category.status.permalink}}"
+                  target="_blank"
                 >
                   <figure class="inner">
                     <img
@@ -47,11 +47,17 @@
         <ul class="joe_index__hot-list hotlist">
           <th:block th:each="customData : ${theme.config.home.custom_data}">
             <li class="item animated fadeIn">
-              <a class="link" target="_blank" th:href="${customData.url}" th:title="${customData.title}">
+              <a class="link" th:title="${customData.title}" th:href="${customData.url}" target="_blank">
                 <figure class="inner">
-                  <img width="100%" height="120" class="image ls-is-cached lazyloaded"
-                    th:data-src="@{/assets/img/hot_cover1.jpg}" th:src="${customData.cover}" onerror="Joe.errorImg(this)"
-                    th:alt="${customData.title}">
+                  <img
+                    class="image ls-is-cached lazyloaded"  
+                    width="100%"
+                    height="120"
+                    th:data-src="@{/assets/img/hot_cover1.jpg}"
+                    th:src="${customData.cover}"
+                    onerror="Joe.errorImg(this)"
+                    th:alt="${customData.title}"
+                  />
                   <figcaption class="title">[[${customData.title}]]</figcaption>
                 </figure>
               </a>

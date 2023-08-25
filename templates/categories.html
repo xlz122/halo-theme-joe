@@ -1,4 +1,3 @@
-<!-- 文章分类页 -->
 <!DOCTYPE html>
 <html
   lang="en"
@@ -9,13 +8,12 @@
     <body>
       <div id="Joe" th:with="categories = ${categoryFinder.listAll()}">
         <th:block th:replace="~{modules/macro/navbar :: navbar}" />
-        <!-- 首页大图 -->
         <th:block th:if="${theme.config.beauty.enable_big_banner}">
           <th:block th:replace="~{modules/macro/big_banner :: big_banner(${title})}" />
         </th:block>
         <div
           class="joe_container joe_main_container page-categories"
-          th:classappend="|${theme.config.theme.enable_show_in_up ?'animated showInUp':''} ${theme.config.aside.aside_position == 'left' ? 'revert':''}|"
+          th:classappend="|${theme.config.theme.enable_show_in_up ?'animated showInUp' : ''} ${theme.config.aside.aside_position == 'left' ? 'revert' : ''}|"
         >
           <div class="joe_main">
             <div class="joe_index">
@@ -29,11 +27,11 @@
               </div>
               <div class="joe_index__hot categories">
                 <ul
-                  th:class="'joe_index__hot-list'+${theme.config.categories.categories_type != 'card' ? '-tag':''}+' animated fadeIn'"
+                  th:class="'joe_index__hot-list'+${theme.config.categories.categories_type != 'card' ? '-tag' : ''}+' animated fadeIn'"
                 >
                   <th:block th:if="${theme.config.categories.categories_type=='card'}">
                     <li class="item" th:each="category : ${categories}">
-                      <a class="link" th:href="${category.status.permalink}" th:title="${category.spec.displayName}">
+                      <a class="link" th:title="${category.spec.displayName}" th:href="${category.status.permalink}">
                         <figure class="inner">
                           <th:block th:if="${theme.config.categories.enable_categories_post_num}">
                             <th:block th:replace="~{modules/macro/post_num :: post_num}" />
@@ -55,9 +53,9 @@
                       </a>
                     </li>
                   </th:block>
-                  <th:block th:if="${theme.config.categories.categories_type=='tag'}">
+                  <th:block th:if="${theme.config.categories.categories_type == 'tag'}">
                     <li class="item" th:each="category : ${categories}">
-                      <a class="link" th:href="${category.status.permalink}" th:title="${category.spec.displayName}">
+                      <a class="link" th:title="${category.spec.displayName}" th:href="${category.status.permalink}">
                         <span title="${category.name!}">[[${category.spec.displayName}]]</span>
                         <th:block th:if="${theme.config.categories.enable_categories_post_num}">
                           <th:block th:replace="~{modules/macro/post_num :: post_num}" />

@@ -1,4 +1,3 @@
-<!-- 标签页 -->
 <!DOCTYPE html>
 <html
   lang="en"
@@ -9,7 +8,6 @@
     <body>
       <div id="Joe">
         <th:block th:replace="~{modules/macro/navbar :: navbar}" />
-        <!-- 首页大图 -->
         <th:block th:if="${theme.config.beauty.enable_big_banner}">
           <th:block th:replace="~{modules/macro/big_banner :: big_banner(${title})}" />
         </th:block>
@@ -29,7 +27,7 @@
               </div>
               <div class="joe_index__hot">
                 <ul
-                  th:class="'joe_index__hot-list'+${theme.config.tags.tags_type != 'card' ? '-tag':''}+' animated fadeIn'"
+                  th:class="'joe_index__hot-list'+${theme.config.tags.tags_type != 'card' ? '-tag' : ''}+' animated fadeIn'"
                   style="padding-bottom: 10px;"
                 >
                   <th:block th:if="${theme.config.tags.tags_type=='card'}">
@@ -43,9 +41,9 @@
                             th:with="postCover = ${theme.config.basic.enable_random_img_api ? theme.config.basic.random_img_api_url+'?pageid='+tag.metadata.name : theme.config.tags.tags_default_img}"
                           >
                             <img
+                              class="image lazyload"
                               width="100%"
                               height="120"
-                              class="image lazyload"
                               th:data-src="${tag.spec.cover ?: postCover}"
                               th:src="${theme.config.tags.tags_lazyload_img}"
                               th:alt="${tag.spec.displayName}"
@@ -56,7 +54,7 @@
                       </a>
                     </li>
                   </th:block>
-                  <th:block th:if="${theme.config.tags.tags_type=='tag'}">
+                  <th:block th:if="${theme.config.tags.tags_type == 'tag'}">
                     <li class="item" th:each="tag : ${tags}">
                       <a class="link" th:href="${tag.status.permalink}" th:title="${tag.spec.displayName}">
                         <span title="${tag.name!}">[[${tag.spec.displayName}]]</span>
