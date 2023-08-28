@@ -28,19 +28,19 @@ const homeContext = {
 
       ThemeConfig.enable_banner_handle && ThemeConfig.enable_banner_switch_button
         ? (config.navigation = {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         })
         : null;
 
       ThemeConfig.enable_banner_pagination
         ? (config.pagination = {
-          el: ".swiper-pagination",
+          el: '.swiper-pagination',
           clickable: true
         })
         : null;
 
-      new Swiper(".swiper-container", config);
+      new Swiper('.swiper-container', config);
     }
   },
   // /* 获取文章封面 */
@@ -273,12 +273,13 @@ const homeContext = {
 
     getDate();
   },
+
   /* 激活列表特效 */
   initListEffect() {
     if (!ThemeConfig.enable_index_list_effect) return;
     new WOW({
-      boxClass: "wow",
-      animateClass: ThemeConfig.index_list_effect_class || "fadeIn",
+      boxClass: 'wow',
+      animateClass: ThemeConfig.index_list_effect_class || 'fadeIn',
       offset: 0,
       mobile: true,
       live: true,
@@ -288,8 +289,8 @@ const homeContext = {
 };
 
 !(function () {
-  const omits = ["getThumbnail", "getDefaultThumbnail"];
-  document.addEventListener("DOMContentLoaded", function () {
+  const omits = ['getThumbnail', 'getDefaultThumbnail'];
+  document.addEventListener('DOMContentLoaded', function () {
     Object.keys(homeContext).forEach(
       (c) => !omits.includes(c) && homeContext[c]()
     );

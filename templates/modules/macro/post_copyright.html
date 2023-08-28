@@ -33,9 +33,16 @@
           </svg>
           <span>本文链接：</span>
           <span class="text">
-            <a class="link" th:href="${post.status.permalink}" target="_blank" rel="noopener noreferrer nofollow">
-              [[${site.url}+${post.status.permalink}]]
-            </a>
+            <th:block th:with="siteUrl = ${#strings.substring(site.url, #strings.length(site.url) - 1) == '/'} ? ${#strings.substring(site.url, 0, #strings.length(site.url) - 1)} : ${site.url}">
+              <a
+                class="link"
+                th:href="${post.status.permalink}"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+              >
+                [[${siteUrl}+${post.status.permalink}]]
+              </a>
+            </th:block>
           </span>
         </div>
         <div class="item">
