@@ -76,7 +76,7 @@
                     <div class="joe_journal_block">
                       <div
                         class="joe_journal_body"
-                        th:classappend="${(theme.config.code_block.enable_code_line_number == true &&theme.config.code_block.enable_code_newline!=true) ? 'line-numbers' : ''}"
+                        th:classappend="${(theme.config.code_block.enable_code_line_number == true && theme.config.code_block.enable_code_newline != true) ? 'line-numbers' : ''}"
                         th:style="'max-height:'+${theme.config.journals.journal_block_height?: '300'}+'px'"
                       >
                         <div class="content-wrp">
