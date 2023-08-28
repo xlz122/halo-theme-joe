@@ -141,6 +141,7 @@
                   </li>
                 </th:block>
               </ul>
+              <th:block th:replace="~{modules/common/pagination :: moments}" />
             </div>
           </div>
           <th:block th:if="${theme.config.aside.enable_aside} and ${theme.config.aside.enable_journals_aside}">
