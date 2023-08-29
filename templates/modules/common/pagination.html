@@ -16,7 +16,7 @@
           <li th:classappend="${index eq pageIndex} ? 'active'" th:each="index : ${#numbers.sequence(1, totalPages)}">
             <a th:href="${'/page/' + index}" th:text="${index}"></a>
           </li>
-          <li class="next" th:href="@{${posts.nextUrl}}" th:classappend="${index eq totalPages} ? ' disabled' : ''">
+          <li class="next" th:href="@{${posts.nextUrl}}" th:classappend="${pageIndex eq totalPages} ? ' disabled' : ''">
             <a th:href="@{${posts.nextUrl}}">
               <i class="joe-font joe-icon-next"></i>
             </a>
@@ -75,7 +75,11 @@
             <a th:href="${'/page/'+totalPages}" th:text="${totalPages}">
             </a>
           </li>
-          <li class="next" th:href="@{${posts.nextUrl}}" th:classappend="${index eq totalPages} ? ' disabled' : ''">
+          <li
+            class="next"
+            th:classappend="${index eq totalPages} ? ' disabled' : ''"
+            th:href="@{${posts.nextUrl}}"
+          >
             <a th:href="@{${posts.nextUrl}}">
               <i class="joe-font joe-icon-next"></i>
             </a>
@@ -96,7 +100,7 @@
           <li th:classappend="${index eq pageIndex} ? 'active'" th:each="index : ${#numbers.sequence(1, totalPages)}">
             <a th:href="@{/archives/page/} + ${index}" th:text="${index}"></a>
           </li>
-          <li class="next" th:classappend="${index eq totalPages} ? ' disabled' : ''">
+          <li class="next" th:classappend="${pageIndex eq totalPages} ? ' disabled' : ''">
             <a th:href="@{${archives.nextUrl}}">
               <i class="joe-font joe-icon-next"></i>
             </a>
@@ -155,7 +159,11 @@
             <a th:href="@{/archives/page/}+${totalPages}" th:text="${totalPages}">
             </a>
           </li>
-          <li class="next" th:href="@{${archives.nextUrl}}" th:classappend="${index eq totalPages} ? ' disabled' : ''">
+          <li
+            class="next"
+            th:classappend="${index eq totalPages} ? ' disabled' : ''"
+            th:href="@{${archives.nextUrl}}"
+          >
             <a th:href="@{${archives.nextUrl}}">
               <i class="joe-font joe-icon-next"></i>
             </a>
@@ -176,7 +184,7 @@
           <li th:classappend="${index eq pageIndex} ? 'active'" th:each="index : ${#numbers.sequence(1, totalPages)}">
             <a th:href="@{/categories}+'/'+${category.spec.slug}+'/page/' + ${index}" th:text="${index}"></a>
           </li>
-          <li class="next" th:classappend="${index eq totalPages} ? ' disabled' : ''">
+          <li class="next" th:classappend="${pageIndex eq totalPages} ? ' disabled' : ''">
             <a th:href="@{${posts.nextUrl}}">
               <i class="joe-font joe-icon-next"></i>
             </a>
@@ -236,7 +244,11 @@
             <a th:href="@{/categories}+'/'+${category.spec.slug}+'/page/' + ${totalPages}" th:text="${totalPages}">
             </a>
           </li>
-          <li class="next" th:href="@{${posts.nextUrl}}" th:classappend="${index eq totalPages} ? ' disabled' : ''">
+          <li
+            class="next"
+            th:classappend="${index eq totalPages} ? ' disabled' : ''"
+            th:href="@{${posts.nextUrl}}"
+          >
             <a th:href="@{${posts.nextUrl}}">
               <i class="joe-font joe-icon-next"></i>
             </a>
@@ -260,7 +272,7 @@
           <li th:classappend="${index eq pageIndex} ? 'active'" th:each="index : ${#numbers.sequence(1, totalPages)}">
             <a th:href="@{/tags}+'/'+${tag.spec.slug}+'/page/' + ${index}" th:text="${index}"></a>
           </li>
-          <li class="next" th:classappend="${index eq totalPages} ? ' disabled' : ''">
+          <li class="next" th:classappend="${pageIndex eq totalPages} ? ' disabled' : ''">
             <a th:href="@{${posts.nextUrl}}">
               <i class="joe-font joe-icon-next"></i>
             </a>
@@ -320,7 +332,11 @@
             <a th:href="@{/tags}+'/'+${tag.spec.slug}+'/page/' + ${totalPages}" th:text="${totalPages}">
             </a>
           </li>
-          <li class="next" th:href="@{${posts.nextUrl}}" th:classappend="${index eq totalPages} ? ' disabled' : ''">
+          <li
+            class="next"
+            th:classappend="${index eq totalPages} ? ' disabled' : ''"
+            th:href="@{${posts.nextUrl}}"
+          >
             <a th:href="@{${posts.nextUrl}}">
               <i class="joe-font joe-icon-next"></i>
             </a>
@@ -341,17 +357,17 @@
               <i class="joe-font joe-icon-prev"></i>
             </a>
           </li>
-            <li
-              th:classappend="${index eq pageIndex} ? 'active'"
-              th:each="index : ${#numbers.sequence(1, totalPages)}"
-            >
-              <a th:href="@{/moments}+'/page/'+ ${index}" th:text="${index}"></a>
-            </li>
-            <li class="next" th:classappend="${index eq totalPages} ? ' disabled' : ''">
-              <a th:href="@{${moments.nextUrl}}">
-                <i class="joe-font joe-icon-next"></i>
-              </a>
-            </li>
+          <li
+            th:classappend="${index eq pageIndex} ? 'active'"
+            th:each="index : ${#numbers.sequence(1, totalPages)}"
+          >
+            <a th:href="@{/moments}+'/page/'+ ${index}" th:text="${index}"></a>
+          </li>
+          <li class="next" th:classappend="${pageIndex eq totalPages} ? ' disabled' : ''">
+            <a th:href="@{${moments.nextUrl}}">
+              <i class="joe-font joe-icon-next"></i>
+            </a>
+          </li>
         </ul>
         <!-- 页面总数大于7 -->
         <ul class="joe_pagination" th:if="${totalPages gt 7}">
@@ -405,8 +421,8 @@
           </li>
           <li
             class="next"
-            th:href="@{${posts.nextUrl}}"
             th:classappend="${index eq totalPages} ? ' disabled' : ''"
+            th:href="@{${posts.nextUrl}}"
           >
             <a th:href="@{${moments.nextUrl}}">
               <i class="joe-font joe-icon-next"></i>
