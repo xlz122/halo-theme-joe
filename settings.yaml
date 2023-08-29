@@ -1043,12 +1043,12 @@ spec:
           name: tag_cloud_width
           id: tag_cloud_width
           label: 标签宽度
-          value: "static"
+          value: "responsive"
           options:
-            - value: static
-              label: 固定宽度
             - value: responsive
               label: 自适应宽度
+            - value: static
+              label: 固定宽度
 
     - group: home
       label: 首页
