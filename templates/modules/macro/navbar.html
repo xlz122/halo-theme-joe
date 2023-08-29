@@ -107,8 +107,13 @@
       <!-- 移动端侧边栏 -->
       <div class="joe_header__slideout">
         <div class="joe_header__slideout-wrap">
-          <img width="100%" height="150" class="joe_header__slideout-image"
-            th:src="${theme.config.blogger.author_bg ?: #theme.assets('/img/author_bg.jpg')}" alt="侧边栏壁纸">
+          <img
+            class="joe_header__slideout-image"
+            width="100%"
+            height="150" 
+            th:src="${theme.config.blogger.author_bg ?: #theme.assets('/img/author_bg.jpg')}"
+            alt="侧边栏壁纸"
+          />
           <div class="joe_header__slideout-author">
             <div class="user-profile">
               <img
@@ -265,16 +270,6 @@
       </div>
       <div class="joe_header__searchout">
         <a href="javascript:SearchWidget.open()" title="搜索"></a>
-      </div>
-
-      <div class="joe_header__toc">
-        <div class="joe_header__toc-wrap">
-          <div class="toc_top">
-            <h3>目 录<span>CONTENT</span></h3>
-            <img width="100%" height="150" th:src="@{/assets/img/context_bg.png}" alt="文章目录">
-          </div>
-          <div id="js-toc-mobile" class="toc"></div>
-        </div>
       </div>
       <div class="joe_header__mask"></div>
     </header>
