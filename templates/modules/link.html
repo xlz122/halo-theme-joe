@@ -9,7 +9,16 @@
       as="style"
       th:href="@{/assets/css/normalize.css?v={version}(version=${theme.spec.version})}"
     />
-    <link rel="preload stylesheet" as="style" th:href="@{/assets/lib/font-awesome/css/font-awesome.min.css}" />
+    <link
+      rel="preload stylesheet"
+      as="style"
+      th:href="@{/assets/css/global.css?v={version}(version=${theme.spec.version})}"
+    />
+    <link
+      rel="preload stylesheet"
+      as="style"
+      th:href="@{/assets/css/responsive.css?v={version}(version=${theme.spec.version})}"
+    />
     <link rel="preload stylesheet" as="style" th:href="@{/assets/lib/animate/animate.min.css}">
     <!-- 主题 -->
     <link
@@ -23,6 +32,52 @@
     <th:block th:if="${theme.config.custom.iconfont != '' and theme.config.custom.iconfont != null}">
       <link rel="stylesheet" th:href="${theme.config.custom.iconfont}" />
     </th:block>
+    <!-- 页面级css start -->
+    <th:block th:if="${htmlType == 'index'}">
+      <link
+        rel="preload stylesheet"
+        as="style"
+        th:href="@{/assets/css/index.css?v={version}(version=${theme.spec.version})}"
+      />
+    </th:block>
+    <th:block th:if="${htmlType == 'archives'}">
+      <link
+        rel="preload stylesheet"
+        as="style"
+        th:href="@{/assets/css/archives.css?v={version}(version=${theme.spec.version})}"
+      />
+    </th:block>
+    <th:block th:if="${htmlType == 'post'}">
+      <link
+        rel="preload stylesheet"
+        as="style"
+        th:href="@{/assets/css/post.css?v={version}(version=${theme.spec.version})}"
+      />
+    </th:block>
+    <th:block th:if="${htmlType == 'post' or tmlType == 'journals' or tmlType == 'sheet'}">
+      <link rel="preload stylesheet" as="style" th:href="@{/assets/lib/prism/prism.min.css}" />
+      <link
+        rel="preload stylesheet"
+        as="style"
+        th:href="@{/assets/lib/prism/themes}+'/prism-'+${theme.config.code_block.code_theme}+'.css'"
+      />
+    </th:block>
+    <th:block th:if="${htmlType == 'journals'}">
+      <link
+        rel="preload stylesheet"
+        as="style"
+        th:href="@{/assets/css/journals.css?v={version}(version=${theme.spec.version})}"
+      />
+    </th:block>
+    <th:block th:if="${htmlType == 'photos'}">
+      <link rel="stylesheet" th:href="@{/assets/lib/justifiedGallery/justifiedGallery.min.css}" />
+      <link
+        rel="preload stylesheet"
+        as="style"
+        th:href="@{/assets/css/photos.css?v={version}(version=${theme.spec.version})}"
+      />
+    </th:block>
+    <!-- 页面级css end -->
     <!-- 页面顶部加载条 -->
     <th:block th:if="${theme.config.theme.enable_loading_bar}">
       <link rel="stylesheet" th:href="@{/assets/lib/nprogress/nprogress.min.css}" />
@@ -50,67 +105,14 @@
         th:href="@{/assets/css/beauty.css?v={version}(version=${theme.spec.version})}"
       />
     </th:block>
-    <!-- 页面级css start -->
-    <th:block th:if="${htmlType == 'post' or tmlType == 'journals' or tmlType == 'sheet'}">
-      <link rel="preload stylesheet" as="style" th:href="@{/assets/lib/prism/prism.min.css}" />
-      <link
-        rel="preload stylesheet"
-        as="style"
-        th:href="@{/assets/lib/prism/themes}+'/prism-'+${theme.config.code_block.code_theme}+'.css'"
-      />
-    </th:block>
-    <link
-      rel="preload stylesheet"
-      as="style"
-      th:href="@{/assets/css/global.css?v={version}(version=${theme.spec.version})}"
-    />
-    <th:block th:if="${htmlType == 'index'}">
-      <link
-        rel="preload stylesheet"
-        as="style"
-        th:href="@{/assets/css/index.css?v={version}(version=${theme.spec.version})}"
-      />
-    </th:block>
-    <th:block th:if="${htmlType == 'post'}">
-      <link
-        rel="preload stylesheet"
-        as="style"
-        th:href="@{/assets/css/post.css?v={version}(version=${theme.spec.version})}"
-      />
-    </th:block>
-    <th:block th:if="${htmlType == 'archives'}">
-      <link
-        rel="preload stylesheet"
-        as="style"
-        th:href="@{/assets/css/archives.css?v={version}(version=${theme.spec.version})}"
-      />
-    </th:block>
-    <th:block th:if="${htmlType == 'journals'}">
-      <link
-        rel="preload stylesheet"
-        as="style"
-        th:href="@{/assets/css/journals.css?v={version}(version=${theme.spec.version})}"
-      />
-    </th:block>
-    <th:block th:if="${htmlType == 'photos'}">
-      <link rel="stylesheet" th:href="@{/assets/lib/justifiedGallery/justifiedGallery.min.css}" />
-      <link
-        rel="preload stylesheet"
-        as="style"
-        th:href="@{/assets/css/photos.css?v={version}(version=${theme.spec.version})}"
-      />
-    </th:block>
-    <!-- 页面级css end -->
     <!-- 鼠标皮肤 -->
     <th:block th:if="${ttheme.config.other.enable_clean_mode != true} and ${theme.config.theme.cursor_skin != 'off'}">
       <link rel="stylesheet" th:href="@{/assets/cursor/style/min}+'/'+${theme.config.theme.cursor_skin}+'.min.css'">
     </th:block>
-    <link
-      rel="preload stylesheet"
-      as="style"
-      th:href="@{/assets/css/responsive.css?v={version}(version=${theme.spec.version})}"
-    />
-    <link rel="stylesheet" th:href="@{/assets/lib/fancybox/jquery.fancybox.min.css}" />
+    <!-- 图片查看 -->
+    <th:block th:if="${htmlType == 'post'} or ${htmlType == 'journals'} or ${htmlType == 'photos'}">
+      <link rel="stylesheet" th:href="@{/assets/lib/fancybox/jquery.fancybox.min.css}" />
+    </th:block>
 
     <style th:inline="text">
       #Joe .joe_container {
@@ -118,7 +120,6 @@
       }
     </style>
 
-    <!-- 自定义css -->
     <style
       th:if="${theme.config.custom.custom_css != null and theme.config.custom.custom_css != ''}"
       th:utext="${theme.config.custom.custom_css}"
