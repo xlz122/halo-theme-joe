@@ -5,7 +5,7 @@
     <div
       id="EvanBigBanner"
       class="evan-big-banner"
-      th:style="'background-image:url('+${theme.config.beauty.big_banner_Photos}+');'+${htmlType == 'index'? 'height:calc(100vh - 60px);margin-top: initial;':''}"
+      th:style="'background-image:url('+${theme.config.beauty.big_banner_photos}+');'+${htmlType == 'index'? 'height:calc(100vh - 60px);margin-top: initial;':''}"
     >
       <th:block th:if="${theme.config.beauty.enable_big_banner_video}">
         <video
