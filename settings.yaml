@@ -40,7 +40,7 @@ spec:
           name: random_img_api_url
           value: "https://imgapi.xl0408.top/index.php"
           label: 随机图api
-          help: "填入正确的随机图api地址, 默认 https://imgapi.xl0408.top/index.php"
+          help: "填入正确的随机图api地址, 默认为 https://imgapi.xl0408.top/index.php"
 
     - group: theme
       label: 主题相关
@@ -378,12 +378,12 @@ spec:
           name: big_banner_title
           label: 大图标题
           value: ""
-          help: "默认网站名"
-        - $formkit: text
-          name: big_banner_Photos
+          help: "默认为网站名称"
+        - $formkit: attachment
+          name: big_banner_photos
           label: 图片地址或者api地址
           value: "http://imgapi.xl0408.top/index.php"
-          help: "填写图片地址或者随机图api地址"
+          help: "填写图片地址或者随机图api地址, 默认为 http://imgapi.xl0408.top/index.php"
         - $formkit: select
           name: enable_big_banner_video
           id: enable_big_banner_video
