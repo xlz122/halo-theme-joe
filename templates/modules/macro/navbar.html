@@ -20,7 +20,7 @@
                 class="joe_header__above-logo"
                 th:title="${site.title}"
                 th:href="${logoLink ?: site.url}"
-                th:target="${theme.config.navbar.logo_link == '#' ? '' : '_blank'}"
+                th:target="${theme.config.navbar.logo_link == '#' or theme.config.navbar.logo_link == '' ? '' : '_blank'}"
                 rel="noopener noreferrer"
               >
                 <img
