@@ -72,7 +72,6 @@
     <!-- 文章二维码、自定义标签 -->
     <th:block th:if="${htmlType == 'post'}">
       <script th:src="@{/assets/lib/jquery-qrcode/jquery.qrcode.min.js}"></script>
-      <script th:src="@{/assets/js/custom.js}"></script>
     </th:block>
     <!-- 相册瀑布流 -->
     <th:block th:if="${htmlType == 'photos'}">
@@ -97,6 +96,8 @@
     <th:block th:if="${theme.config.aside.show_newreply == true} or ${htmlType == 'sheet'}">
       <script th:src="@{/assets/lib/j-marked/marked.min.js}"></script>
     </th:block>
+
+    <script th:src="@{/assets/js/custom.js}"></script>
 
     <!-- 自定义js -->
     <th:block th:if="${theme.config.custom.custom_js_body != null} and ${theme.config.custom.custom_js_body != ''}">
