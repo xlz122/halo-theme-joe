@@ -1,4 +1,8 @@
-# Halo Theme Joe3
+<h1 align="center">Halo Theme Joe3</h1>
+
+<p align="center">
+  <img width="100%" src="https://wmimg.com/i/70/2023/08/64d3c41d5bde2.webp">
+</p>
 
 ## 简介
 
