@@ -69,7 +69,7 @@
             <span class="text">最新回复</span>
           </div>
           <ul class="joe_aside__item-contain">
-            <th:block th:each="result : ${commentFinder.list(null,1,theme.config.aside.show_newreply_num)}">
+            <th:block th:each="result : ${commentFinder.list(null, 1, theme.config.aside.show_newreply_num)}">
               <li class="item">
                 <div class="user">
                   <img
@@ -86,9 +86,7 @@
                   </div>
                 </div>
                 <div class="reply">
-                  <!--<th:block th:with="post = ${postFinder.getByName(postMate.name)}">-->
-                  <a class="link aside-reply-content" href="#">[[${result.spec.content}]]</a>
-                  <!--</th:block>-->
+                  <span class="link aside-reply-content">[[${result.spec.content}]]</span>
                 </div>
               </li>
             </th:block>
