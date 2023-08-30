@@ -755,22 +755,32 @@ spec:
               options:
                 - label: Github
                   value: github
-                - label: 邮箱
-                  value: email
-                - label: 知乎
-                  value: zhihu
                 - label: Gitee
                   value: gitee
-                - label: Telegram
-                  value: telegram
+                - label: Gitlab
+                  value: gitlab
                 - label: 掘金
                   value: juejin
                 - label: B站
                   value: bilibili
-                - label: QQ
-                  value: qq
+                - label: 知乎
+                  value: zhihu
                 - label: 微博
                   value: weibo
+                - label: 豆瓣
+                  value: douban
+                - label: QQ
+                  value: qq
+                - label: 邮箱
+                  value: email
+                - label: YouTube
+                  value: youtube
+                - label: Facebook
+                  value: facebook
+                - label: Twitter
+                  value: twitter
+                - label: Telegram
+                  value: telegram
             - $formkit: text
               name: socialUrl
               label: 链接
