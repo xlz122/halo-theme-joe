@@ -2,7 +2,7 @@
 <html
   lang="en"
   xmlns:th="http://www.thymeleaf.org"
-  th:replace="~{modules/layout :: html(title = ${theme.config.categories.categories_title ?: '全部标签'}+'-'+${site.title},htmlType = categories,header = null,leftSidebar = true,content = ~{::content}, head = null, footer = null)}"
+  th:replace="~{modules/layout :: html(title = ${theme.config.categories.categories_title ?: '全部分类'} + '-' + ${site.title},htmlType = categories,header = null,leftSidebar = true,content = ~{::content}, head = null, footer = null)}"
 >
   <th:block th:fragment="content">
     <body>
@@ -56,7 +56,7 @@
                   <th:block th:if="${theme.config.categories.categories_type == 'tag'}">
                     <li class="item" th:each="category : ${categories}">
                       <a class="link" th:title="${category.spec.displayName}" th:href="${category.status.permalink}">
-                        <span title="${category.name!}">[[${category.spec.displayName}]]</span>
+                        <span>[[${category.spec.displayName}]]</span>
                         <th:block th:if="${theme.config.categories.enable_categories_post_num}">
                           <th:block th:replace="~{modules/macro/post_num :: post_num}" />
                         </th:block>

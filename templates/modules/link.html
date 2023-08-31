@@ -113,6 +113,10 @@
     <th:block th:if="${htmlType == 'post'} or ${htmlType == 'journals'} or ${htmlType == 'photos'}">
       <link rel="stylesheet" th:href="@{/assets/lib/fancybox/jquery.fancybox.min.css}" />
     </th:block>
+    <!-- 文本复制 -->
+    <th:block th:if="${htmlType == 'post'} or ${htmlType == 'journals'} or ${htmlType == 'sheet'}">
+      <link rel="stylesheet" th:href="@{/assets/lib/qmsg/qmsg.css}" />
+    </th:block>
 
     <style th:inline="text">
       #Joe .joe_container {
