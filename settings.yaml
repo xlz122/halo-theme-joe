@@ -2356,12 +2356,12 @@ spec:
               label: 开启
             - value: false
               label: 关闭
-        - $formkit: radio
+        - $formkit: select
           name: show_loaded_time
           label: 控制台输出页面加载耗时
           value: false
           options:
             - value: true
-              label: 是
+              label: 开启
             - value: false
-              label: 否
+              label: 关闭
