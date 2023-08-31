@@ -3,7 +3,7 @@
 <html
   lang="en"
   xmlns:th="http://www.thymeleaf.org"
-  th:replace="~{modules/layout :: html(title = ${site.title},htmlType = sheet,header = null,leftSidebar = true,content = ~{::content}, head = null, footer = null)}"
+  th:replace="~{modules/layout :: html(title = ${singlePage.spec.title} + '-' + ${site.title},htmlType = sheet,header = null,leftSidebar = true,content = ~{::content}, head = null, footer = null)}"
 >
   <th:block th:fragment="content">
     <body>
@@ -43,6 +43,7 @@
                           class="link"
                           th:title="${contributor.displayName}"
                           th:href="${singlePage.status.permalink}"
+                          rel="noopener noreferrer"
                         >
                           [[${contributor.displayName}]]
                         </a>

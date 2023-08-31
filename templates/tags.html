@@ -2,7 +2,7 @@
 <html
   lang="en"
   xmlns:th="http://www.thymeleaf.org"
-  th:replace="~{modules/layout :: html(title = ${theme.config.tags.tags_title ?: '全部标签'}+'-'+${site.title},htmlType = tags,header = null,leftSidebar = true,content = ~{::content}, head = null, footer = null)}"
+  th:replace="~{modules/layout :: html(title = ${theme.config.tags.tags_title ?: '全部标签'} + '-'+ ${site.title},htmlType = tags,header = null,leftSidebar = true,content = ~{::content}, head = null, footer = null)}"
 >
   <th:block th:fragment="content">
     <body>
@@ -57,7 +57,7 @@
                   <th:block th:if="${theme.config.tags.tags_type == 'tag'}">
                     <li class="item" th:each="tag : ${tags}">
                       <a class="link" th:href="${tag.status.permalink}" th:title="${tag.spec.displayName}">
-                        <span title="${tag.name!}">[[${tag.spec.displayName}]]</span>
+                        <span>[[${tag.spec.displayName}]]</span>
                         <th:block th:if="${theme.config.tags.enable_tags_post_num}">
                           <th:block th:replace="~{modules/macro/post_num :: post_num}" />
                         </th:block>

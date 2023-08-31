@@ -28,7 +28,7 @@ spec:
           name: enable_random_img_api
           id: enable_random_img_api
           value: false
-          label: 开启全局随机缩略图
+          label: 全局随机图
           help: "是否开启随机图API, 优先级为(配置 > 随机 > 默认)"
           options:
             - value: true
@@ -2134,16 +2134,6 @@ spec:
             - value: false
               label: 关闭
         - $formkit: select
-          name: enable_code_copy
-          label: 代码复制
-          value: true
-          help: "开启代码块复制按钮"
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: select
           name: enable_code_line_number
           label: 代码行号
           value: false
@@ -2158,6 +2148,16 @@ spec:
           label: 自动换行
           value: false
           help: "当代码长度超过容器宽度时是否自动换行, 开启后将不会出现横向滚动条, 且不会展示代码行号(代码自动换行后看起来可能不会很美观, 请根据个人需要配置)"
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: select
+          name: show_tools_when_hover
+          label: 仅悬浮时显示操作按钮
+          value: true
+          help: "是否仅在鼠标悬浮到当前代码块时才显示相关操作按钮, 不显示时会更加简洁"
           options:
             - value: true
               label: 开启
@@ -2185,7 +2185,7 @@ spec:
               label: 关闭
         - $formkit: text
           name: long_code_height
-          label: 自动折叠的高度
+          label: 触发代码折叠的高度
           value: "800"
           help: "触发长代码块自动折叠的高度(单位px), 只填数字即可(默认800), 填 0 将折叠所有代码块"
         - $formkit: select
@@ -2267,10 +2267,10 @@ spec:
             - value: "z-touch"
               label: "z-touch"
         - $formkit: select
-          name: show_tools_when_hover
-          label: 仅悬浮时显示操作按钮
+          name: enable_code_copy
+          label: 代码复制
           value: true
-          help: "是否仅在鼠标悬浮到当前代码块时才显示相关操作按钮, 不显示时会更加简洁"
+          help: "开启代码块复制按钮"
           options:
             - value: true
               label: 开启

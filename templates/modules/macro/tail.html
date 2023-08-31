@@ -69,8 +69,10 @@
     <th:block th:if="${htmlType == 'post'} and ${theme.config.post.enable_toc == true}">
       <script th:src="@{/assets/lib/tocbot/tocbot.min.js}"></script>
     </th:block>
-    <!-- 文章二维码、自定义标签 -->
+    <!-- 文章页音乐播放器、二维码 -->
     <th:block th:if="${htmlType == 'post'}">
+      <link rel="stylesheet" th:href="@{/assets/lib/APlayer/APlayer.min.css}">
+      <script th:src="@{/assets/lib/APlayer/APlayer.min.js}"></script>
       <script th:src="@{/assets/lib/jquery-qrcode/jquery.qrcode.min.js}"></script>
     </th:block>
     <!-- 相册瀑布流 -->
@@ -81,6 +83,7 @@
     <!-- 文本复制 -->
     <th:block th:if="${htmlType == 'post'} or ${htmlType == 'journals'} or ${htmlType == 'sheet'}">
       <script th:src="@{/assets/lib/clipboard/clipboard.min.js}"></script>
+      <script th:src="@{/assets/lib/qmsg/qmsg.js}"></script>
     </th:block>
 
     <!-- 图片查看 -->
@@ -89,7 +92,7 @@
     </th:block>
 
     <!-- 卜算子 -->
-    <th:block th:if="${theme.config.footer.enable_busuanzi}">
+    <th:block th:if="${theme.config.footer.enable_footer and theme.config.footer.enable_busuanzi}">
       <script th:src="@{/assets/lib/busuanzi/busuanzi.min.js}"></script>
     </th:block>
 
@@ -114,7 +117,7 @@
 
     <th:block th:if="${htmlType == 'photos'}">
       <script type="text/javascript">
-        document.querySelector('#sortable').sortablejs()
+        document.querySelector('#sortable').sortablejs();
       </script>
     </th:block>
   </th:block>
