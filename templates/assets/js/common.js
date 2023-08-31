@@ -931,16 +931,12 @@ const commonContext = {
 	showLoadTime() {
 		if (Joe.isMobile || !ThemeConfig.show_loaded_time) return;
 		const consume_time = performance.now();
-		consume_time &&
+		if (consume_time) {
 			console.log(
-				"%c页面加载耗时：" + Math.round(consume_time) + " ms",
-				"padding: 6px 8px;color:#fff;background:linear-gradient(270deg, #4edb21, #f15206);border-radius: 3px;"
+				'%c页面加载耗时: ' + Math.round(consume_time) + ' ms',
+				'padding: 6px 8px;color:#fff;background:linear-gradient(270deg, #4edb21, #f15206);border-radius: 3px;'
 			);
-	},
-	/* 调试模式 */
-	debug() {
-		if (!ThemeConfig.enable_debug) return;
-		new window.VConsole();
+		}
 	},
 	/* 清理工作 */
 	clean() {
