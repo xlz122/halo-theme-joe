@@ -56,7 +56,7 @@
                   <th:block th:if="${theme.config.categories.categories_type == 'tag'}">
                     <li class="item" th:each="category : ${categories}">
                       <a class="link" th:title="${category.spec.displayName}" th:href="${category.status.permalink}">
-                        <span title="${category.name!}">[[${category.spec.displayName}]]</span>
+                        <span>[[${category.spec.displayName}]]</span>
                         <th:block th:if="${theme.config.categories.enable_categories_post_num}">
                           <th:block th:replace="~{modules/macro/post_num :: post_num}" />
                         </th:block>
