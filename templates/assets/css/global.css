@@ -1624,7 +1624,7 @@ body:after {
 }
 
 .joe_index__hot-list.hotlist .item .link {
-  cursor: default;
+  cursor: pointer;
 }
 
 .joe_index__hot-list.hotlist .item .link.clickable {
