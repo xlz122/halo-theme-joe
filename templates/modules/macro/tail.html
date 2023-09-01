@@ -89,7 +89,7 @@
     </th:block>
 
     <!-- 卜算子 -->
-    <th:block th:if="${theme.config.footer.enable_busuanzi}">
+    <th:block th:if="${theme.config.footer.enable_footer and theme.config.footer.enable_busuanzi}">
       <script th:src="@{/assets/lib/busuanzi/busuanzi.min.js}"></script>
     </th:block>
 
