@@ -14,6 +14,7 @@
                 <li class="item" th:each="post : ${month.posts}">
                   <a
                     class="link"
+                    th:title="${post.spec.title}"
                     th:href="@{${post.status.permalink}}"
                     th:text="${post.spec.title}"
                   >
