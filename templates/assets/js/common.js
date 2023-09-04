@@ -530,8 +530,8 @@ const commonContext = {
 		if (
 			Joe.isMobile ||
 			!ThemeConfig.enable_tag_cloud ||
-			ThemeConfig.tag_cloud_type !== "3d" ||
-			!$(".tags-cloud-list").length
+			ThemeConfig.tag_cloud_type !== '3d' ||
+			!$('.tags-cloud-list').length
 		)
 			return;
 		$.getScript(
@@ -539,72 +539,76 @@ const commonContext = {
 			(_res) => {
 				const entries = [];
 				const colors = [
-					"#F8D800",
-					"#0396FF",
-					"#EA5455",
-					"#7367F0",
-					"#32CCBC",
-					"#F6416C",
-					"#28C76F",
-					"#9F44D3",
-					"#F55555",
-					"#736EFE",
-					"#E96D71",
-					"#DE4313",
-					"#D939CD",
-					"#4C83FF",
-					"#F072B6",
-					"#C346C2",
-					"#5961F9",
-					"#FD6585",
-					"#465EFB",
-					"#FFC600",
-					"#FA742B",
-					"#5151E5",
-					"#BB4E75",
-					"#FF52E5",
-					"#49C628",
-					"#00EAFF",
-					"#F067B4",
-					"#F067B4",
-					"#ff9a9e",
-					"#00f2fe",
-					"#4facfe",
-					"#f093fb",
-					"#6fa3ef",
-					"#bc99c4",
-					"#46c47c",
-					"#f9bb3c",
-					"#e8583d",
-					"#f68e5f",
+					'#F8D800',
+					'#0396FF',
+					'#EA5455',
+					'#7367F0',
+					'#32CCBC',
+					'#F6416C',
+					'#28C76F',
+					'#9F44D3',
+					'#F55555',
+					'#736EFE',
+					'#E96D71',
+					'#DE4313',
+					'#D939CD',
+					'#4C83FF',
+					'#F072B6',
+					'#C346C2',
+					'#5961F9',
+					'#FD6585',
+					'#465EFB',
+					'#FFC600',
+					'#FA742B',
+					'#5151E5',
+					'#BB4E75',
+					'#FF52E5',
+					'#49C628',
+					'#00EAFF',
+					'#F067B4',
+					'#F067B4',
+					'#ff9a9e',
+					'#00f2fe',
+					'#4facfe',
+					'#f093fb',
+					'#6fa3ef',
+					'#bc99c4',
+					'#46c47c',
+					'#f9bb3c',
+					'#e8583d',
+					'#f68e5f',
 				];
 				const random = (min, max) => {
 					min = Math.ceil(min);
 					max = Math.floor(max);
 					return Math.floor(Math.random() * (max - min + 1)) + min;
 				};
-				$(".tags-cloud-list a").each((i, item) => {
+				$('.tags-cloud-list a').each((i, item) => {
 					entries.push({
-						label: $(item).attr("data-label"),
-						url: $(item).attr("data-url"),
-						target: "_blank",
+						label: $(item).attr('data-label'),
+						url: $(item).attr('data-url'),
+						target: '_blank',
 						fontColor: colors[random(0, colors.length - 1)],
 						fontSize: 16,
 					});
 				});
-				$("#tags-3d").svg3DTagCloud({
+				$('#tags-3d').svg3DTagCloud({
 					entries,
 					width: 250,
 					height: 250,
-					radius: "65%",
+					radius: '65%',
 					radiusMin: 75,
 					bgDraw: false,
 					fov: 800,
 					speed: 0.5,
 					fontWeight: 500,
 				});
-				$(".tags-cloud-list").remove();
-				$("#tags-3d .empty").remove();
+				$('#tags-3d a').each((i, item) => {
+					const href = item.getAttribute('xlink:href');
+					item.setAttribute('href', href);
+				});
+				$('.tags-cloud-list').remove();
+				$('#tags-3d .empty').remove();
 			}
 		);
 	},
