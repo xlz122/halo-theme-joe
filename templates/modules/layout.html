@@ -22,7 +22,9 @@
     <meta http-equiv="x-dns-prefetch-control" content="on">
     <meta name="site" th:content="${site.url}">
     <!-- OG -->
-    <meta property="og:image" content="${site.favicon}">
+    <th:block th:with="siteUrl = ${#strings.substring(site.url, #strings.length(site.url) - 1) == '/'} ? ${#strings.substring(site.url, 0, #strings.length(site.url) - 1)} : ${site.url}">
+      <meta property="og:image" th:content="${siteUrl} + ${site.favicon}">
+    </th:block>
     <meta property="og:description" th:content="${site.seo.description}">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="zh_CN">
