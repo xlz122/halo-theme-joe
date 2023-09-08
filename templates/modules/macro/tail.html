@@ -69,8 +69,10 @@
     <th:block th:if="${htmlType == 'post'} and ${theme.config.post.enable_toc == true}">
       <script th:src="@{/assets/lib/tocbot/tocbot.min.js}"></script>
     </th:block>
-    <!-- 文章二维码、自定义标签 -->
+    <!-- 文章页音乐播放器、二维码 -->
     <th:block th:if="${htmlType == 'post'}">
+      <link rel="stylesheet" th:href="@{/assets/lib/APlayer/APlayer.min.css}">
+      <script th:src="@{/assets/lib/APlayer/APlayer.min.js}"></script>
       <script th:src="@{/assets/lib/jquery-qrcode/jquery.qrcode.min.js}"></script>
     </th:block>
     <!-- 相册瀑布流 -->
