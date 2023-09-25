@@ -18,14 +18,18 @@
                     target="_blank"
                     rel="noopener noreferrer nofollow"
                   >
-                    <img
-                      class="thumbnail lazyload"
-                      width="100%"
-                      height="100%"
-                      th:data-src="${post.spec.cover ?: theme.config.carousel.banner_default_img}"
-                      th:src="${theme.config.carousel.banner_lazyload_img}"
-                      th:alt="${post.spec.title}"
-                    />
+                    <th:block
+                      th:with="postCover = ${theme.config.basic.enable_random_img_api ? theme.config.basic.random_img_api_url+'?pageid='+post.metadata.name : '/themes/Halo-Theme-Joe3/assets/img/Joe3.png'}"
+                    >
+                      <img
+                        class="thumbnail lazyload"
+                        width="100%"
+                        height="100%"
+                        th:data-src="${post.spec.cover ?: postCover}"
+                        th:src="${theme.config.carousel.banner_lazyload_img}"
+                        th:alt="${post.spec.title}"
+                      />
+                    </th:block>
                     <div class="title-row">
                       <h3 class="title">[[${post.spec.title}]]</h3>
                       <th:block th:if="${post.status.excerpt != ''}">
@@ -52,14 +56,18 @@
                     target="_blank"
                     rel="noopener noreferrer nofollow"
                   >
-                    <img
-                      class="thumbnail lazyload"
-                      width="100%"
-                      height="100%"
-                      th:data-src="${post.spec.cover ?: '/themes/Halo-Theme-Joe3/assets/img/Joe3.png'}"
-                      th:src="${theme.config.carousel.banner_lazyload_img}"
-                      th:alt="${post.spec.title}"
-                    />
+                    <th:block
+                      th:with="postCover = ${theme.config.basic.enable_random_img_api ? theme.config.basic.random_img_api_url+'?pageid='+post.metadata.name : '/themes/Halo-Theme-Joe3/assets/img/Joe3.png'}"
+                    >
+                      <img
+                        class="thumbnail lazyload"
+                        width="100%"
+                        height="100%"
+                        th:data-src="${post.spec.cover ?: postCover}"
+                        th:src="${theme.config.carousel.banner_lazyload_img}"
+                        th:alt="${post.spec.title}"
+                      />
+                    </th:block>
                     <div class="title-row">
                       <h3 class="title">[[${post.spec.title}]]</h3>
                       <th:block th:if="${post.status.excerpt != ''}">
