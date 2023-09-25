@@ -28,7 +28,7 @@ spec:
           name: enable_random_img_api
           id: enable_random_img_api
           value: false
-          label: 开启全局随机缩略图
+          label: 全局随机图
           help: "是否开启随机图API, 优先级为(配置 > 随机 > 默认)"
           options:
             - value: true
