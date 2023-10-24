@@ -4592,7 +4592,7 @@ body:after {
   margin: 0;
 }
 
-.joe_detail__article a:not([class]) {
+.joe_detail__article a {
   display: inline-block;
   line-height: 26px;
   text-indent: 0;
@@ -4600,12 +4600,12 @@ body:after {
   position: relative;
 }
 
-.joe_detail__article a:not([class]):hover::after {
+.joe_detail__article a:hover::after {
   opacity: 1;
   transform: scaleX(1);
 }
 
-.joe_detail__article a:not([class])::after {
+.joe_detail__article a::after {
   position: absolute;
   bottom: -1px;
   left: 0;
