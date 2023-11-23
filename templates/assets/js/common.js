@@ -671,29 +671,48 @@ const commonContext = {
 	},
 	/* 小屏幕搜索框 */
 	searchMobile() {
-		// $(".joe_header__above-searchicon").on("click", function (e) {
-		// 	e.stopPropagation();
-		// 	/* 关闭侧边栏 */
-		// 	$(".joe_header__slideout").removeClass("active");
-		// 	/* 处理开启关闭状态 */
-		// 	const $html = $("html");
-		// 	const $mask = $(".joe_header__mask");
-		// 	const $header_above = $(".joe_header__above");
-		// 	const $search_out = $(".joe_header__searchout");
-		// 	if ($search_out.hasClass("active")) {
-		// 		$html.removeClass("disable-scroll");
-		// 		// $mask.removeClass("active slideout");
-		// 		$search_out.removeClass("active");
-		// 		$header_above.removeClass("solid");
-		// 	} else {
-		// 		// 保存滚动位置
-		// 		window.sessionStorage.setItem("lastScroll", $html.scrollTop());
-		// 		$html.addClass("disable-scroll");
-		// 		// $mask.addClass("active");
-		// 		$header_above.addClass("solid");
-		// 		$search_out.addClass("active");
-		// 	}
-		// });
+		$(".joe_header__above-searchicon").on("click", function (e) {
+			e.stopPropagation();
+
+			const $html = $("html");
+			$html.removeClass("disable-scroll");
+			$(".joe_header__mask").removeClass("active slideout");
+			$(".joe_header__searchout").removeClass("active");
+			$(".joe_header__slideout").removeClass("active");
+			$(".joe_header__toc").removeClass("active");
+			$(".joe_header__above").removeClass("solid");
+
+			// 还原滚动位置
+			const lastScroll = window.sessionStorage.getItem("lastScroll");
+			lastScroll && $html.scrollTop(lastScroll);
+			window.sessionStorage.removeItem("lastScroll");
+
+			// /* 关闭侧边栏 */
+			// $(".joe_header__slideout").removeClass("active");
+			// /* 处理开启关闭状态 */
+			// const $html = $("html");
+			// const $mask = $(".joe_header__mask");
+			// const $header_above = $(".joe_header__above");
+			// const $search_out = $(".joe_header__searchout");
+
+			// $html.removeClass("disable-scroll");
+			// $search_out.removeClass("active");
+			// $header_above.removeClass("solid");
+
+			// if ($search_out.hasClass("active")) {
+			// 	$html.removeClass("disable-scroll");
+			// 	// $mask.removeClass("active slideout");
+			// 	$search_out.removeClass("active");
+			// 	$header_above.removeClass("solid");
+			// } else {
+			// 	// 保存滚动位置
+			// 	window.sessionStorage.setItem("lastScroll", $html.scrollTop());
+			// 	$html.addClass("disable-scroll");
+			// 	// $mask.addClass("active");
+			// 	$header_above.addClass("solid");
+			// 	$search_out.addClass("active");
+			// }
+		});
 	},
 	/* 点击遮罩层关闭 */
 	maskClose() {
