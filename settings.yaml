@@ -2349,7 +2349,7 @@ spec:
         - $formkit: select
           name: enable_console_theme
           label: 控制台输出主题信息
-          help: 是否在控制台输出主题相关信息
+          help: 是否在控制台输出主题信息
           value: false
           options:
             - value: true
